@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx5sy1x1xfdk"]
+
+[ext_resource type="Script" uid="uid://b3o8d76qdrp18" path="res://Scripts/levelAnchor.gd" id="1_x0qbc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0qbc"]
+size = Vector2(128, 20)
+
+[node name="LevelAnchor" type="Node2D"]
+script = ExtResource("1_x0qbc")
+
+[node name="AreaEntrance" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaEntrance"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_x0qbc")
+
+[connection signal="body_entered" from="AreaEntrance" to="." method="_on_area_entrance_body_entered"]

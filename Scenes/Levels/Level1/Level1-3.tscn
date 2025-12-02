@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ukufyjnyu6v0"]
+
+[ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="1_itdse"]
+[ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_rxkf2"]
+[ext_resource type="PackedScene" uid="uid://cx5sy1x1xfdk" path="res://Scenes/Misc/LevelAnchors.tscn" id="2_rxkf2"]
+
+[node name="Level11" type="Node2D"]
+script = ExtResource("1_rxkf2")
+
+[node name="Tiles" parent="." instance=ExtResource("1_itdse")]
+
+[node name="LevelAnchor" parent="." instance=ExtResource("2_rxkf2")]
+position = Vector2(672, 784)
+
+[node name="LevelAnchor2" parent="." instance=ExtResource("2_rxkf2")]
+position = Vector2(672, 80)
+AnchorType = 1

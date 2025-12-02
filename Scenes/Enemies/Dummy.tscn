@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://gdtjbgrgg411"]
+
+[ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="1_opypx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gihcl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opypx"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sswme"]
+size = Vector2(64, 64)
+
+[node name="Dummy" type="CharacterBody2D"]
+collision_layer = 4
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gihcl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_opypx")
+
+[node name="Hurtbox" parent="." instance=ExtResource("1_opypx")]
+Hp = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_sswme")

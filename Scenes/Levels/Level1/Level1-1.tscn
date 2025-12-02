@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=4 uid="uid://d1xpe2hmojbep"]
+
+[ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="1_8ihsb"]
+[ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_p21wy"]
+[ext_resource type="PackedScene" uid="uid://cx5sy1x1xfdk" path="res://Scenes/Misc/LevelAnchors.tscn" id="2_m1qsg"]
+
+[node name="Level11" type="Node2D"]
+script = ExtResource("1_p21wy")
+
+[node name="Tiles" parent="." instance=ExtResource("1_8ihsb")]
+tile_map_data = PackedByteArray("AAAAABgAAAAAAAAAAAAAABkAAAAAAAAAAAAAABoAAAAAAAAAAAAAABsAAAAAAAAAAAAAABwAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAB4AAAAAAAAAAAAAAB8AAAAAAAAAAAAAACAAAAAAAAAAAAABABgAAAAAAAAAAAABABkAAAAAAAAAAAABABoAAAAAAAAAAAABABsAAAAAAAAAAAABABwAAAAAAAAAAAABAB0AAAAAAAAAAAABAB4AAAAAAAAAAAABAB8AAAAAAAAAAAABACAAAAAAAAAAAABQABgAAAAAAAAAAABQABkAAAAAAAAAAABQABoAAAAAAAAAAABQABsAAAAAAAAAAABQABwAAAAAAAAAAABQAB0AAAAAAAAAAABQAB4AAAAAAAAAAABQAB8AAAAAAAAAAABQACAAAAAAAAAAAABRABgAAAAAAAAAAABRABkAAAAAAAAAAABRABoAAAAAAAAAAABRABsAAAAAAAAAAABRABwAAAAAAAAAAABRAB0AAAAAAAAAAABRAB4AAAAAAAAAAABRAB8AAAAAAAAAAABRACAAAAAAAAAAAAA=")
+
+[node name="LevelAnchor" parent="." instance=ExtResource("2_m1qsg")]
+position = Vector2(664, 784)
+
+[node name="LevelAnchor2" parent="." instance=ExtResource("2_m1qsg")]
+position = Vector2(672, 80)
+AnchorType = 1

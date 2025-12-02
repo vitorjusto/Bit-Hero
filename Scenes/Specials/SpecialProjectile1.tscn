@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://jg8vrnvsjw1n"]
+
+[ext_resource type="Script" uid="uid://dmdt33i6a7nla" path="res://Scripts/Specials/specialProjectile1.gd" id="1_cvr10"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvr10"]
+size = Vector2(64, 64)
+
+[node name="SpecialProjectile1" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_cvr10")
+damage = 40
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cvr10")
+debug_color = Color(1, 1, 0, 0.41960785)
+
+[connection signal="onEnemyDeteced" from="." to="." method="onExplode"]

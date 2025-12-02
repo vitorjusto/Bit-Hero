@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfxrto63e2547"]
+
+[ext_resource type="Script" uid="uid://d3oq66ft5pb58" path="res://Scripts/PowerUps/lifeUp.gd" id="1_2c1ib"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2c1ib"]
+
+[node name="LifeUp" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_2c1ib")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2c1ib")
+debug_color = Color(1, 0, 1, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="onPlayerDetected"]
