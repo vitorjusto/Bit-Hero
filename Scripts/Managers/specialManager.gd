@@ -27,7 +27,7 @@ func addSpecial(amount : int):
 		specialBar = clamp(specialBar + amount, 0, upgradeManager.Special * 100)
 
 func HandleSpecial():
-	if specialBar > 100:
+	if specialBar >= 100:
 		specialBar -= 100
 		
 		var instance : SpecialBase = special1.instantiate()

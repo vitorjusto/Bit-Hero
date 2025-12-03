@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bibjc4eapxg11"]
+
+[ext_resource type="Script" uid="uid://cgxu74c6ons2u" path="res://Scripts/DownGrades/downgradeBase.gd" id="1_hmhlr"]
+
+[node name="MaxHpDowngrade" type="Area2D"]
+script = ExtResource("1_hmhlr")
+metadata/_custom_type_script = "uid://cgxu74c6ons2u"

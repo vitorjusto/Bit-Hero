@@ -17,6 +17,10 @@ extends CanvasLayer
 @onready var pnHpBar : Panel = get_node("pnHpBar")
 @onready var pnlife : Panel = get_node("pnlife")
 
+@onready var pnSpecialBar1 : Panel = get_node("pnSpecialBar1")
+@onready var pnSpecialBar2 : Panel = get_node("pnSpecialBar2")
+@onready var pnSpecialBar3 : Panel = get_node("pnSpecialBar3")
+
 func _ready() -> void:
 	UpdateHud()
 
@@ -28,6 +32,9 @@ func UpdateHud():
 	lblBullet.text = "BULLETS: %d" % upgradeManager.bulletAmount
 	
 	pnDash.visible = upgradeManager.AllowDash
+	pnSpecialBar3.visible = upgradeManager.Special > 2
+	pnSpecialBar2.visible = upgradeManager.Special > 1
+	pnSpecialBar1.visible = upgradeManager.Special > 0
 
 func updateSpecial(specialBar : int):
 	pnSpecial.size = Vector2(specialBar, 32)

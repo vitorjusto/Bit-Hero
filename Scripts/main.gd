@@ -25,8 +25,11 @@ func GenerateLevels():
 	add_child(instance)
 	sections.append(instance)
 	
-	for n in range(5):
-		scene = load("res://Scenes/Levels/Level1/Level1-%d.tscn" % randi_range(1, 3))
+	for n in range(15):
+		if n % 5 == 0:
+			scene = load("res://Scenes/Levels/SacrificialChamber.tscn")
+		else:
+			scene = load("res://Scenes/Levels/Level1/Level1-%d.tscn" % randi_range(1, 3))
 		instance = scene.instantiate()
 	
 		var lastLevelAnchor : LevelAnchor = lastLevel.get_children().filter(func(x) -> bool: return x is LevelAnchor and x.AnchorType == LevelAnchor.ELEVELANCHORTYPE.EXIT).get(0)

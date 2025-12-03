@@ -36,21 +36,21 @@ offset_right = 1312.0
 offset_bottom = 96.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_c43iy")
 
-[node name="Panel2" type="Panel" parent="."]
+[node name="pnSpecialBar1" type="Panel" parent="."]
 offset_left = 904.0
 offset_top = 48.0
 offset_right = 1004.0
 offset_bottom = 80.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_vvs1i")
 
-[node name="Panel3" type="Panel" parent="."]
+[node name="pnSpecialBar2" type="Panel" parent="."]
 offset_left = 1004.0
 offset_top = 48.0
 offset_right = 1104.0
 offset_bottom = 80.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_vvs1i")
 
-[node name="Panel4" type="Panel" parent="."]
+[node name="pnSpecialBar3" type="Panel" parent="."]
 offset_left = 1104.0
 offset_top = 48.0
 offset_right = 1204.0

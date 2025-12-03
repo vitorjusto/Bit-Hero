@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://blsao6kvnssue"]
+[gd_scene load_steps=9 format=4 uid="uid://blsao6kvnssue"]
 
 [ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_4pix0"]
 [ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="1_tqicj"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://rrksyhtosfhw" path="res://Scenes/PowerUps/HpUp.tscn" id="5_qg6fj"]
 [ext_resource type="PackedScene" uid="uid://d3q5qj1syeh3u" path="res://Scenes/PowerUps/SpecialUp.tscn" id="6_bs07o"]
 [ext_resource type="PackedScene" uid="uid://bfxrto63e2547" path="res://Scenes/PowerUps/LifeUp.tscn" id="7_nl27i"]
+[ext_resource type="PackedScene" uid="uid://cfansf2ll7bai" path="res://Scenes/DownGrades/DowngradeBase.tscn" id="8_yj8rb"]
 
 [node name="Level11" type="Node2D"]
 script = ExtResource("1_4pix0")
@@ -22,10 +23,10 @@ position = Vector2(664, 80)
 AnchorType = 1
 
 [node name="Dummy" parent="." instance=ExtResource("4_w70a0")]
-position = Vector2(216, 296)
+position = Vector2(112, 440)
 
 [node name="Dummy2" parent="." instance=ExtResource("4_w70a0")]
-position = Vector2(192, 456)
+position = Vector2(200, 400)
 
 [node name="Dummy3" parent="." instance=ExtResource("4_w70a0")]
 position = Vector2(384, 664)
@@ -137,3 +138,15 @@ position = Vector2(1040, 320)
 
 [node name="LifeUp2" parent="." instance=ExtResource("7_nl27i")]
 position = Vector2(920, 152)
+
+[node name="DowngradeBase" parent="." instance=ExtResource("8_yj8rb")]
+position = Vector2(608, 328)
+downgradeType = 14
+
+[node name="DowngradeBase2" parent="." instance=ExtResource("8_yj8rb")]
+position = Vector2(704, 384)
+downgradeType = 15
+
+[node name="DowngradeBase3" parent="." instance=ExtResource("8_yj8rb")]
+position = Vector2(680, 216)
+downgradeType = 16
