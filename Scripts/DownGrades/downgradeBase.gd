@@ -69,7 +69,7 @@ func ProcessDowngrade():
 	if downgradeType == EDowngradeType.DIAGONALMOVIMENT:
 		upgradeManager.Move8Directions = false
 	if downgradeType == EDowngradeType.HP:
-		player.HP -= 1
+		player.hp -= 1
 	if downgradeType == EDowngradeType.LIFE:
 		player.life -= 1
 	

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://d1xpe2hmojbep"]
+[gd_scene load_steps=5 format=4 uid="uid://d1xpe2hmojbep"]
 
 [ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="1_8ihsb"]
 [ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_p21wy"]
 [ext_resource type="PackedScene" uid="uid://cx5sy1x1xfdk" path="res://Scenes/Misc/LevelAnchors.tscn" id="2_m1qsg"]
+[ext_resource type="PackedScene" uid="uid://dxroh03ccvtsf" path="res://Scenes/Enemies/Spikes.tscn" id="4_82yi8"]
 
 [node name="Level11" type="Node2D"]
 script = ExtResource("1_p21wy")
@@ -16,3 +17,10 @@ position = Vector2(664, 784)
 [node name="LevelAnchor2" parent="." instance=ExtResource("2_m1qsg")]
 position = Vector2(672, 80)
 AnchorType = 1
+
+[node name="Spikes" parent="." instance=ExtResource("4_82yi8")]
+position = Vector2(208, 224)
+
+[node name="Spikes2" parent="." instance=ExtResource("4_82yi8")]
+position = Vector2(1232, 536)
+direction = 1

@@ -1,3 +1,4 @@
+class_name Hurtbox
 extends Area2D
 
 @export var Hp = 0
@@ -19,9 +20,13 @@ func OnProjDetected(body: Node2D) -> void:
 	
 	GenerateParticles()
 	if Hp <= 0:
-		emit_signal("onDefeat")
-		GeneratePowerUp()
-		get_parent().call_deferred("queue_free")
+		DefeatEnemy()
+
+func DefeatEnemy():
+	GenerateParticles()
+	emit_signal("onDefeat")
+	GeneratePowerUp()
+	get_parent().call_deferred("queue_free")
 
 func GenerateParticles():
 	InstantiateParticle()

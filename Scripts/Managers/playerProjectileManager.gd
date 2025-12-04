@@ -52,7 +52,7 @@ func ShootProjectile(offSetangle : float):
 	#Get relative position from player according to viewport
 	var playerGlobalPosition = player.get_global_transform_with_canvas().origin
 	
-	var angle = atan2(playerGlobalPosition.x - mouse_pos.x, playerGlobalPosition.y - mouse_pos.y)
+	var angle = atan2(playerGlobalPosition.x - (mouse_pos.x + 16), playerGlobalPosition.y - (mouse_pos.y + 16))
 	instance.SPEED = Vector2(sin(angle + offSetangle) * -80000, cos(angle + offSetangle) * -80000)
 	
 	add_child(instance)

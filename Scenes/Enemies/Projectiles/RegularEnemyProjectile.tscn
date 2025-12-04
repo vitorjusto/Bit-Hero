@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddie2cu3kdhif"]
+
+[ext_resource type="Script" uid="uid://daf8mmmwrb3d1" path="res://Scripts/Enemies/Projectiles/RegularEnemyProjectile.gd" id="1_05tq6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phn81"]
+size = Vector2(32, 32)
+
+[node name="RegularEnemyProjectile" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_05tq6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_phn81")

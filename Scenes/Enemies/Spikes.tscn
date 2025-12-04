@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxroh03ccvtsf"]
+
+[ext_resource type="Script" uid="uid://3n5wsyoltwxe" path="res://Scripts/Enemies/spikes.gd" id="1_onke6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7hma"]
+size = Vector2(48, 48)
+
+[node name="Spikes" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_onke6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_j7hma")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-32, -32, 64, 64)

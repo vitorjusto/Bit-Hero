@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgdttt1xtunga"]
+
+[ext_resource type="Script" uid="uid://5vrogq8ofs77" path="res://Scripts/Enemies/Follower.gd" id="1_2wlat"]
+[ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_i838h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_831si"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lyrct"]
+size = Vector2(32, 32)
+
+[node name="Follower" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_2wlat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_831si")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_i838h")]
+Hp = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_lyrct")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-24, -24, 48, 48)

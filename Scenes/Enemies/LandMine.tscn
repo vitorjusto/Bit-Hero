@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1lbg3eniv27u"]
+
+[ext_resource type="Script" uid="uid://4or0hf5q0fd" path="res://Scripts/Enemies/LandMine.gd" id="1_qmp0g"]
+[ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_7t457"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhc56"]
+size = Vector2(48, 48)
+
+[node name="LandMine" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_qmp0g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dhc56")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_7t457")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_dhc56")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="onPlayerDetected"]
+[connection signal="onDefeat" from="Hurtbox" to="." method="onDefeat"]

@@ -25,7 +25,7 @@ func GenerateLevels():
 	add_child(instance)
 	sections.append(instance)
 	
-	for n in range(15):
+	for n in range(1, 15):
 		if n % 5 == 0:
 			scene = load("res://Scenes/Levels/SacrificialChamber.tscn")
 		else:

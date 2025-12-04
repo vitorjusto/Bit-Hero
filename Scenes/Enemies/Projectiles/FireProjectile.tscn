@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkaxrh66ud5jw"]
+
+[ext_resource type="Script" uid="uid://dh0s1okg6pqlv" path="res://Scripts/Enemies/Projectiles/fireProjectile.gd" id="1_ecu81"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1d71"]
+
+[node name="FireProjectile" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_ecu81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f1d71")

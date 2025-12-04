@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcpkjgec6hkut"]
+
+[ext_resource type="Script" uid="uid://cc7t57chhsynk" path="res://Scripts/Enemies/bomber.gd" id="1_pa67v"]
+[ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_um8i0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1i5h"]
+size = Vector2(48, 48)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4f8e0"]
+radius = 128.99612
+
+[node name="Bomber" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_pa67v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o1i5h")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_um8i0")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_o1i5h")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("CircleShape2D_4f8e0")
+debug_color = Color(0, 1, 0, 0.41960785)
+
+[connection signal="onDefeat" from="Hurtbox" to="." method="onDefeat"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="onPlayerDetected"]
