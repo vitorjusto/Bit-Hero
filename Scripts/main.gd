@@ -35,7 +35,7 @@ func GenerateLevels():
 		var lastLevelAnchor : LevelAnchor = lastLevel.get_children().filter(func(x) -> bool: return x is LevelAnchor and x.AnchorType == LevelAnchor.ELEVELANCHORTYPE.EXIT).get(0)
 		var currentLevelAnchor : Node2D = instance.get_children().filter(func(x)-> bool: return x is LevelAnchor and x.AnchorType == LevelAnchor.ELEVELANCHORTYPE.ENTRANCE).get(0)
 		
-		instance.position = lastLevel.position + lastLevelAnchor.position - currentLevelAnchor.position
+		instance.position =Vector2(0, lastLevel.position.y + lastLevelAnchor.position.y - currentLevelAnchor.position.y)
 		
 		lastLevel = instance
 		add_child(instance)

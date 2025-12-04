@@ -38,7 +38,7 @@ func GenerateParticles():
 
 func InstantiateParticle():
 	var instance : Node2D = particle.instantiate()
-	instance.position = get_parent().position
+	instance.position = get_parent().position + get_parent().get_parent().position
 	main.call_deferred("add_child", instance)
 
 func GeneratePowerUp():

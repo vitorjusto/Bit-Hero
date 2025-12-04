@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5x1lyspt0vuu"]
+
+[ext_resource type="Script" uid="uid://byfx7psp04p0r" path="res://Scripts/Misc/LockedDoorForEnemies.gd" id="1_k7cw0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grno7"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="LockedDoorForEnemies" type="Node2D"]
+script = ExtResource("1_k7cw0")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 192.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_grno7")

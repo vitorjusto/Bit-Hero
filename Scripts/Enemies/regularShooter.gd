@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 				shoot(200)
 				shoot(150)
 				shoot(210)
-		if facingDirection == EFACINGDIRECTION.RIGHT:
+		if facingDirection == EFACINGDIRECTION.LEFT:
 			shoot(90)
 			if ShootType == ESHOOTTYPE.TRI:
 				shoot(80)
@@ -69,7 +69,7 @@ func _physics_process(delta: float) -> void:
 				shoot(110)
 				shoot(60)
 				shoot(120)
-		if facingDirection == EFACINGDIRECTION.LEFT:
+		if facingDirection == EFACINGDIRECTION.RIGHT:
 			shoot(270)
 			if ShootType == ESHOOTTYPE.TRI:
 				shoot(260)
