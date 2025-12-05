@@ -22,7 +22,6 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_mgvwd")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-rect = Rect2(-24, -24, 48, 48)
 
 [connection signal="body_entered" from="Area2D" to="." method="onWallDeteced"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="onScreenExited"]

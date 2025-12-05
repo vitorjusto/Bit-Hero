@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dubfjm3pcuuqs"]
+[gd_scene load_steps=8 format=3 uid="uid://dubfjm3pcuuqs"]
 
 [ext_resource type="Script" uid="uid://ctr4w6epxmyt5" path="res://Scripts/main.gd" id="1_idj7w"]
 [ext_resource type="PackedScene" uid="uid://cqd5gq4nx3yh2" path="res://Scenes/Player/Player.tscn" id="3_kln2b"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://bpsp7xlg7uln6" path="res://Scripts/Managers/playerProjectileManager.gd" id="4_rgh2o"]
 [ext_resource type="Script" uid="uid://b7xgqugxof17a" path="res://Scripts/Player/upgradeManager.gd" id="5_pbw6q"]
 [ext_resource type="Script" uid="uid://cwb2or2fggolm" path="res://Scripts/Managers/specialManager.gd" id="6_v1gob"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1gob"]
+size = Vector2(1314.5, 37)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_idj7w")
@@ -30,5 +33,14 @@ upgradeManager = NodePath("../UpgradeManager")
 hud = NodePath("../Hud")
 main = NodePath("..")
 player = NodePath("../Player")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 784)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(656, 99)
+shape = SubResource("RectangleShape2D_v1gob")
 
 [connection signal="onDamage" from="Player" to="Hud" method="UpdateHud"]

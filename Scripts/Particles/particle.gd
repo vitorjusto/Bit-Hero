@@ -1,7 +1,7 @@
 extends Node2D
 
-var rad: int
-var speed: int
+var rad: float
+var speed: float
 
 func _ready() -> void:
 	rad = deg_to_rad(randf_range(0, 359))

@@ -4,12 +4,14 @@ extends Node2D
 var currentSection = 0
 var sections = []
 @onready var player : Player = get_node("Player")
+@onready var wall : StaticBody2D = get_node("StaticBody2D")
 
 func _ready() -> void:
 	GenerateLevels()
 	SetPlayerCameraBehavior()
 
 func SetPlayerCameraBehavior():
+	
 	var section : Node2D = sections[currentSection]
 	var entraceAnchor : Node2D = section.get_children().filter(func(x)-> bool: return x is LevelAnchor and x.AnchorType == LevelAnchor.ELEVELANCHORTYPE.ENTRANCE).get(0)
 	
@@ -29,7 +31,7 @@ func GenerateLevels():
 		if n % 5 == 0:
 			scene = load("res://Scenes/Levels/SacrificialChamber.tscn")
 		else:
-			scene = load("res://Scenes/Levels/Level1/Level1-%d.tscn" % randi_range(1, 3))
+			scene = load("res://Scenes/Levels/Level1/Level1-%d.tscn" % randi_range(7, 7))
 		instance = scene.instantiate()
 	
 		var lastLevelAnchor : LevelAnchor = lastLevel.get_children().filter(func(x) -> bool: return x is LevelAnchor and x.AnchorType == LevelAnchor.ELEVELANCHORTYPE.EXIT).get(0)
@@ -42,6 +44,9 @@ func GenerateLevels():
 		sections.append(instance)
 
 func nextSection():
+	var section : Node2D = sections[currentSection]
+	wall.position = section.position
+	
 	currentSection += 1
 	SetPlayerCameraBehavior()
 	var prevSection : LevelBase = sections[currentSection - 1]

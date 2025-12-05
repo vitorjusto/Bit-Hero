@@ -8,3 +8,7 @@ func _physics_process(delta: float) -> void:
 	print(SPEED)
 	if move_and_slide():
 		queue_free()
+
+
+func onScreenExited() -> void:
+	call_deferred("queue_free")

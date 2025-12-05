@@ -19,6 +19,8 @@ shape = SubResource("RectangleShape2D_dhc56")
 shape = SubResource("RectangleShape2D_dhc56")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+process_mode = 3
+enable_mode = 1
 
 [connection signal="body_entered" from="." to="." method="onPlayerDetected"]
 [connection signal="onDefeat" from="Hurtbox" to="." method="onDefeat"]
