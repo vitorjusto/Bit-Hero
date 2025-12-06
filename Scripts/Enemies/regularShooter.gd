@@ -13,6 +13,26 @@ var shootTimer = 40
 @onready var proj : PackedScene = load("res://Scenes/Enemies/Projectiles/RegularEnemyProjectile.tscn")
 @onready var main: Main = get_tree().root.get_node("/root/Main")
 @onready var parent: Node2D = get_parent()
+@onready var ani: AnimatedSprite2D = get_node("AniBody")
+@onready var cannon: Sprite2D = get_node("RegularShooter")
+
+func _ready():
+	if facingDirection == EFACINGDIRECTION.UP:
+		ani.play("Up")
+		cannon.z_index = -1
+		cannon.offset = Vector2(8, -12)
+		cannon.rotation_degrees = 270
+	if facingDirection == EFACINGDIRECTION.DOWN:
+		ani.play("Down")
+		cannon.offset = Vector2(16, -12)
+		cannon.rotation_degrees = 90
+	if facingDirection == EFACINGDIRECTION.LEFT:
+		ani.play("Left")
+		cannon.offset = Vector2(-12, -7)
+		cannon.flip_h = true
+	if facingDirection == EFACINGDIRECTION.RIGHT:
+		ani.play("Right")
+		cannon.offset = Vector2(12, -7)
 
 func _physics_process(delta: float) -> void:
 	shootTimer -= delta * 60

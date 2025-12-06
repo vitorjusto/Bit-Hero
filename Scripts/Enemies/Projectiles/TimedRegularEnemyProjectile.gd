@@ -4,6 +4,9 @@ extends CharacterBody2D
 var SPEED = Vector2(100, 100)
 var time = 0
 
+func _ready() -> void:
+	rotate(SPEED.angle())
+
 func _physics_process(delta: float) -> void:
 	time -= delta * 60
 	

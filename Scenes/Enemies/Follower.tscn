@@ -1,26 +1,55 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgdttt1xtunga"]
+[gd_scene load_steps=9 format=3 uid="uid://bgdttt1xtunga"]
 
 [ext_resource type="Script" uid="uid://5vrogq8ofs77" path="res://Scripts/Enemies/Follower.gd" id="1_2wlat"]
 [ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_i838h"]
+[ext_resource type="Texture2D" uid="uid://co87ms2da5dxo" path="res://Assets/Sprites/Enemies/Follower.png" id="2_lyrct"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnv8c"]
+atlas = ExtResource("2_lyrct")
+region = Rect2(0, 0, 40, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skaon"]
+atlas = ExtResource("2_lyrct")
+region = Rect2(0, 32, 40, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cs002"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnv8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skaon")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_831si"]
-size = Vector2(32, 32)
+size = Vector2(40, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lyrct"]
-size = Vector2(32, 32)
+size = Vector2(40, 17)
 
 [node name="Follower" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_2wlat")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cs002")
+autoplay = "default"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_831si")
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_i838h")]
 Hp = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -3.5)
 shape = SubResource("RectangleShape2D_lyrct")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]

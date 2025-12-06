@@ -1,10 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnneujqp6nkd5"]
+[gd_scene load_steps=9 format=3 uid="uid://cnneujqp6nkd5"]
 
 [ext_resource type="Script" uid="uid://3em1wgyqmn7f" path="res://Scripts/Enemies/followerAndShooter.gd" id="1_5i7qc"]
 [ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_gk5un"]
+[ext_resource type="Texture2D" uid="uid://qy4u3g3wwlhv" path="res://Assets/Sprites/Enemies/FollowerAndShooter.png" id="3_gk5un"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6n10"]
-size = Vector2(48, 48)
+size = Vector2(48, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gk5un"]
+atlas = ExtResource("3_gk5un")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6n10"]
+atlas = ExtResource("3_gk5un")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbrcy"]
+atlas = ExtResource("3_gk5un")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ptvu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gk5un")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6n10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbrcy")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}]
 
 [node name="FollowerAndShooter" type="CharacterBody2D"]
 collision_layer = 4
@@ -12,14 +47,22 @@ collision_mask = 2
 script = ExtResource("1_5i7qc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_x6n10")
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_gk5un")]
 Hp = 60
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_x6n10")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 process_mode = 3
 enable_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_5ptvu")
+animation = &"Idle"
+autoplay = "Walking"

@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://olpehiqfx4ao"]
+[gd_scene load_steps=5 format=3 uid="uid://olpehiqfx4ao"]
 
 [ext_resource type="Script" uid="uid://cmtgmeka2uf1b" path="res://Scripts/Enemies/Spreader.gd" id="1_bfq0e"]
 [ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_880k2"]
+[ext_resource type="Texture2D" uid="uid://bc8v46odtwqta" path="res://Assets/Sprites/Enemies/Spreader.png" id="3_880k2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0fvy"]
-size = Vector2(48, 48)
+size = Vector2(64, 64)
 
 [node name="Spreader" type="CharacterBody2D"]
 script = ExtResource("1_bfq0e")
@@ -22,3 +23,7 @@ shape = SubResource("RectangleShape2D_d0fvy")
 process_mode = 3
 rect = Rect2(-32, -32, 64, 64)
 enable_mode = 1
+
+[node name="Spreader" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("3_880k2")

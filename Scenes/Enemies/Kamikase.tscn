@@ -1,13 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://3llpkmt8dbq4"]
+[gd_scene load_steps=11 format=3 uid="uid://3llpkmt8dbq4"]
 
 [ext_resource type="Script" uid="uid://hlesxscrp02i" path="res://Scripts/Enemies/Kamikase.gd" id="1_mfomy"]
 [ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_hrmqp"]
+[ext_resource type="Texture2D" uid="uid://dtcphcoa3li60" path="res://Assets/Sprites/Enemies/Kamikaze.png" id="3_hrmqp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m15et"]
-size = Vector2(48, 48)
+size = Vector2(48, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0da1o"]
+size = Vector2(48, 72)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0da1o"]
 radius = 320.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysaam"]
+atlas = ExtResource("3_hrmqp")
+region = Rect2(33, 0, 33, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uytf4"]
+atlas = ExtResource("3_hrmqp")
+region = Rect2(0, 40, 33, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ditc"]
+atlas = ExtResource("3_hrmqp")
+region = Rect2(0, 0, 33, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xoj1x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysaam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uytf4")
+}],
+"loop": true,
+"name": &"Attacking",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ditc")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
 
 [node name="Kamikase" type="CharacterBody2D"]
 collision_layer = 4
@@ -15,12 +53,14 @@ collision_mask = 3
 script = ExtResource("1_mfomy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_m15et")
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_hrmqp")]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("RectangleShape2D_m15et")
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_0da1o")
 disabled = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -32,6 +72,13 @@ shape = SubResource("CircleShape2D_0da1o")
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 process_mode = 3
 enable_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_xoj1x")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.30994454
 
 [connection signal="onDefeat" from="Hurtbox" to="." method="onDefeat"]
 [connection signal="body_entered" from="Area2D" to="." method="onPlayerDetected"]

@@ -49,7 +49,7 @@ func shoot(angle: float):
 	var instance : RegularEnemyProjectile = proj.instantiate()
 	instance.SPEED = speed
 	instance.position = global_position
-	main.add_child(instance)
+	main.call_deferred("add_child", instance)
 
 func onPlayerDetected(body: Node2D) -> void:
 	var hurtbox : Hurtbox = get_node("Hurtbox")

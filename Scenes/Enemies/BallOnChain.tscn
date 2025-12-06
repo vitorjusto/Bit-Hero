@@ -1,12 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjonlf064q4pl"]
+[gd_scene load_steps=10 format=3 uid="uid://bjonlf064q4pl"]
 
 [ext_resource type="Script" uid="uid://baiybgi61172i" path="res://Scripts/Enemies/ballonChain.gd" id="1_sgim4"]
+[ext_resource type="Texture2D" uid="uid://dttwfy1lr5opn" path="res://Assets/Sprites/Enemies/BallOnChain.png" id="2_yuku0"]
+[ext_resource type="Texture2D" uid="uid://cwxvl62ntfw64" path="res://Assets/Sprites/Enemies/ChainOnBallBase.png" id="3_276i1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n3rsq"]
 size = Vector2(64, 64)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yuku0"]
 radius = 32.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8foxs"]
 
 [sub_resource type="Animation" id="Animation_n3rsq"]
 length = 0.001
@@ -64,6 +68,15 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/CharacterBody2D"]
 shape = SubResource("CircleShape2D_yuku0")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D/CharacterBody2D"]
+position = Vector2(0, 160)
+sprite_frames = SubResource("SpriteFrames_8foxs")
+
+[node name="BallOnChain" type="Sprite2D" parent="Node2D/CharacterBody2D"]
+position = Vector2(2.3841858e-07, -1.9073486e-06)
+scale = Vector2(1.3090909, 1.309091)
+texture = ExtResource("2_yuku0")
+
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 process_mode = 3
 enable_mode = 1
@@ -72,3 +85,6 @@ enable_mode = 1
 libraries = {
 &"": SubResource("AnimationLibrary_yuku0")
 }
+
+[node name="ChainOnBallBase" type="Sprite2D" parent="."]
+texture = ExtResource("3_276i1")

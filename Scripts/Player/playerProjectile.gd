@@ -7,6 +7,7 @@ var timer = 0
 
 func _ready() -> void:
 	timer = upgradeManager.RangeProj * 10
+	rotate(SPEED.angle())
 
 func _physics_process(delta: float) -> void:
 	timer -= delta * 60

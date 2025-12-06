@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkaxrh66ud5jw"]
+[gd_scene load_steps=4 format=3 uid="uid://bkaxrh66ud5jw"]
 
 [ext_resource type="Script" uid="uid://dh0s1okg6pqlv" path="res://Scripts/Enemies/Projectiles/fireProjectile.gd" id="1_ecu81"]
+[ext_resource type="Texture2D" uid="uid://w6dwp7nffwbt" path="res://Assets/Sprites/Enemies/Fireball.png" id="2_5e6og"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1d71"]
+size = Vector2(26, 20)
 
 [node name="FireProjectile" type="CharacterBody2D"]
 collision_layer = 4
@@ -10,8 +12,14 @@ collision_mask = 2
 script = ExtResource("1_ecu81")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 0)
 shape = SubResource("RectangleShape2D_f1d71")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Fireball" type="Sprite2D" parent="."]
+z_index = -1
+rotation = 1.5707964
+texture = ExtResource("2_5e6og")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="onScreenExited"]

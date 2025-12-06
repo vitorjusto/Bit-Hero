@@ -14,6 +14,7 @@ var shootTimer = 40
 @onready var player: Player = get_tree().root.get_node("/root/Main/Player")
 @onready var main: Main = get_tree().root.get_node("/root/Main")
 @onready var parent: Node2D = get_parent()
+@onready var ani: AnimatedSprite2D = get_node("AnimatedSprite2D")
 
 func _physics_process(delta: float) -> void:
 	IdleAround(delta)
@@ -39,18 +40,24 @@ func IdleAround(delta: float):
 	
 	if walkingCicle <= 0:
 		var rng = randi_range(0, 3)
+		ani.flip_h = false
 		if rng == 0:
 			facingDirection = EFACINGDIRECTION.LEFT
 			speed = Vector2(fixedSpeed, 0)
+			ani.play("Sideways")
 		if rng == 1:
 			facingDirection = EFACINGDIRECTION.RIGHT
 			speed = Vector2(-fixedSpeed, 0)
+			ani.flip_h = true
+			ani.play("Sideways")
 		if rng == 2:
 			facingDirection = EFACINGDIRECTION.DOWN
 			speed = Vector2(0, fixedSpeed)
+			ani.play("Down")
 		if rng == 3:
 			facingDirection = EFACINGDIRECTION.UP
 			speed = Vector2(0, -fixedSpeed)
+			ani.play("Up")
 		walkingCicle = 100
 
 func shoot(angle: float):

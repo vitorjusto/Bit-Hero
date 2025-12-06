@@ -7,6 +7,7 @@ const MAXTIMER = 150
 @onready var player: Player = get_tree().root.get_node("/root/Main/Player")
 @onready var main: Main = get_tree().root.get_node("/root/Main")
 @onready var parent: Node2D = get_parent()
+@onready var ani: Sprite2D = get_node("Flametrhower")
 
 var projTimer = 10
 var offsetAngule = 0
@@ -14,6 +15,7 @@ var offsetAnguleSpeed = 0.1
 
 func _physics_process(delta: float) -> void:
 	projTimer -= delta * 60
+	ani.flip_h = player.position.x < position.x
 	
 	if projTimer <= 0:
 		projTimer = 10

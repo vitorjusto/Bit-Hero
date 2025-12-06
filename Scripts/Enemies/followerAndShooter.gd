@@ -12,6 +12,7 @@ var shootCicle = 0
 
 @onready var proj : PackedScene = load("res://Scenes/Enemies/Projectiles/RegularEnemyProjectile.tscn")
 @onready var main: Main = get_tree().root.get_node("/root/Main")
+@onready var ani: AnimatedSprite2D = get_node("AnimatedSprite2D")
 
 var angle = 0
 var timer = 80
@@ -26,9 +27,12 @@ func _physics_process(delta: float) -> void:
 		FollowPlayer(delta)
 	else:
 		Shoot(delta)
+	
+	ani.flip_h = player.position.x < position.x
 
 func FollowPlayer(delta: float):
 	timer -= delta * 60
+	ani.play("Walking")
 	if timer <= 0:
 		ChangeAngle()
 		isfollowing = false
@@ -44,7 +48,7 @@ func FollowPlayer(delta: float):
 
 func Shoot(delta: float ):
 	Shoottimer -= delta * 60
-	
+	ani.play("Idle")
 	if Shoottimer > 0:
 		return
 		

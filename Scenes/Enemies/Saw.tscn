@@ -1,10 +1,52 @@
-[gd_scene load_steps=4 format=3 uid="uid://c57k378v3qcff"]
+[gd_scene load_steps=9 format=3 uid="uid://c57k378v3qcff"]
 
 [ext_resource type="Script" uid="uid://b4i8s84bwyia5" path="res://Scripts/Enemies/Saw.gd" id="1_u3fna"]
 [ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_f4i6u"]
+[ext_resource type="Texture2D" uid="uid://372x2wjhtx0w" path="res://Assets/Sprites/Enemies/Saw.png" id="3_f4i6u"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fr04k"]
-size = Vector2(48, 48)
+[sub_resource type="CircleShape2D" id="CircleShape2D_fr04k"]
+radius = 30.016663
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r8nsi"]
+radius = 30.016663
+
+[sub_resource type="Animation" id="Animation_ds747"]
+resource_name = "new_animation"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Saw:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="Animation" id="Animation_sv5i4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Saw:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iaj43"]
+_data = {
+&"RESET": SubResource("Animation_sv5i4"),
+&"new_animation": SubResource("Animation_ds747")
+}
 
 [node name="Saw" type="CharacterBody2D"]
 collision_layer = 4
@@ -12,15 +54,26 @@ collision_mask = 2
 script = ExtResource("1_u3fna")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_fr04k")
+shape = SubResource("CircleShape2D_fr04k")
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_f4i6u")]
 Hp = 60
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("RectangleShape2D_fr04k")
+shape = SubResource("CircleShape2D_r8nsi")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 process_mode = 3
 rect = Rect2(-32, -32, 64, 64)
 enable_mode = 1
+
+[node name="Saw" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("3_f4i6u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_iaj43")
+}
+autoplay = "new_animation"
+speed_scale = 2.0

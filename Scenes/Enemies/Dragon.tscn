@@ -1,13 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://biru1y4hq2rw1"]
+[gd_scene load_steps=9 format=3 uid="uid://biru1y4hq2rw1"]
 
 [ext_resource type="Script" uid="uid://dcrsb7avuu4kl" path="res://Scripts/Enemies/Dragon.gd" id="1_gdysj"]
 [ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_peb18"]
+[ext_resource type="Texture2D" uid="uid://c6r7t5polxot5" path="res://Assets/Sprites/Enemies/Dragoon.png" id="3_peb18"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wk4vc"]
-size = Vector2(48, 48)
+size = Vector2(32, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_doslx"]
-size = Vector2(48, 48)
+size = Vector2(32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_peb18"]
+atlas = ExtResource("3_peb18")
+region = Rect2(0, 0, 45, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_365gd"]
+atlas = ExtResource("3_peb18")
+region = Rect2(0, 64, 45, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_14ckm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_peb18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_365gd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="Dragon" type="CharacterBody2D"]
 collision_layer = 4
@@ -26,3 +49,8 @@ shape = SubResource("RectangleShape2D_doslx")
 process_mode = 3
 rect = Rect2(-32, -32, 64, 64)
 enable_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_14ckm")
+autoplay = "default"
+frame_progress = 0.2740221

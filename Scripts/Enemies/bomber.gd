@@ -9,6 +9,7 @@ var followingPlayer = false
 @onready var main: Main = get_tree().root.get_node("/root/Main")
 
 @onready var hurtbox : Hurtbox = get_node("Hurtbox")
+@onready var ani : AnimatedSprite2D = get_node("AnimatedSprite2D")
 var walkingCicle = 0
 var speed = Vector2(0, 0)
 var fixedSpeed = 4000
@@ -38,11 +39,16 @@ func IdleAround(delta: float):
 			if rng == 3:
 				speed = Vector2(0, -fixedSpeed)
 			walkingCicle = 300
+			ani.play("Walking")
 		else:
 			speed = Vector2.ZERO
 			walkingCicle = 100
+			ani.play("Idle")
 
 func FollowPlayer(delta: float):
+	ani.play("Anger")
+	ani.speed_scale = 4
+	
 	bombtimer -= delta * 60
 	var angle = atan2(position.x + parent.position.x - player.position.x, position.y + parent.position.y - player.position.y)
 	velocity = Vector2(sin(angle) * -20000, cos(angle) * -20000) * delta

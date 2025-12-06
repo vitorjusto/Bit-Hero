@@ -1,25 +1,59 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1lbg3eniv27u"]
+[gd_scene load_steps=9 format=3 uid="uid://d1lbg3eniv27u"]
 
 [ext_resource type="Script" uid="uid://4or0hf5q0fd" path="res://Scripts/Enemies/LandMine.gd" id="1_qmp0g"]
 [ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_7t457"]
+[ext_resource type="Texture2D" uid="uid://u36cq1d3vtp4" path="res://Assets/Sprites/Enemies/Landmines.png" id="3_7t457"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dhc56"]
-size = Vector2(48, 48)
+size = Vector2(66, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2j85o"]
+size = Vector2(66, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrkgu"]
+atlas = ExtResource("3_7t457")
+region = Rect2(0, 0, 33, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up3n2"]
+atlas = ExtResource("3_7t457")
+region = Rect2(0, 16, 33, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6isj1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrkgu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up3n2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="LandMine" type="Area2D"]
 collision_layer = 4
 script = ExtResource("1_qmp0g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_dhc56")
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_7t457")]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("RectangleShape2D_dhc56")
+position = Vector2(0, 8.5)
+shape = SubResource("RectangleShape2D_2j85o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_6isj1")
+autoplay = "default"
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 process_mode = 3
+position = Vector2(0, 9)
 enable_mode = 1
 
 [connection signal="body_entered" from="." to="." method="onPlayerDetected"]

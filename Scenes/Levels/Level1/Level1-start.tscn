@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_4pix0"]
 [ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="1_tqicj"]
 [ext_resource type="PackedScene" uid="uid://cx5sy1x1xfdk" path="res://Scenes/Misc/LevelAnchors.tscn" id="2_4pix0"]
-[ext_resource type="PackedScene" uid="uid://d1lbg3eniv27u" path="res://Scenes/Enemies/LandMine.tscn" id="5_qg6fj"]
+[ext_resource type="PackedScene" uid="uid://dj8iiohiu7erh" path="res://Scenes/Enemies/Walker.tscn" id="5_qg6fj"]
 [ext_resource type="PackedScene" uid="uid://bfxrto63e2547" path="res://Scenes/PowerUps/LifeUp.tscn" id="7_nl27i"]
 
 [node name="Level11" type="Node2D"]
@@ -22,5 +22,5 @@ AnchorType = 1
 [node name="LifeUp2" parent="." instance=ExtResource("7_nl27i")]
 position = Vector2(920, 152)
 
-[node name="LandMine" parent="." instance=ExtResource("5_qg6fj")]
-position = Vector2(168, 664)
+[node name="Walker" parent="." instance=ExtResource("5_qg6fj")]
+position = Vector2(216, 544)

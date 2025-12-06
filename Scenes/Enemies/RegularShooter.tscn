@@ -1,23 +1,92 @@
-[gd_scene load_steps=4 format=3 uid="uid://em28kbj68try"]
+[gd_scene load_steps=11 format=3 uid="uid://em28kbj68try"]
 
 [ext_resource type="Script" uid="uid://cn0xap6cy77ub" path="res://Scripts/Enemies/regularShooter.gd" id="1_diihm"]
 [ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_itmqq"]
+[ext_resource type="Texture2D" uid="uid://c684ikffcafea" path="res://Assets/Sprites/Enemies/RegularShooter.png" id="3_itmqq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kf0nj"]
-size = Vector2(48, 48)
+size = Vector2(60, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_itmqq"]
+size = Vector2(60, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itmqq"]
+atlas = ExtResource("3_itmqq")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvufg"]
+atlas = ExtResource("3_itmqq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kf0nj"]
+atlas = ExtResource("3_itmqq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyf4a"]
+atlas = ExtResource("3_itmqq")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_diihm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itmqq")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvufg")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kf0nj")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyf4a")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 5.0
+}]
 
 [node name="RegularShooter" type="CharacterBody2D"]
 script = ExtResource("1_diihm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_kf0nj")
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_itmqq")]
 Hp = 100
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
-shape = SubResource("RectangleShape2D_kf0nj")
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_itmqq")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 process_mode = 3
 enable_mode = 1
+
+[node name="AniBody" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_diihm")
+animation = &"Right"
+
+[node name="RegularShooter" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("3_itmqq")
+offset = Vector2(-12, -7)
+region_enabled = true
+region_rect = Rect2(0, 64, 32, 32)

@@ -7,12 +7,17 @@ var isIdling = true
 @onready var hurtbox: Hurtbox = get_node("Hurtbox")
 @onready var proj : PackedScene = load("res://Scenes/Enemies/Projectiles/RegularEnemyProjectile.tscn")
 @onready var main: Main = get_tree().root.get_node("/root/Main")
+@onready var ani: AnimatedSprite2D = get_node("AnimatedSprite2D")
 
 func _physics_process(delta: float) -> void:
 	if isIdling:
+		ani.flip_h = player.position.x < position.x
 		return
 	
-	velocity += Vector2(sin(angle) * -1300, cos(angle) * -1300) * delta
+	var speed = Vector2(sin(angle) * -1300, cos(angle) * -1300) * delta
+	velocity += speed
+	
+	
 	if move_and_slide():
 		hurtbox.DefeatEnemy()
 		
@@ -42,3 +47,9 @@ func shoot(angle: float):
 func onPlayerDetected(body: Node2D) -> void:
 	angle = atan2(position.x + parent.position.x - player.position.x, position.y + parent.position.y - player.position.y)
 	isIdling = false
+	var speed = Vector2(sin(angle), cos(angle))
+	ani.rotation_degrees = rad_to_deg(speed.angle()) + 90
+	ani.flip_v = true
+	
+	ani.flip_h = false
+	ani.play("Attacking")

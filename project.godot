@@ -17,9 +17,18 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=1312
-window/size/viewport_height=784
+window/size/viewport_width=5248
+window/size/viewport_height=3136
+window/size/maximize_disabled=true
+window/size/window_width_override=1312
+window/size/window_height_override=784
 mouse_cursor/custom_image="uid://g4asa88amirr"
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "orange"
+}
 
 [input]
 
@@ -74,6 +83,7 @@ Special={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
