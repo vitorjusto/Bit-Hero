@@ -1,9 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://jg8vrnvsjw1n"]
+[gd_scene load_steps=7 format=3 uid="uid://jg8vrnvsjw1n"]
 
 [ext_resource type="Script" uid="uid://dmdt33i6a7nla" path="res://Scripts/Specials/specialProjectile1.gd" id="1_cvr10"]
+[ext_resource type="Texture2D" uid="uid://gy3at57x5dbq" path="res://Assets/Sprites/PlayerProjectile/PlayerSpecialProjectile.png" id="2_f3p8o"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvr10"]
-size = Vector2(64, 64)
+[sub_resource type="CircleShape2D" id="CircleShape2D_vcb0y"]
+radius = 32.0
+
+[sub_resource type="Animation" id="Animation_f3p8o"]
+resource_name = "new_animation"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSpecialProjectile:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(1.7, 1.7), Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_vcb0y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSpecialProjectile:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f8t6x"]
+_data = {
+&"RESET": SubResource("Animation_vcb0y"),
+&"new_animation": SubResource("Animation_f3p8o")
+}
 
 [node name="SpecialProjectile1" type="CharacterBody2D"]
 collision_layer = 16
@@ -12,7 +51,18 @@ script = ExtResource("1_cvr10")
 damage = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_cvr10")
+shape = SubResource("CircleShape2D_vcb0y")
 debug_color = Color(1, 1, 0, 0.41960785)
+
+[node name="PlayerSpecialProjectile" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_f3p8o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_f8t6x")
+}
+autoplay = "new_animation"
+speed_scale = 3.0
 
 [connection signal="onEnemyDeteced" from="." to="." method="onExplode"]
