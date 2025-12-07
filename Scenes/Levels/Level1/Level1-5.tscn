@@ -17,39 +17,39 @@ tile_map_data = PackedByteArray("AAACABAAAAAAAAAAAAACABEAAAAAAAAAAAACABIAAAAAAAA
 position = Vector2(672, 784)
 
 [node name="LevelAnchor2" parent="." instance=ExtResource("3_otkgp")]
-position = Vector2(672, 80)
+position = Vector2(672, 0)
 AnchorType = 1
 
 [node name="LockedDoorForEnemies" parent="." node_paths=PackedStringArray("enemies") instance=ExtResource("4_p4gy5")]
 position = Vector2(576, 88)
-enemies = [NodePath("../Sniper"), NodePath("../Sniper2"), NodePath("../Sniper4"), NodePath("../Sniper5"), NodePath("../Sniper6"), NodePath("../Sniper7"), NodePath("../Sniper9"), NodePath("../Sniper10"), NodePath("../Dragon"), NodePath("../Dragon2")]
-
-[node name="Sniper" parent="." instance=ExtResource("5_dpaus")]
-position = Vector2(72, 680)
-
-[node name="Sniper2" parent="." instance=ExtResource("5_dpaus")]
-position = Vector2(184, 568)
-
-[node name="Sniper4" parent="." instance=ExtResource("5_dpaus")]
-position = Vector2(176, 280)
-
-[node name="Sniper5" parent="." instance=ExtResource("5_dpaus")]
-position = Vector2(72, 184)
-
-[node name="Sniper6" parent="." instance=ExtResource("5_dpaus")]
-position = Vector2(1232, 192)
-
-[node name="Sniper7" parent="." instance=ExtResource("5_dpaus")]
-position = Vector2(1136, 272)
-
-[node name="Sniper9" parent="." instance=ExtResource("5_dpaus")]
-position = Vector2(1128, 560)
-
-[node name="Sniper10" parent="." instance=ExtResource("5_dpaus")]
-position = Vector2(1224, 664)
+enemies = [NodePath("../Dragon"), NodePath("../Dragon2"), NodePath("../Sniper"), NodePath("../Sniper5"), NodePath("../Sniper3"), NodePath("../Sniper7"), NodePath("../Sniper9"), NodePath("../Sniper11"), NodePath("../Sniper13"), NodePath("../Sniper15")]
 
 [node name="Dragon" parent="." instance=ExtResource("6_tmeq1")]
-position = Vector2(288, 416)
+position = Vector2(280, 416)
 
 [node name="Dragon2" parent="." instance=ExtResource("6_tmeq1")]
-position = Vector2(1048, 424)
+position = Vector2(1016, 416)
+
+[node name="Sniper" parent="." instance=ExtResource("5_dpaus")]
+position = Vector2(176, 248)
+
+[node name="Sniper3" parent="." instance=ExtResource("5_dpaus")]
+position = Vector2(80, 184)
+
+[node name="Sniper5" parent="." instance=ExtResource("5_dpaus")]
+position = Vector2(80, 672)
+
+[node name="Sniper7" parent="." instance=ExtResource("5_dpaus")]
+position = Vector2(176, 576)
+
+[node name="Sniper9" parent="." instance=ExtResource("5_dpaus")]
+position = Vector2(1136, 576)
+
+[node name="Sniper13" parent="." instance=ExtResource("5_dpaus")]
+position = Vector2(1232, 184)
+
+[node name="Sniper11" parent="." instance=ExtResource("5_dpaus")]
+position = Vector2(1224, 664)
+
+[node name="Sniper15" parent="." instance=ExtResource("5_dpaus")]
+position = Vector2(1136, 240)

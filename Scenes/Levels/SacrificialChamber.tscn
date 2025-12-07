@@ -24,7 +24,7 @@ tile_map_data = PackedByteArray("AAAAABgAAAAAAAAAAAAAABkAAAAAAAAAAAAAABoAAAAAAAA
 position = Vector2(664, 784)
 
 [node name="LevelAnchor4" parent="." instance=ExtResource("3_1a6bf")]
-position = Vector2(672, 80)
+position = Vector2(672, 0)
 AnchorType = 1
 
 [node name="Panel" type="Panel" parent="."]

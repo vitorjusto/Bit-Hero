@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dxdswetg0tmd4" path="res://Assets/Sprites/Enemies/Spikes.png" id="2_j7hma"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j7hma"]
-size = Vector2(28, 30)
+size = Vector2(64, 64)
 
 [node name="Spikes" type="CharacterBody2D"]
 collision_layer = 4
@@ -16,8 +16,9 @@ shape = SubResource("RectangleShape2D_j7hma")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 process_mode = 3
-rect = Rect2(-32, -32, 64, 64)
+rect = Rect2(-45, -42, 90, 84)
 enable_mode = 1
 
 [node name="Spikes" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
 texture = ExtResource("2_j7hma")

@@ -16,8 +16,10 @@ var EnemiesDropsHP = true
 var EnemiesDropsSpecial= true 
 var EnemiesDropsLife= true 
 var LifeRegenerate= true 
+var HpRegenerate= true 
 var projPiercing = true 
 var projPassTrhoughWall = true 
 var AllowDash = true 
+var AutoShoot = true 
 
 var Move8Directions = true 

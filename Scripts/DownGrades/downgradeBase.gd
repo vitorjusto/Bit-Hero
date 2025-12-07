@@ -20,7 +20,10 @@ enum EDowngradeType {
 	DASH,
 	DIAGONALMOVIMENT,
 	HP,
-	LIFE
+	LIFE,
+	HPGENERATE,
+	TIME,
+	AUTOSHOOT
 	}
 @export var downgradeType : EDowngradeType
 
@@ -28,6 +31,7 @@ signal onPlayerGet()
 @onready var upgradeManager : UpgradeManager = get_tree().root.get_node("/root/Main/UpgradeManager")
 @onready var hud : Hud = get_tree().root.get_node("/root/Main/Hud")
 @onready var player : Player = get_tree().root.get_node("/root/Main/Player")
+@onready var timeManager : TimeManager = get_tree().root.get_node("/root/Main/TimeManager")
 
 func onPlayerDetected(body: Node2D) -> void:
 	ProcessDowngrade()
@@ -72,6 +76,12 @@ func ProcessDowngrade():
 		player.hp -= 1
 	if downgradeType == EDowngradeType.LIFE:
 		player.life -= 1
+	if downgradeType == EDowngradeType.HPGENERATE:
+		upgradeManager.HpRegenerate = false
+	if downgradeType == EDowngradeType.TIME:
+		timeManager.time -= 100
+	if downgradeType == EDowngradeType.AUTOSHOOT:
+		upgradeManager.AutoShoot = false
 	
 	hud.UpdateHud()
 
@@ -113,6 +123,12 @@ func onScreenEntrered() -> void:
 		availableDowngrade.append(EDowngradeType.HP)
 	if player.life > 1:
 		availableDowngrade.append(EDowngradeType.LIFE)
+	if upgradeManager.HpRegenerate:
+		availableDowngrade.append(EDowngradeType.HPGENERATE)
+	if upgradeManager.AutoShoot:
+		availableDowngrade.append(EDowngradeType.AUTOSHOOT)
+	
+	availableDowngrade.append(EDowngradeType.TIME)
 	
 	downgradeType = availableDowngrade[randi_range(0, availableDowngrade.size() -1)]
 	print(downgradeType)

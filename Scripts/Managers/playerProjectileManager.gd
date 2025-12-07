@@ -17,8 +17,14 @@ func _process(delta: float) -> void:
 		return
 	
 	hud.updateProjCooldown(projCooldown, upgradeManager.ProjCoolDown)
-	if Input.is_action_just_pressed("Shoot"):
-		HandleProjectiles()
+	
+	if upgradeManager.AutoShoot:
+		if Input.is_action_pressed("Shoot"):
+			HandleProjectiles()
+	else:
+		if Input.is_action_just_pressed("Shoot"):
+			HandleProjectiles()
+		
 
 func HandleProjectiles():
 	projCooldown = upgradeManager.ProjCoolDown

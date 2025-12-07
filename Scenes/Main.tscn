@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dubfjm3pcuuqs"]
+[gd_scene load_steps=9 format=3 uid="uid://dubfjm3pcuuqs"]
 
 [ext_resource type="Script" uid="uid://ctr4w6epxmyt5" path="res://Scripts/main.gd" id="1_idj7w"]
 [ext_resource type="PackedScene" uid="uid://cqd5gq4nx3yh2" path="res://Scenes/Player/Player.tscn" id="3_kln2b"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bpsp7xlg7uln6" path="res://Scripts/Managers/playerProjectileManager.gd" id="4_rgh2o"]
 [ext_resource type="Script" uid="uid://b7xgqugxof17a" path="res://Scripts/Player/upgradeManager.gd" id="5_pbw6q"]
 [ext_resource type="Script" uid="uid://cwb2or2fggolm" path="res://Scripts/Managers/specialManager.gd" id="6_v1gob"]
+[ext_resource type="Script" uid="uid://s4gpvpom8prk" path="res://Scripts/Timer/timer.gd" id="7_jw32o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1gob"]
 size = Vector2(1314.5, 37)
@@ -13,9 +14,10 @@ size = Vector2(1314.5, 37)
 [node name="Main" type="Node2D"]
 script = ExtResource("1_idj7w")
 
-[node name="Hud" parent="." node_paths=PackedStringArray("upgradeManager", "player") instance=ExtResource("3_rgh2o")]
+[node name="Hud" parent="." node_paths=PackedStringArray("upgradeManager", "player", "timeManager") instance=ExtResource("3_rgh2o")]
 upgradeManager = NodePath("../UpgradeManager")
 player = NodePath("../Player")
+timeManager = NodePath("../TimeManager")
 
 [node name="Player" parent="." instance=ExtResource("3_kln2b")]
 position = Vector2(532, 325)
@@ -40,7 +42,10 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(656, 99)
+position = Vector2(657, 19)
 shape = SubResource("RectangleShape2D_v1gob")
+
+[node name="TimeManager" type="Node2D" parent="."]
+script = ExtResource("7_jw32o")
 
 [connection signal="onDamage" from="Player" to="Hud" method="UpdateHud"]

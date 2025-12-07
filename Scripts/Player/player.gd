@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 var hp = 10
-var hpBar = 0
+var hpBar : float = 0
 const SPEED = 130.0
 const JUMP_VELOCITY = -400.0
 @onready var upgradeManager : UpgradeManager = get_tree().root.get_node("/root/Main/UpgradeManager")
@@ -30,6 +30,13 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	HandleDamageAnimation(delta)
+	
+	if upgradeManager.MaxHP > hp and upgradeManager.HpRegenerate:
+		hpBar += delta * 0.5
+		if hpBar > 40:
+			hpBar -= 40
+			hp += 1
+	
 	hud.UpdateHp(hpBar)
 	hud.UpdateLife(life, lifeBar, maxLifeBar)
 

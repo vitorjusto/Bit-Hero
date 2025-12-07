@@ -11,9 +11,9 @@ func onPlayerDetected(body: Node2D) -> void:
 		call_deferred("queue_free")
 		return
 	
-	var hpbar = player.hpBar + 1
+	var hpbar = player.hpBar + 20
 	
-	if hpbar > 20:
+	if hpbar > 40:
 		hpbar = 0
 		player.set_deferred("hp", player.hp + 1)
 		

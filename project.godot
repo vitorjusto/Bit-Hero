@@ -27,7 +27,9 @@ mouse_cursor/custom_image="uid://g4asa88amirr"
 [file_customization]
 
 folder_colors={
-"res://Assets/": "orange"
+"res://Assets/": "orange",
+"res://Scenes/Hud/": "blue",
+"res://Scripts/": "green"
 }
 
 [input]
