@@ -1,0 +1,150 @@
+[gd_scene load_steps=10 format=3 uid="uid://cm7pkcvg0pc5s"]
+
+[ext_resource type="Script" uid="uid://dg1i1wfp1hpjv" path="res://Scripts/Boss/boss2.gd" id="1_0q141"]
+[ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_f2cvg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2cvg"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6e5ow"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqa1p"]
+size = Vector2(16, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5t1k"]
+size = Vector2(16, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2khj"]
+size = Vector2(200, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5v7fs"]
+size = Vector2(300, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykdkv"]
+size = Vector2(128, 128)
+
+[node name="Boss2" type="CharacterBody2D" node_paths=PackedStringArray("anchors")]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_0q141")
+anchors = [NodePath("Node2D"), NodePath("Node2D2"), NodePath("Node2D3"), NodePath("Node2D4"), NodePath("Node2D5"), NodePath("Node2D6"), NodePath("Node2D7"), NodePath("Node2D8"), NodePath("Node2D12"), NodePath("Node2D9"), NodePath("Node2D10"), NodePath("Node2D11")]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_f2cvg")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel2" type="Panel" parent="."]
+offset_left = -64.0
+offset_top = -100.0
+offset_right = -48.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_f2cvg")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel7" type="Panel" parent="."]
+offset_left = -150.0
+offset_top = -8.0
+offset_right = 150.0
+offset_bottom = 8.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_f2cvg")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel9" type="Panel" parent="."]
+offset_left = -100.0
+offset_top = 48.0
+offset_right = 100.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_f2cvg")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel3" type="Panel" parent="."]
+offset_left = 48.0
+offset_top = -100.0
+offset_right = 64.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_f2cvg")
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel13" type="Panel" parent="."]
+offset_left = -8.0
+offset_top = -150.0
+offset_right = 8.0
+offset_bottom = 150.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_f2cvg")
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6e5ow")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jqa1p")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(-56, 0)
+shape = SubResource("RectangleShape2D_t5t1k")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(56, 0)
+shape = SubResource("RectangleShape2D_t5t1k")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(0, 56)
+shape = SubResource("RectangleShape2D_e2khj")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+position = Vector2(0, -56)
+shape = SubResource("RectangleShape2D_e2khj")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5v7fs")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-1, 149)
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(-58, 99)
+
+[node name="Node2D3" type="Node2D" parent="."]
+position = Vector2(-98, 57)
+
+[node name="Node2D4" type="Node2D" parent="."]
+position = Vector2(-149, 1)
+
+[node name="Node2D5" type="Node2D" parent="."]
+position = Vector2(-99, -55)
+
+[node name="Node2D6" type="Node2D" parent="."]
+position = Vector2(-56, -96)
+
+[node name="Node2D7" type="Node2D" parent="."]
+position = Vector2(3, -147)
+
+[node name="Node2D8" type="Node2D" parent="."]
+position = Vector2(98, -58)
+
+[node name="Node2D12" type="Node2D" parent="."]
+position = Vector2(57, -95)
+
+[node name="Node2D9" type="Node2D" parent="."]
+position = Vector2(157, 2)
+
+[node name="Node2D10" type="Node2D" parent="."]
+position = Vector2(98, 57)
+
+[node name="Node2D11" type="Node2D" parent="."]
+position = Vector2(54, 101)
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_f2cvg")]
+Hp = 3000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_ykdkv")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+process_mode = 3
+enable_mode = 1

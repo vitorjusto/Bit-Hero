@@ -27,11 +27,14 @@ func GenerateLevels():
 	add_child(instance)
 	sections.append(instance)
 	
-	for n in range(1, 30):
-		if n % 5 == 0:
+	var amount = 2
+	for n in range(1, amount):
+		if n == amount - 1:
+			scene = load("res://Scenes/Levels/Level1/Level1-boss.tscn")
+		elif n % 5 == 0:
 			scene = load("res://Scenes/Levels/SacrificialChamber.tscn")
 		else:
-			scene = load("res://Scenes/Levels/Level1/Level1-%d.tscn" % randi_range(1, 8))
+			scene = load("res://Scenes/Levels/Level1/Level1-%d.tscn" % randi_range(1, 10))
 		instance = scene.instantiate()
 	
 		var lastLevelAnchor : LevelAnchor = lastLevel.get_children().filter(func(x) -> bool: return x is LevelAnchor and x.AnchorType == LevelAnchor.ELEVELANCHORTYPE.EXIT).get(0)
@@ -42,6 +45,7 @@ func GenerateLevels():
 		lastLevel = instance
 		add_child(instance)
 		sections.append(instance)
+	
 
 func nextSection():
 	var section : Node2D = sections[currentSection]

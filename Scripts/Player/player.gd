@@ -110,12 +110,10 @@ func takeDamage():
 		iframes = 100
 	
 func OnEnemyDeteced(body: Node2D) -> void:
-	print("entrou")
 	insideEnemys.append(body)
 	takeDamage()
 
 func onEnemyExited(body: Node2D) -> void:
-	print("saiu")
 	insideEnemys.erase(body)
 
 signal onDamage

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt8r4fm7ba7l3"]
+
+[ext_resource type="Script" uid="uid://cu2grillqlotk" path="res://Scripts/Boss/boss1.gd" id="1_i8kqm"]
+[ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_pdtmo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6x21"]
+size = Vector2(200, 200)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i8kqm"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Boss1" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_i8kqm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_x6x21")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_pdtmo")]
+Hp = 5000
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_x6x21")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+process_mode = 3
+enable_mode = 1
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -100.0
+offset_top = -101.0
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i8kqm")

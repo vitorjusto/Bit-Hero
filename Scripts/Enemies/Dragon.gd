@@ -26,4 +26,3 @@ func ShootProjectile(offset: float):
 	var speed = Vector2(sin(angle + offset) * -10, cos(angle + offset) * -10)
 	
 	projManager.ShootFireProjectile(global_position, speed)
-

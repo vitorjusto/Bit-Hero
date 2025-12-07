@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dubfjm3pcuuqs"]
+[gd_scene load_steps=11 format=3 uid="uid://dubfjm3pcuuqs"]
 
 [ext_resource type="Script" uid="uid://ctr4w6epxmyt5" path="res://Scripts/main.gd" id="1_idj7w"]
 [ext_resource type="PackedScene" uid="uid://cqd5gq4nx3yh2" path="res://Scenes/Player/Player.tscn" id="3_kln2b"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://s4gpvpom8prk" path="res://Scripts/Timer/timer.gd" id="7_jw32o"]
 [ext_resource type="Script" uid="uid://cskt78e87bk0r" path="res://Scripts/Managers/particleManager.gd" id="8_50glp"]
 [ext_resource type="Script" uid="uid://dooucd7uo8n7i" path="res://Scripts/Managers/EnemiesProjectileManager.gd" id="9_vy5pj"]
-[ext_resource type="PackedScene" uid="uid://de1yjxdjc31by" path="res://Scenes/Enemies/MultiWalker.tscn" id="10_bmxlf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1gob"]
 size = Vector2(1314.5, 37)
@@ -56,8 +55,5 @@ script = ExtResource("8_50glp")
 
 [node name="EnemiesProjectileManager" type="Node2D" parent="."]
 script = ExtResource("9_vy5pj")
-
-[node name="MultiWalker" parent="." instance=ExtResource("10_bmxlf")]
-position = Vector2(208, 368)
 
 [connection signal="onDamage" from="Player" to="Hud" method="UpdateHud"]
