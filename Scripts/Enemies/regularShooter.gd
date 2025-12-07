@@ -10,8 +10,7 @@ const JUMP_VELOCITY = -400.0
 
 var shootTimer = 40
 
-@onready var proj : PackedScene = load("res://Scenes/Enemies/Projectiles/RegularEnemyProjectile.tscn")
-@onready var main: Main = get_tree().root.get_node("/root/Main")
+@onready var projManager: EnemiesProjectileManager = get_tree().root.get_node("/root/Main/EnemiesProjectileManager")
 @onready var parent: Node2D = get_parent()
 @onready var ani: AnimatedSprite2D = get_node("AniBody")
 @onready var cannon: Sprite2D = get_node("RegularShooter")
@@ -112,8 +111,4 @@ func _physics_process(delta: float) -> void:
 func shoot(angle: float):
 	var speedproj = Vector2(sin(deg_to_rad(angle)) * -10, cos(deg_to_rad(angle)) * -10)
 	
-	var instance : RegularEnemyProjectile = proj.instantiate()
-	instance.SPEED = speedproj
-	instance.position = global_position
-	
-	main.add_child(instance)
+	projManager.ShootRegularProjectile(global_position, speedproj)

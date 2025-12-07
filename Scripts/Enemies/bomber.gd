@@ -5,8 +5,7 @@ var followingPlayer = false
 
 @onready var player: Player = get_tree().root.get_node("/root/Main/Player")
 @onready var parent: Node2D = get_parent()
-@onready var proj : PackedScene = load("res://Scenes/Enemies/Projectiles/RegularEnemyProjectile.tscn")
-@onready var main: Main = get_tree().root.get_node("/root/Main")
+@onready var projManager: EnemiesProjectileManager = get_tree().root.get_node("/root/Main/EnemiesProjectileManager")
 
 @onready var hurtbox : Hurtbox = get_node("Hurtbox")
 @onready var ani : AnimatedSprite2D = get_node("AnimatedSprite2D")
@@ -76,10 +75,7 @@ func onDefeat() -> void:
 	shoot(330)
 
 func shoot(angle: float):
-	var speed = Vector2(sin(deg_to_rad(angle)) * -10, cos(deg_to_rad(angle)) * -10)
+	var projSpeed = Vector2(sin(deg_to_rad(angle)) * -10, cos(deg_to_rad(angle)) * -10)
 	
-	var instance : RegularEnemyProjectile = proj.instantiate()
-	instance.SPEED = speed
-	instance.position = global_position
-	main.add_child(instance)
+	projManager.ShootRegularProjectile(global_position, projSpeed)
 	

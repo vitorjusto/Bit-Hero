@@ -10,9 +10,9 @@ enum ESHOOTTYPE {UNI, TRI, PENTA, SPREAD, SPREADER}
 const MAXSHOOTTIMER = 30
 var shootCicle = 0
 
-@onready var proj : PackedScene = load("res://Scenes/Enemies/Projectiles/RegularEnemyProjectile.tscn")
-@onready var main: Main = get_tree().root.get_node("/root/Main")
 @onready var ani: AnimatedSprite2D = get_node("AnimatedSprite2D")
+
+@onready var projManager: EnemiesProjectileManager = get_tree().root.get_node("/root/Main/EnemiesProjectileManager")
 
 var angle = 0
 var timer = 80
@@ -109,21 +109,15 @@ func Shoot(delta: float ):
 func ShootProj(offSet: float):
 	var projAngle = atan2(position.x + parent.position.x - player.position.x, position.y + parent.position.y - player.position.y)
 	var speed = Vector2(sin(projAngle + offSet) * -10, cos(projAngle + offSet) * -10)
-	
-	var instance : RegularEnemyProjectile = proj.instantiate()
-	instance.SPEED = speed
-	instance.position = global_position
-	main.add_child(instance)
+
+	projManager.ShootRegularProjectile(global_position, speed)
 
 
 
-func ShootLinearProjectile(angle: float):
-	var speed = Vector2(sin(deg_to_rad(angle)) * -10, cos(deg_to_rad(angle)) * -10)
-	
-	var instance : RegularEnemyProjectile = proj.instantiate()
-	instance.SPEED = speed
-	instance.position = global_position
-	main.add_child(instance)
+func ShootLinearProjectile(ang: float):
+	var speed = Vector2(sin(deg_to_rad(ang)) * -10, cos(deg_to_rad(ang)) * -10)
+
+	projManager.ShootRegularProjectile(global_position, speed)
 	
 func ChangeAngle():
 	angle = atan2(position.x + parent.position.x - player.position.x, position.y + parent.position.y - player.position.y)

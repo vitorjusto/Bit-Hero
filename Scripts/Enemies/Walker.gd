@@ -10,11 +10,10 @@ var walkingCicle = 0
 
 var shootTimer = 40
 
-@onready var proj : PackedScene = load("res://Scenes/Enemies/Projectiles/TimedRegularEnemyProjectile.tscn")
 @onready var player: Player = get_tree().root.get_node("/root/Main/Player")
-@onready var main: Main = get_tree().root.get_node("/root/Main")
 @onready var parent: Node2D = get_parent()
 @onready var ani: AnimatedSprite2D = get_node("AnimatedSprite2D")
+@onready var projManager: EnemiesProjectileManager = get_tree().root.get_node("/root/Main/EnemiesProjectileManager")
 
 func _physics_process(delta: float) -> void:
 	IdleAround(delta)
@@ -62,9 +61,4 @@ func IdleAround(delta: float):
 
 func shoot(angle: float):
 	var speedproj = Vector2(sin(deg_to_rad(angle)) * -5, cos(deg_to_rad(angle)) * -5)
-	
-	var instance : TimedRegularEnemyProjectile = proj.instantiate()
-	instance.SPEED = speedproj
-	instance.position = global_position
-	instance.time = 100
-	main.add_child(instance)
+	projManager.ShootTimedRegularProjectile(global_position, speedproj, 100)

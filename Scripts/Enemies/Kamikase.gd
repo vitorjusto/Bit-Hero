@@ -5,9 +5,8 @@ var isIdling = true
 @onready var player: Player = get_tree().root.get_node("/root/Main/Player")
 @onready var parent: Node2D = get_parent()
 @onready var hurtbox: Hurtbox = get_node("Hurtbox")
-@onready var proj : PackedScene = load("res://Scenes/Enemies/Projectiles/RegularEnemyProjectile.tscn")
-@onready var main: Main = get_tree().root.get_node("/root/Main")
 @onready var ani: AnimatedSprite2D = get_node("AnimatedSprite2D")
+@onready var projManager: EnemiesProjectileManager = get_tree().root.get_node("/root/Main/EnemiesProjectileManager")
 
 func _physics_process(delta: float) -> void:
 	if isIdling:
@@ -36,13 +35,9 @@ func onDefeat() -> void:
 	shoot(300)
 	shoot(330)
 
-func shoot(angle: float):
-	var speed = Vector2(sin(deg_to_rad(angle)) * -10, cos(deg_to_rad(angle)) * -10)
-	
-	var instance : RegularEnemyProjectile = proj.instantiate()
-	instance.SPEED = speed
-	instance.position = global_position
-	main.add_child(instance)
+func shoot(ang: float):
+	var speed = Vector2(sin(deg_to_rad(ang)) * -10, cos(deg_to_rad(ang)) * -10)
+	projManager.ShootRegularProjectile(global_position, speed)
 
 func onPlayerDetected(body: Node2D) -> void:
 	angle = atan2(position.x + parent.position.x - player.position.x, position.y + parent.position.y - player.position.y)
