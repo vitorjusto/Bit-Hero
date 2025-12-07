@@ -14,5 +14,5 @@ metadata/_edit_lock_ = true
 position = Vector2(664, 784)
 
 [node name="LevelAnchor2" parent="." instance=ExtResource("3_ga8gf")]
-position = Vector2(664, -720)
+position = Vector2(648, 0)
 AnchorType = 1

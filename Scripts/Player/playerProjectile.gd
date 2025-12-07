@@ -36,7 +36,7 @@ func onScreenExited() -> void:
 func setActive(value: bool):
 	set_physics_process(value)
 	sprite.visible = value
-	process_mode = Node.PROCESS_MODE_INHERIT if value else Node.PROCESS_MODE_DISABLED
+	set_deferred("process_mode", Node.PROCESS_MODE_INHERIT if value else Node.PROCESS_MODE_DISABLED)
 	col.set_deferred("disabled", not value)
 	active = value
 	

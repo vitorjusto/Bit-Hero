@@ -2,6 +2,7 @@ class_name Hurtbox
 extends Area2D
 
 @export var Hp = 0
+var powerUpDropped = false
 @onready var upgradeManager : UpgradeManager = get_tree().root.get_node("/root/Main/UpgradeManager")
 @onready var main : Main = get_tree().root.get_node("/root/Main")
 @onready var particleManager : ParticleManager = get_tree().root.get_node("/root/Main/ParticleManager")
@@ -34,6 +35,10 @@ func GenerateParticles():
 	particleManager.AddParticles(get_parent().position + get_parent().get_parent().position, 3)
 
 func GeneratePowerUp():
+	if powerUpDropped:
+		return
+	
+	powerUpDropped = true
 	var rng = randi_range(0, 100)
 	
 	if rng < 20:
@@ -57,7 +62,7 @@ func GeneratePowerUp():
 		var instance : Node2D = tmUp.instantiate()
 		instance.position =get_parent().position + get_parent().get_parent().position
 		main.call_deferred("add_child", instance)
-	elif rng < 65:
+	elif rng < 61:
 		if not upgradeManager.EnemiesDropsLife:
 			return
 		var spUp : PackedScene = load("res://Scenes/PowerUps/LifeUp.tscn")

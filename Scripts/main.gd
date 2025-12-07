@@ -27,7 +27,7 @@ func GenerateLevels():
 	add_child(instance)
 	sections.append(instance)
 	
-	var amount = 2
+	var amount = 30
 	for n in range(1, amount):
 		if n == amount - 1:
 			scene = load("res://Scenes/Levels/Level1/Level1-boss.tscn")

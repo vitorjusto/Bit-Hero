@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://phae2l1qrk6c" path="res://Scripts/Misc/bossDoorDetector.gd" id="5_wdhyj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omyj6"]
-size = Vector2(171, 45)
+size = Vector2(195.5, 45)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rej65"]
 size = Vector2(255, 40)
@@ -32,12 +32,12 @@ position = Vector2(659, 1)
 AnchorType = 1
 
 [node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("door")]
-position = Vector2(576, 752)
+position = Vector2(560, 752)
 script = ExtResource("5_wdhyj")
 door = NodePath("StaticBody2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(85, -53)
+position = Vector2(97.25, -53)
 shape = SubResource("RectangleShape2D_omyj6")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Area2D"]
