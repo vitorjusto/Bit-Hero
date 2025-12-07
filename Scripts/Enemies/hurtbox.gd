@@ -3,8 +3,8 @@ extends Area2D
 
 @export var Hp = 0
 @onready var upgradeManager : UpgradeManager = get_tree().root.get_node("/root/Main/UpgradeManager")
-@onready var particle : PackedScene = load("res://Scenes/Particles/Particle.tscn")
 @onready var main : Main = get_tree().root.get_node("/root/Main")
+@onready var particleManager : ParticleManager = get_tree().root.get_node("/root/Main/ParticleManager")
 
 signal onDefeat
 
@@ -14,9 +14,11 @@ func OnProjDetected(body: Node2D) -> void:
 		Hp -= special.damage
 		special.emit_signal("onEnemyDeteced")
 	else:
-		Hp -= upgradeManager.Power
+		var proj : PlayerProjectile = body
+		Hp -= upgradeManager.Power * proj.powerModifier
+
 		if not upgradeManager.projPiercing:
-			body.call_deferred("queue_free")
+			proj.setActive(false) 
 	
 	GenerateParticles()
 	if Hp <= 0:
@@ -29,17 +31,7 @@ func DefeatEnemy():
 	get_parent().call_deferred("queue_free")
 
 func GenerateParticles():
-	InstantiateParticle()
-	InstantiateParticle()
-	InstantiateParticle()
-	InstantiateParticle()
-	InstantiateParticle()
-	InstantiateParticle()
-
-func InstantiateParticle():
-	var instance : Node2D = particle.instantiate()
-	instance.position = get_parent().position + get_parent().get_parent().position
-	main.call_deferred("add_child", instance)
+	particleManager.AddParticles(get_parent().position + get_parent().get_parent().position, 3)
 
 func GeneratePowerUp():
 	var rng = randi_range(0, 100)

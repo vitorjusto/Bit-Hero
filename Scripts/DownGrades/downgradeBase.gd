@@ -131,4 +131,50 @@ func onScreenEntrered() -> void:
 	availableDowngrade.append(EDowngradeType.TIME)
 	
 	downgradeType = availableDowngrade[randi_range(0, availableDowngrade.size() -1)]
-	print(downgradeType)
+	setDescription()
+
+func setDescription():
+	var label: Label = get_node("lblDescription")
+	
+	if downgradeType == EDowngradeType.MAXHP:
+		label.text = "-1 Max Hp"
+	if downgradeType == EDowngradeType.POWER:
+		label.text = "-1 Power"
+	if downgradeType == EDowngradeType.SPECIAL:
+		label.text = "-1 Max Special"
+	if downgradeType == EDowngradeType.RECHARGINGSPECIAL:
+		label.text = "No Special Recharging"
+	if downgradeType == EDowngradeType.BULLET:
+		label.text = "-1 Bullet"
+	if downgradeType == EDowngradeType.SPEED:
+		label.text = "-1 Speed"
+	if downgradeType == EDowngradeType.RANGE:
+		label.text = "-1 Range"
+	if downgradeType == EDowngradeType.COOLDOWN:
+		label.text = "Shoot Cooldown Up"
+	if downgradeType == EDowngradeType.ENEMIESDROPSHP:
+		label.text = "Enemies Don't Drop Hp"
+	if downgradeType == EDowngradeType.ENEMIESDROPSSPECIALS:
+		label.text = "Enemies Don't Drop Special"
+	if downgradeType == EDowngradeType.ENEMIESDROPSLIFE:
+		label.text = "Enemies Don't Drop Life"
+	if downgradeType == EDowngradeType.LIFEGENERATE:
+		label.text = "No Life Regeneration"
+	if downgradeType == EDowngradeType.PROJECTILEPIERCING:
+		label.text = "No Projectile Piercing"
+	if downgradeType == EDowngradeType.PROJECTILEPASSTRHOUGWALL:
+		label.text = "Projectiles don't go through walls"
+	if downgradeType == EDowngradeType.DASH:
+		label.text = "No Dash"
+	if downgradeType == EDowngradeType.DIAGONALMOVIMENT:
+		label.text = "No Diagonal Moviment"
+	if downgradeType == EDowngradeType.HP:
+		label.text = "-1 Hp"
+	if downgradeType == EDowngradeType.LIFE:
+		label.text = "-1 Life"
+	if downgradeType == EDowngradeType.HPGENERATE:
+		label.text = "No Hp Regeneration"
+	if downgradeType == EDowngradeType.TIME:
+		label.text = "-100 Time"
+	if downgradeType == EDowngradeType.AUTOSHOOT:
+		label.text = "No Autoshoot"

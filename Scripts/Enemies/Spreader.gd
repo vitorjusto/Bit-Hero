@@ -6,10 +6,9 @@ enum ESHOOTTYPE {SPREAD, SPREADER}
 
 @onready var timer = MAXTIMER
 const MAXTIMER = 80
-@onready var proj : PackedScene = load("res://Scenes/Enemies/Projectiles/RegularEnemyProjectile.tscn")
 @onready var player: Player = get_tree().root.get_node("/root/Main/Player")
-@onready var main: Main = get_tree().root.get_node("/root/Main")
 @onready var parent: Node2D = get_parent()
+@onready var projManager: EnemiesProjectileManager = get_tree().root.get_node("/root/Main/EnemiesProjectileManager")
 
 func _physics_process(delta: float) -> void:
 	timer -= delta * 60
@@ -56,9 +55,5 @@ func _physics_process(delta: float) -> void:
 
 func shoot(angle: float):
 	var speed = Vector2(sin(deg_to_rad(angle)) * -10, cos(deg_to_rad(angle)) * -10)
-	
-	var instance : RegularEnemyProjectile = proj.instantiate()
-	instance.SPEED = speed
-	instance.position = global_position
-	main.add_child(instance)
+	projManager.ShootRegularProjectile(global_position, speed)
 	

@@ -28,6 +28,7 @@ mouse_cursor/custom_image="uid://g4asa88amirr"
 
 folder_colors={
 "res://Assets/": "orange",
+"res://Scenes/Enemies/": "yellow",
 "res://Scenes/Hud/": "blue",
 "res://Scripts/": "green"
 }

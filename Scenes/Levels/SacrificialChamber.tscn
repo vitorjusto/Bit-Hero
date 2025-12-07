@@ -11,11 +11,12 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5c8w"]
 size = Vector2(298, 50)
 
-[node name="SacrificialChamber" type="Node2D" node_paths=PackedStringArray("downgrade1", "downgrade2", "downgrade3")]
+[node name="SacrificialChamber" type="Node2D" node_paths=PackedStringArray("downgrade1", "downgrade2", "downgrade3", "downgrade4")]
 script = ExtResource("1_k21lv")
 downgrade1 = NodePath("DowngradeBase")
 downgrade2 = NodePath("DowngradeBase2")
 downgrade3 = NodePath("DowngradeBase3")
+downgrade4 = NodePath("DowngradeBase4")
 
 [node name="Tiles2" parent="." instance=ExtResource("2_k5c8w")]
 tile_map_data = PackedByteArray("AAAAABgAAAAAAAAAAAAAABkAAAAAAAAAAAAAABoAAAAAAAAAAAAAABsAAAAAAAAAAAAAABwAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAB4AAAAAAAAAAAAAAB8AAAAAAAAAAAAAACAAAAAAAAAAAAABABgAAAAAAAAAAAABABkAAAAAAAAAAAABABoAAAAAAAAAAAABABsAAAAAAAAAAAABABwAAAAAAAAAAAABAB0AAAAAAAAAAAABAB4AAAAAAAAAAAABAB8AAAAAAAAAAAABACAAAAAAAAAAAABQABgAAAAAAAAAAABQABkAAAAAAAAAAABQABoAAAAAAAAAAABQABsAAAAAAAAAAABQABwAAAAAAAAAAABQAB0AAAAAAAAAAABQAB4AAAAAAAAAAABQAB8AAAAAAAAAAABQACAAAAAAAAAAAABRABgAAAAAAAAAAABRABkAAAAAAAAAAABRABoAAAAAAAAAAABRABsAAAAAAAAAAABRABwAAAAAAAAAAABRAB0AAAAAAAAAAABRAB4AAAAAAAAAAABRAB8AAAAAAAAAAABRACAAAAAAAAAAAAA=")
@@ -35,13 +36,16 @@ offset_bottom = 408.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_asbh8")
 
 [node name="DowngradeBase" parent="." instance=ExtResource("4_k5c8w")]
-position = Vector2(400, 464)
+position = Vector2(256, 320)
 
 [node name="DowngradeBase2" parent="." instance=ExtResource("4_k5c8w")]
-position = Vector2(664, 536)
+position = Vector2(384, 512)
+
+[node name="DowngradeBase4" parent="." instance=ExtResource("4_k5c8w")]
+position = Vector2(928, 512)
 
 [node name="DowngradeBase3" parent="." instance=ExtResource("4_k5c8w")]
-position = Vector2(912, 456)
+position = Vector2(1056, 320)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -52,4 +56,5 @@ shape = SubResource("RectangleShape2D_k5c8w")
 
 [connection signal="onPlayerGet" from="DowngradeBase" to="." method="OnPlayerGet"]
 [connection signal="onPlayerGet" from="DowngradeBase2" to="." method="OnPlayerGet"]
+[connection signal="onPlayerGet" from="DowngradeBase4" to="." method="OnPlayerGet"]
 [connection signal="onPlayerGet" from="DowngradeBase3" to="." method="OnPlayerGet"]
