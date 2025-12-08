@@ -19,24 +19,6 @@ position = Vector2(672, 784)
 position = Vector2(664, 0)
 AnchorType = 1
 
-[node name="Follower" parent="." instance=ExtResource("7_wecch")]
-position = Vector2(88, 712)
-
-[node name="Follower3" parent="." instance=ExtResource("7_wecch")]
-position = Vector2(80, 664)
-
-[node name="Follower4" parent="." instance=ExtResource("7_wecch")]
-position = Vector2(80, 616)
-
-[node name="Follower5" parent="." instance=ExtResource("7_wecch")]
-position = Vector2(88, 536)
-
-[node name="Follower6" parent="." instance=ExtResource("7_wecch")]
-position = Vector2(96, 464)
-
-[node name="Follower7" parent="." instance=ExtResource("7_wecch")]
-position = Vector2(96, 384)
-
 [node name="Follower8" parent="." instance=ExtResource("7_wecch")]
 position = Vector2(96, 288)
 
@@ -48,24 +30,6 @@ position = Vector2(96, 232)
 
 [node name="Follower10" parent="." instance=ExtResource("7_wecch")]
 position = Vector2(96, 168)
-
-[node name="Follower2" parent="." instance=ExtResource("7_wecch")]
-position = Vector2(1224, 712)
-
-[node name="Follower12" parent="." instance=ExtResource("7_wecch")]
-position = Vector2(1216, 664)
-
-[node name="Follower13" parent="." instance=ExtResource("7_wecch")]
-position = Vector2(1216, 616)
-
-[node name="Follower14" parent="." instance=ExtResource("7_wecch")]
-position = Vector2(1224, 536)
-
-[node name="Follower15" parent="." instance=ExtResource("7_wecch")]
-position = Vector2(1232, 464)
-
-[node name="Follower16" parent="." instance=ExtResource("7_wecch")]
-position = Vector2(1232, 384)
 
 [node name="Follower17" parent="." instance=ExtResource("7_wecch")]
 position = Vector2(1232, 288)

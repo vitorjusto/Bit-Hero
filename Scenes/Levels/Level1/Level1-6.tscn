@@ -22,7 +22,7 @@ position = Vector2(664, 0)
 AnchorType = 1
 
 [node name="LockedDoorForEnemies" parent="." node_paths=PackedStringArray("enemies") instance=ExtResource("4_wefhe")]
-position = Vector2(576, 88)
+position = Vector2(560, 88)
 enemies = [NodePath("../Follower"), NodePath("../Follower2"), NodePath("../Dragon"), NodePath("../Dragon2")]
 
 [node name="Follower" parent="." instance=ExtResource("7_y2j4o")]
