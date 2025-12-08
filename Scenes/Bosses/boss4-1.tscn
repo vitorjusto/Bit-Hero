@@ -1,0 +1,145 @@
+[gd_scene load_steps=9 format=3 uid="uid://3xrp5v4yyxm"]
+
+[ext_resource type="Script" uid="uid://bjwslmu635kfk" path="res://Scripts/Boss/boss4-1.gd" id="1_vq05m"]
+[ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_jccuh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3mjc"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tiwvm"]
+size = Vector2(48, 120)
+
+[sub_resource type="Animation" id="Animation_vq05m"]
+resource_name = "new_animation"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 3.75, 4, 4.25, 4.5, 4.75, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false, true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5.5, 7.9666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1200)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_e0ohu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j3mjc"]
+_data = {
+&"RESET": SubResource("Animation_e0ohu"),
+&"new_animation": SubResource("Animation_vq05m")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tiwvm"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Boss41" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_vq05m")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -24.0
+offset_top = -60.0
+offset_right = 24.0
+offset_bottom = 60.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_j3mjc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tiwvm")
+
+[node name="Hurtbox" parent="." instance=ExtResource("2_jccuh")]
+Hp = 2
+isImortal = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_tiwvm")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+process_mode = 3
+rect = Rect2(-149, -143, 411, 252)
+enable_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Node2D")
+libraries = {
+&"": SubResource("AnimationLibrary_j3mjc")
+}
+speed_scale = 1.25
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="Node2D"]
+offset_left = -202.0
+offset_top = -171.0
+offset_right = 206.0
+offset_bottom = 175.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tiwvm")
+
+[connection signal="onDefeat" from="Hurtbox" to="." method="onDefeated"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="onAnimationFinished"]

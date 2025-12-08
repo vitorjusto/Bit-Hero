@@ -2,6 +2,8 @@ class_name Hurtbox
 extends Area2D
 
 @export var Hp = 0
+@export var isImortal = false
+var defeated = false
 var powerUpDropped = false
 @onready var upgradeManager : UpgradeManager = get_tree().root.get_node("/root/Main/UpgradeManager")
 @onready var main : Main = get_tree().root.get_node("/root/Main")
@@ -26,10 +28,14 @@ func OnProjDetected(body: Node2D) -> void:
 		DefeatEnemy()
 
 func DefeatEnemy():
-	GenerateParticles()
 	emit_signal("onDefeat")
-	GeneratePowerUp()
-	get_parent().call_deferred("queue_free")
+	GenerateParticles()
+	
+	if not isImortal and not defeated:
+		GeneratePowerUp()
+		get_parent().call_deferred("queue_free")
+	
+	defeated = true
 
 func GenerateParticles():
 	particleManager.AddParticles(get_parent().position + get_parent().get_parent().position, 3)

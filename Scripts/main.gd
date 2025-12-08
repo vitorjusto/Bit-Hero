@@ -5,6 +5,7 @@ var currentSection = 0
 var sections = []
 @onready var player : Player = get_node("Player")
 @onready var wall : StaticBody2D = get_node("StaticBody2D")
+var level = 4
 
 func _ready() -> void:
 	GenerateLevels()
@@ -30,11 +31,24 @@ func GenerateLevels():
 	var amount = 2
 	for n in range(1, amount):
 		if n == amount - 1:
-			scene = load("res://Scenes/Levels/Level3/Level3-boss.tscn")
+			scene = load("res://Scenes/Levels/Level%d/Level%d-boss.tscn" % [level, level])
 		elif n % 5 == 0:
 			scene = load("res://Scenes/Levels/SacrificialChamber.tscn")
 		else:
-			scene = load("res://Scenes/Levels/Level1/Level1-%d.tscn" % randi_range(1, 10))
+			scene = load("res://Scenes/Levels/Level%d/Level%d-%d.tscn" % [level, level, randi_range(1, 10)])
+		instance = scene.instantiate()
+	
+		var lastLevelAnchor : LevelAnchor = lastLevel.get_children().filter(func(x) -> bool: return x is LevelAnchor and x.AnchorType == LevelAnchor.ELEVELANCHORTYPE.EXIT).get(0)
+		var currentLevelAnchor : Node2D = instance.get_children().filter(func(x)-> bool: return x is LevelAnchor and x.AnchorType == LevelAnchor.ELEVELANCHORTYPE.ENTRANCE).get(0)
+		
+		instance.position =Vector2(0, lastLevel.position.y + lastLevelAnchor.position.y - currentLevelAnchor.position.y)
+		
+		lastLevel = instance
+		add_child(instance)
+		sections.append(instance)
+	
+	if level == 4:
+		scene = load("res://Scenes/Levels/Level4/Level4-finish.tscn")
 		instance = scene.instantiate()
 	
 		var lastLevelAnchor : LevelAnchor = lastLevel.get_children().filter(func(x) -> bool: return x is LevelAnchor and x.AnchorType == LevelAnchor.ELEVELANCHORTYPE.EXIT).get(0)
