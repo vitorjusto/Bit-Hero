@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 	
 func SetPlayerCameraBehavior():
 	
-	var section : Node2D = sections[currentSection]
+	var section : Node2D = sections[0]
 	var entraceAnchor : Node2D = section.get_children().filter(func(x)-> bool: return x is LevelAnchor and x.AnchorType == LevelAnchor.ELEVELANCHORTYPE.ENTRANCE).get(0)
 	
 	var playerCamera : Camera2D = player.get_node("Camera2D")
@@ -55,7 +55,7 @@ func GenerateLevels():
 	call_deferred("add_child", instance)
 	sections.append(instance)
 	
-	var amount = 2
+	var amount = 30
 	for n in range(1, amount):
 		if n == amount - 1:
 			scene = load("res://Scenes/Levels/Level%d/Level%d-boss.tscn" % [level, level])
@@ -85,17 +85,17 @@ func GenerateLevels():
 		
 		lastLevel = instance
 		call_deferred("add_child", instance)
-		sections.append(instance)
+		sections.append(instance)   
 
 func nextSection():
-	var section : Node2D = sections[1]
+	var section : Node2D = sections[0]
 	wall.position = section.position
 	
 	currentSection += 1
-	SetPlayerCameraBehavior()
 	var prevSection : LevelBase = sections[0]
 	prevSection.call_deferred("queue_free")
 	sections.remove_at(0)
+	SetPlayerCameraBehavior()
 
 func setCamerafromStart():
 	currentSection = 0
