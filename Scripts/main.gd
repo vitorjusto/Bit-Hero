@@ -10,8 +10,9 @@ var sections = []
 @onready var enemiesProj : EnemiesProjectileManager = get_node("EnemiesProjectileManager")
 @onready var hud : Hud = get_node("Hud")
 @onready var lblTimeUp : Label = get_node("CanvasLayer/lblTimeUp")
+@onready var powerUpManager : PowerUpManager = get_node("PowerUpManager")
 
-var level = 1
+var level = 2
 var blackScreenTimer = 100
 
 func _ready() -> void:
@@ -50,6 +51,7 @@ func GenerateLevels():
 	
 	var scene : PackedScene = load("res://Scenes/Levels/Level1/Level1-start.tscn")
 	var instance: Node2D = scene.instantiate()
+	wall.position = Vector2(0, 10000)
 	
 	var lastLevel = instance
 	call_deferred("add_child", instance)
@@ -96,6 +98,7 @@ func nextSection():
 	prevSection.call_deferred("queue_free")
 	sections.remove_at(0)
 	SetPlayerCameraBehavior()
+	powerUpManager.ClearPowerUps()
 
 func setCamerafromStart():
 	currentSection = 0
@@ -112,6 +115,7 @@ func onPlayerDied() -> void:
 	player.facingDirection = Player.EFACINGDIRECTION.DOWN
 	
 	enemiesProj.disableAllProjectiles()
+	powerUpManager.ClearPowerUps()
 	ClearLevels()
 	GenerateLevels()
 	setCamerafromStart()
@@ -126,6 +130,7 @@ func OnTimeUp() -> void:
 	lblTimeUp.visible = true
 
 func nextLevel():
+	powerUpManager.ClearPowerUps()
 	blackScreen.visible = true
 	blackScreenTimer = 120
 	player.position = Vector2(640.0, 520.0)
