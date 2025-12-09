@@ -1,0 +1,132 @@
+[gd_scene load_steps=16 format=4 uid="uid://bmjge1fqh6bjn"]
+
+[ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_qao1t"]
+[ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="2_wfgtr"]
+[ext_resource type="PackedScene" uid="uid://cx5sy1x1xfdk" path="res://Scenes/Misc/LevelAnchors.tscn" id="3_chdsx"]
+[ext_resource type="PackedScene" uid="uid://dxroh03ccvtsf" path="res://Scenes/Enemies/Spikes.tscn" id="4_5nphp"]
+[ext_resource type="PackedScene" uid="uid://cnneujqp6nkd5" path="res://Scenes/Enemies/FollowerAndShooter.tscn" id="5_h4b2v"]
+[ext_resource type="PackedScene" uid="uid://em28kbj68try" path="res://Scenes/Enemies/RegularShooter.tscn" id="6_5nnvv"]
+[ext_resource type="PackedScene" uid="uid://biru1y4hq2rw1" path="res://Scenes/Enemies/Dragon.tscn" id="7_2a2ie"]
+[ext_resource type="PackedScene" uid="uid://dcpkjgec6hkut" path="res://Scenes/Enemies/Bomber.tscn" id="8_w2wpe"]
+[ext_resource type="PackedScene" uid="uid://c57k378v3qcff" path="res://Scenes/Enemies/Saw.tscn" id="9_l1hfn"]
+[ext_resource type="PackedScene" uid="uid://bu0k7h2bgb5xn" path="res://Scenes/Enemies/Sniper.tscn" id="10_jp3wn"]
+[ext_resource type="PackedScene" uid="uid://olpehiqfx4ao" path="res://Scenes/Enemies/Spreader.tscn" id="11_11kc5"]
+[ext_resource type="PackedScene" uid="uid://dj8iiohiu7erh" path="res://Scenes/Enemies/Walker.tscn" id="12_23b2k"]
+[ext_resource type="PackedScene" uid="uid://c5x1lyspt0vuu" path="res://Scenes/Misc/LockedDoorForEnemies.tscn" id="13_ai4en"]
+[ext_resource type="PackedScene" uid="uid://bgdttt1xtunga" path="res://Scenes/Enemies/Follower.tscn" id="14_m0w6o"]
+[ext_resource type="PackedScene" uid="uid://eepfq85kkpjt" path="res://Scenes/Misc/Key.tscn" id="15_0vn3l"]
+
+[node name="Level11" type="Node2D"]
+script = ExtResource("1_qao1t")
+
+[node name="Tiles" parent="." instance=ExtResource("2_wfgtr")]
+tile_map_data = PackedByteArray("AAAOACEAAAAAAAAAAAAOACIAAAAAAAAAAAAPACEAAAAAAAAAAAAPACIAAAAAAAAAAAAOABIAAAAAAAAAAAAOABMAAAAAAAAAAAAPABIAAAAAAAAAAAAPABMAAAAAAAAAAAAOABQAAAAAAAAAAAAOABUAAAAAAAAAAAAPABQAAAAAAAAAAAAPABUAAAAAAAAAAAAMABIAAAAAAAAAAAAMABMAAAAAAAAAAAAMABQAAAAAAAAAAAAMABUAAAAAAAAAAAANABIAAAAAAAAAAAANABMAAAAAAAAAAAANABQAAAAAAAAAAAANABUAAAAAAAAAAAAMACEAAAAAAAAAAAAMACIAAAAAAAAAAAAMACMAAAAAAAAAAAAMACQAAAAAAAAAAAANACEAAAAAAAAAAAANACIAAAAAAAAAAAANACMAAAAAAAAAAAANACQAAAAAAAAAAAAOACMAAAAAAAAAAAAOACQAAAAAAAAAAAAPACMAAAAAAAAAAAAPACQAAAAAAAAAAABCABIAAAAAAAAAAABCABMAAAAAAAAAAABCABQAAAAAAAAAAABCABUAAAAAAAAAAABDABIAAAAAAAAAAABDABMAAAAAAAAAAABDABQAAAAAAAAAAABDABUAAAAAAAAAAABEABIAAAAAAAAAAABEABMAAAAAAAAAAABEABQAAAAAAAAAAABEABUAAAAAAAAAAABFABIAAAAAAAAAAABFABMAAAAAAAAAAABFABQAAAAAAAAAAABFABUAAAAAAAAAAABCACEAAAAAAAAAAABCACIAAAAAAAAAAABCACMAAAAAAAAAAABCACQAAAAAAAAAAABDACEAAAAAAAAAAABDACIAAAAAAAAAAABDACMAAAAAAAAAAABDACQAAAAAAAAAAABEACEAAAAAAAAAAABEACIAAAAAAAAAAABEACMAAAAAAAAAAABEACQAAAAAAAAAAABFACEAAAAAAAAAAABFACIAAAAAAAAAAABFACMAAAAAAAAAAABFACQAAAAAAAAAAAA=")
+metadata/_edit_lock_ = true
+
+[node name="LevelAnchor" parent="." instance=ExtResource("3_chdsx")]
+position = Vector2(664, 784)
+
+[node name="LevelAnchor2" parent="." instance=ExtResource("3_chdsx")]
+position = Vector2(672, 0)
+AnchorType = 1
+
+[node name="Spikes4" parent="." instance=ExtResource("4_5nphp")]
+position = Vector2(88, -40)
+direction = 1
+
+[node name="FollowerAndShooter" parent="." instance=ExtResource("5_h4b2v")]
+position = Vector2(472, 176)
+
+[node name="FollowerAndShooter7" parent="." instance=ExtResource("5_h4b2v")]
+position = Vector2(224, 424)
+
+[node name="FollowerAndShooter8" parent="." instance=ExtResource("5_h4b2v")]
+position = Vector2(1080, 432)
+
+[node name="FollowerAndShooter2" parent="." instance=ExtResource("5_h4b2v")]
+position = Vector2(536, 224)
+
+[node name="FollowerAndShooter3" parent="." instance=ExtResource("5_h4b2v")]
+position = Vector2(608, 264)
+
+[node name="FollowerAndShooter4" parent="." instance=ExtResource("5_h4b2v")]
+position = Vector2(672, 264)
+
+[node name="FollowerAndShooter5" parent="." instance=ExtResource("5_h4b2v")]
+position = Vector2(744, 240)
+
+[node name="FollowerAndShooter6" parent="." instance=ExtResource("5_h4b2v")]
+position = Vector2(808, 176)
+
+[node name="RegularShooter" parent="." instance=ExtResource("6_5nnvv")]
+position = Vector2(144, -184)
+
+[node name="Dragon" parent="." instance=ExtResource("7_2a2ie")]
+position = Vector2(-496, -432)
+
+[node name="Bomber" parent="." instance=ExtResource("8_w2wpe")]
+position = Vector2(-264, -208)
+
+[node name="Bomber2" parent="." instance=ExtResource("8_w2wpe")]
+position = Vector2(-200, -208)
+
+[node name="Bomber3" parent="." instance=ExtResource("8_w2wpe")]
+position = Vector2(-200, -144)
+
+[node name="Bomber4" parent="." instance=ExtResource("8_w2wpe")]
+position = Vector2(-200, -80)
+
+[node name="Bomber5" parent="." instance=ExtResource("8_w2wpe")]
+position = Vector2(-264, -80)
+
+[node name="Bomber6" parent="." instance=ExtResource("8_w2wpe")]
+position = Vector2(-320, -80)
+
+[node name="Bomber7" parent="." instance=ExtResource("8_w2wpe")]
+position = Vector2(-320, -144)
+
+[node name="Bomber8" parent="." instance=ExtResource("8_w2wpe")]
+position = Vector2(-322, -206)
+
+[node name="Saw" parent="." instance=ExtResource("9_l1hfn")]
+position = Vector2(1432, -16)
+
+[node name="Sniper" parent="." instance=ExtResource("10_jp3wn")]
+position = Vector2(1144, -392)
+
+[node name="Sniper3" parent="." instance=ExtResource("10_jp3wn")]
+position = Vector2(1144, -256)
+
+[node name="Sniper4" parent="." instance=ExtResource("10_jp3wn")]
+position = Vector2(1144, -128)
+
+[node name="Sniper2" parent="." instance=ExtResource("10_jp3wn")]
+position = Vector2(1144, 0)
+
+[node name="Spreader" parent="." instance=ExtResource("11_11kc5")]
+position = Vector2(672, 456)
+
+[node name="Walker" parent="." instance=ExtResource("12_23b2k")]
+position = Vector2(888, -328)
+
+[node name="Walker2" parent="." instance=ExtResource("12_23b2k")]
+position = Vector2(824, -256)
+
+[node name="Walker3" parent="." instance=ExtResource("12_23b2k")]
+position = Vector2(888, -200)
+
+[node name="Walker4" parent="." instance=ExtResource("12_23b2k")]
+position = Vector2(952, -264)
+
+[node name="LockedDoorForEnemies" parent="." node_paths=PackedStringArray("enemies") instance=ExtResource("13_ai4en")]
+position = Vector2(560, 88)
+enemies = [NodePath("../FollowerAndShooter"), NodePath("../FollowerAndShooter7"), NodePath("../FollowerAndShooter8"), NodePath("../FollowerAndShooter2"), NodePath("../FollowerAndShooter3"), NodePath("../FollowerAndShooter4"), NodePath("../FollowerAndShooter5"), NodePath("../FollowerAndShooter6"), NodePath("../Spreader")]
+
+[node name="Follower2" parent="." instance=ExtResource("14_m0w6o")]
+position = Vector2(-168, 400)
+
+[node name="Key" parent="." instance=ExtResource("15_0vn3l")]
+position = Vector2(-256, -152)
+
+[node name="Key2" parent="." instance=ExtResource("15_0vn3l")]
+position = Vector2(888, -264)

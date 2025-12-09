@@ -18,7 +18,7 @@ var EnemiesDropsLife= true
 var LifeRegenerate= true 
 var HpRegenerate= true 
 var projPiercing = true 
-var projPassTrhoughWall = true 
+var projPassTrhoughWall = false 
 var AllowDash = true 
 var AutoShoot = true 
 

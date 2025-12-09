@@ -144,6 +144,7 @@ func takeDamage():
 	hp -= 1
 	
 	if hp == 0:
+		emit_signal("onDamage")
 		handlePlayerDeath()
 	else:
 		emit_signal("onDamage")

@@ -42,8 +42,6 @@ func FollowPlayer(delta: float):
 	velocity = Vector2(sin(angle) * -20000, cos(angle) * -20000) * delta
 	if move_and_slide():
 		ChangeAngle()
-		isfollowing = false
-		timer = 100
 	
 
 func Shoot(delta: float ):

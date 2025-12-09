@@ -109,6 +109,7 @@ func onPlayerDied() -> void:
 	
 	if player.life == 0:
 		get_tree().change_scene_to_file("res://Scenes/GameOverScreen.tscn")
+	
 	blackScreen.visible = true
 	blackScreenTimer = 120
 	player.position = Vector2(640.0, 520.0)

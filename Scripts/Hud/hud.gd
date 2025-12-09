@@ -85,4 +85,3 @@ func UpdateLife(life : float, lifebar: float, maxLifeBar : float):
 	else:
 		ApLowLife.stop()
 		lblLife.visible = true
-	

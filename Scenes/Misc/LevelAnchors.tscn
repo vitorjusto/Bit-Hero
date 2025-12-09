@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b3o8d76qdrp18" path="res://Scripts/levelAnchor.gd" id="1_x0qbc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x0qbc"]
-size = Vector2(128, 20)
+size = Vector2(256, 20)
 
 [node name="LevelAnchor" type="Node2D"]
 script = ExtResource("1_x0qbc")

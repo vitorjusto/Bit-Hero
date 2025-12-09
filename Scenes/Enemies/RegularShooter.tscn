@@ -62,6 +62,7 @@ animations = [{
 }]
 
 [node name="RegularShooter" type="CharacterBody2D"]
+collision_layer = 4
 script = ExtResource("1_diihm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -69,7 +70,7 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_kf0nj")
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_itmqq")]
-Hp = 100
+Hp = 120
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 4)

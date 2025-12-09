@@ -80,6 +80,8 @@ func ProcessDowngrade():
 		upgradeManager.HpRegenerate = false
 	if downgradeType == EDowngradeType.TIME:
 		timeManager.time -= 100
+		if timeManager.getTime() <= 0:
+			timeManager.emit_signal("onTimeUp")
 	if downgradeType == EDowngradeType.AUTOSHOOT:
 		upgradeManager.AutoShoot = false
 	
