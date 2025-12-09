@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://d2vyeg1evxibo"]
+
+[ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_7c3vo"]
+[ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="2_jpvd8"]
+[ext_resource type="PackedScene" uid="uid://cx5sy1x1xfdk" path="res://Scenes/Misc/LevelAnchors.tscn" id="3_1l3fy"]
+[ext_resource type="PackedScene" uid="uid://bu0k7h2bgb5xn" path="res://Scenes/Enemies/Sniper.tscn" id="4_voxyi"]
+[ext_resource type="PackedScene" uid="uid://c57k378v3qcff" path="res://Scenes/Enemies/Saw.tscn" id="5_mmsb1"]
+[ext_resource type="PackedScene" uid="uid://olpehiqfx4ao" path="res://Scenes/Enemies/Spreader.tscn" id="7_0ar8g"]
+[ext_resource type="PackedScene" uid="uid://c5x1lyspt0vuu" path="res://Scenes/Misc/LockedDoorForEnemies.tscn" id="11_2dk23"]
+[ext_resource type="PackedScene" uid="uid://oxp2ov643wo8" path="res://Scenes/Enemies/Spread.tscn" id="11_2g4tb"]
+[ext_resource type="PackedScene" uid="uid://eepfq85kkpjt" path="res://Scenes/Misc/Key.tscn" id="12_7c3vo"]
+
+[node name="Level11" type="Node2D"]
+script = ExtResource("1_7c3vo")
+
+[node name="Tiles" parent="." instance=ExtResource("2_jpvd8")]
+
+[node name="LevelAnchor" parent="." instance=ExtResource("3_1l3fy")]
+position = Vector2(664, 784)
+
+[node name="LevelAnchor2" parent="." instance=ExtResource("3_1l3fy")]
+position = Vector2(672, 0)
+AnchorType = 1
+
+[node name="Saw" parent="." instance=ExtResource("5_mmsb1")]
+position = Vector2(64, 352)
+
+[node name="Saw2" parent="." instance=ExtResource("5_mmsb1")]
+position = Vector2(64, 504)
+SPEED = Vector2(10000, -10000)
+
+[node name="Saw3" parent="." instance=ExtResource("5_mmsb1")]
+position = Vector2(1248, 352)
+SPEED = Vector2(-10000, 10000)
+
+[node name="Saw4" parent="." instance=ExtResource("5_mmsb1")]
+position = Vector2(1248, 504)
+SPEED = Vector2(-10000, -10000)
+
+[node name="Spreader" parent="." instance=ExtResource("7_0ar8g")]
+position = Vector2(152, 696)
+ShootType = 1
+
+[node name="Spreader2" parent="." instance=ExtResource("7_0ar8g")]
+position = Vector2(160, 176)
+ShootType = 1
+
+[node name="Spreader3" parent="." instance=ExtResource("7_0ar8g")]
+position = Vector2(1152, 168)
+ShootType = 1
+
+[node name="Spreader4" parent="." instance=ExtResource("7_0ar8g")]
+position = Vector2(1160, 704)
+ShootType = 1
+
+[node name="Spread16" parent="." instance=ExtResource("11_2g4tb")]
+position = Vector2(672, 416)
+
+[node name="LockedDoorForEnemies" parent="." node_paths=PackedStringArray("enemies") instance=ExtResource("11_2dk23")]
+position = Vector2(560, 88)
+enemies = [NodePath("../Key"), NodePath("../Key2"), NodePath("../Key3"), NodePath("../Key4")]
+
+[node name="Key" parent="." instance=ExtResource("12_7c3vo")]
+position = Vector2(64, 168)
+
+[node name="Key2" parent="." instance=ExtResource("12_7c3vo")]
+position = Vector2(64, 712)
+
+[node name="Key3" parent="." instance=ExtResource("12_7c3vo")]
+position = Vector2(1248, 160)
+
+[node name="Key4" parent="." instance=ExtResource("12_7c3vo")]
+position = Vector2(1248, 712)
+
+[node name="Sniper" parent="." instance=ExtResource("4_voxyi")]
+position = Vector2(64, 608)
+
+[node name="Sniper2" parent="." instance=ExtResource("4_voxyi")]
+position = Vector2(64, 256)
+
+[node name="Sniper3" parent="." instance=ExtResource("4_voxyi")]
+position = Vector2(1248, 256)
+
+[node name="Sniper4" parent="." instance=ExtResource("4_voxyi")]
+position = Vector2(1248, 608)

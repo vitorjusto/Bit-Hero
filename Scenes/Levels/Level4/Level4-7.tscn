@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://c17vesggly4kq"]
+
+[ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_egtss"]
+[ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="2_ks7oj"]
+[ext_resource type="PackedScene" uid="uid://cx5sy1x1xfdk" path="res://Scenes/Misc/LevelAnchors.tscn" id="3_5t7pf"]
+[ext_resource type="PackedScene" uid="uid://c5x1lyspt0vuu" path="res://Scenes/Misc/LockedDoorForEnemies.tscn" id="8_wirve"]
+[ext_resource type="PackedScene" uid="uid://cnneujqp6nkd5" path="res://Scenes/Enemies/FollowerAndShooter.tscn" id="9_atcc4"]
+[ext_resource type="PackedScene" uid="uid://de1yjxdjc31by" path="res://Scenes/Enemies/MultiWalker.tscn" id="10_3hf6l"]
+[ext_resource type="PackedScene" uid="uid://byrj37r6eyvqw" path="res://Scenes/Enemies/Flamethrower.tscn" id="12_icvyx"]
+[ext_resource type="PackedScene" uid="uid://em28kbj68try" path="res://Scenes/Enemies/RegularShooter.tscn" id="13_6fuvc"]
+
+[node name="Level11" type="Node2D"]
+script = ExtResource("1_egtss")
+
+[node name="Tiles" parent="." instance=ExtResource("2_ks7oj")]
+
+[node name="LevelAnchor" parent="." instance=ExtResource("3_5t7pf")]
+position = Vector2(664, 784)
+
+[node name="LevelAnchor2" parent="." instance=ExtResource("3_5t7pf")]
+position = Vector2(672, 0)
+AnchorType = 1
+
+[node name="FollowerAndShooter" parent="." instance=ExtResource("9_atcc4")]
+position = Vector2(760, 216)
+
+[node name="FollowerAndShooter2" parent="." instance=ExtResource("9_atcc4")]
+position = Vector2(560, 216)
+
+[node name="MultiWalker5" parent="." instance=ExtResource("10_3hf6l")]
+position = Vector2(96, 704)
+
+[node name="MultiWalker6" parent="." instance=ExtResource("10_3hf6l")]
+position = Vector2(1216, 704)
+
+[node name="Flamethrower2" parent="." instance=ExtResource("12_icvyx")]
+position = Vector2(80, 192)
+
+[node name="Flamethrower3" parent="." instance=ExtResource("12_icvyx")]
+position = Vector2(1232, 184)
+
+[node name="RegularShooter" parent="." instance=ExtResource("13_6fuvc")]
+position = Vector2(664, 184)
+facingDirection = 1
+ShootType = 3
+
+[node name="LockedDoorForEnemies" parent="." node_paths=PackedStringArray("enemies") instance=ExtResource("8_wirve")]
+position = Vector2(560, 88)
+enemies = [NodePath("../FollowerAndShooter"), NodePath("../FollowerAndShooter2"), NodePath("../MultiWalker5"), NodePath("../MultiWalker6"), NodePath("../Flamethrower2"), NodePath("../Flamethrower3"), NodePath("../RegularShooter")]

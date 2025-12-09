@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://cgqphu80baalm"]
+
+[ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_fdilu"]
+[ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="2_nnd7l"]
+[ext_resource type="PackedScene" uid="uid://cx5sy1x1xfdk" path="res://Scenes/Misc/LevelAnchors.tscn" id="3_s3w2y"]
+[ext_resource type="PackedScene" uid="uid://olpehiqfx4ao" path="res://Scenes/Enemies/Spreader.tscn" id="7_hvoag"]
+[ext_resource type="PackedScene" uid="uid://3llpkmt8dbq4" path="res://Scenes/Enemies/Kamikase.tscn" id="8_3tsiv"]
+[ext_resource type="PackedScene" uid="uid://bgdttt1xtunga" path="res://Scenes/Enemies/Follower.tscn" id="8_kncyv"]
+[ext_resource type="PackedScene" uid="uid://oxp2ov643wo8" path="res://Scenes/Enemies/Spread.tscn" id="11_jse7j"]
+[ext_resource type="PackedScene" uid="uid://c5x1lyspt0vuu" path="res://Scenes/Misc/LockedDoorForEnemies.tscn" id="11_qinpy"]
+
+[node name="Level11" type="Node2D"]
+script = ExtResource("1_fdilu")
+
+[node name="Tiles" parent="." instance=ExtResource("2_nnd7l")]
+
+[node name="LevelAnchor" parent="." instance=ExtResource("3_s3w2y")]
+position = Vector2(664, 784)
+
+[node name="LevelAnchor2" parent="." instance=ExtResource("3_s3w2y")]
+position = Vector2(672, 0)
+AnchorType = 1
+
+[node name="Spreader" parent="." instance=ExtResource("7_hvoag")]
+position = Vector2(672, 408)
+ShootType = 1
+
+[node name="Follower" parent="." instance=ExtResource("8_kncyv")]
+position = Vector2(96, 176)
+
+[node name="Follower2" parent="." instance=ExtResource("8_kncyv")]
+position = Vector2(1224, 176)
+
+[node name="Spread15" parent="." instance=ExtResource("11_jse7j")]
+position = Vector2(72, 416)
+rotation = 1.5707964
+
+[node name="Spread17" parent="." instance=ExtResource("11_jse7j")]
+position = Vector2(1240, 416)
+rotation = 4.712389
+
+[node name="LockedDoorForEnemies" parent="." node_paths=PackedStringArray("enemies") instance=ExtResource("11_qinpy")]
+position = Vector2(560, 88)
+enemies = [NodePath("../Spreader"), NodePath("../Follower"), NodePath("../Follower2"), NodePath("../Spread15"), NodePath("../Spread17"), NodePath("../Kamikase"), NodePath("../Kamikase2")]
+
+[node name="Kamikase" parent="." instance=ExtResource("8_3tsiv")]
+position = Vector2(96, 672)
+
+[node name="Kamikase2" parent="." instance=ExtResource("8_3tsiv")]
+position = Vector2(1216, 672)

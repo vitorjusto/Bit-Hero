@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://cgbw04e0mnbho"]
+
+[ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_mr6cv"]
+[ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="2_jme1m"]
+[ext_resource type="PackedScene" uid="uid://cx5sy1x1xfdk" path="res://Scenes/Misc/LevelAnchors.tscn" id="3_nac4r"]
+[ext_resource type="PackedScene" uid="uid://dxroh03ccvtsf" path="res://Scenes/Enemies/Spikes.tscn" id="6_lcjod"]
+[ext_resource type="PackedScene" uid="uid://c5x1lyspt0vuu" path="res://Scenes/Misc/LockedDoorForEnemies.tscn" id="8_kxxah"]
+[ext_resource type="PackedScene" uid="uid://bgdttt1xtunga" path="res://Scenes/Enemies/Follower.tscn" id="8_rhld4"]
+[ext_resource type="PackedScene" uid="uid://byrj37r6eyvqw" path="res://Scenes/Enemies/Flamethrower.tscn" id="12_thwt5"]
+
+[node name="Level11" type="Node2D"]
+script = ExtResource("1_mr6cv")
+
+[node name="Tiles" parent="." instance=ExtResource("2_jme1m")]
+
+[node name="LevelAnchor" parent="." instance=ExtResource("3_nac4r")]
+position = Vector2(664, 784)
+
+[node name="LevelAnchor2" parent="." instance=ExtResource("3_nac4r")]
+position = Vector2(672, 0)
+AnchorType = 1
+
+[node name="Spikes5" parent="." instance=ExtResource("6_lcjod")]
+position = Vector2(96, 672)
+direction = 1
+
+[node name="Spikes6" parent="." instance=ExtResource("6_lcjod")]
+position = Vector2(96, 512)
+direction = 1
+
+[node name="Spikes7" parent="." instance=ExtResource("6_lcjod")]
+position = Vector2(96, 352)
+direction = 1
+
+[node name="Spikes8" parent="." instance=ExtResource("6_lcjod")]
+position = Vector2(96, 192)
+direction = 1
+
+[node name="Follower" parent="." instance=ExtResource("8_rhld4")]
+position = Vector2(88, 272)
+
+[node name="Follower2" parent="." instance=ExtResource("8_rhld4")]
+position = Vector2(88, 432)
+
+[node name="Follower3" parent="." instance=ExtResource("8_rhld4")]
+position = Vector2(88, 600)
+
+[node name="Follower4" parent="." instance=ExtResource("8_rhld4")]
+position = Vector2(1216, 272)
+
+[node name="Follower5" parent="." instance=ExtResource("8_rhld4")]
+position = Vector2(1216, 432)
+
+[node name="Follower6" parent="." instance=ExtResource("8_rhld4")]
+position = Vector2(1216, 600)
+
+[node name="Flamethrower" parent="." instance=ExtResource("12_thwt5")]
+position = Vector2(536, 192)
+
+[node name="Flamethrower2" parent="." instance=ExtResource("12_thwt5")]
+position = Vector2(776, 192)
+
+[node name="LockedDoorForEnemies" parent="." node_paths=PackedStringArray("enemies") instance=ExtResource("8_kxxah")]
+position = Vector2(560, 88)
+enemies = [NodePath("../Follower"), NodePath("../Follower2"), NodePath("../Follower3"), NodePath("../Follower4"), NodePath("../Follower5"), NodePath("../Follower6"), NodePath("../Flamethrower"), NodePath("../Flamethrower2")]

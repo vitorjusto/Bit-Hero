@@ -31,7 +31,6 @@ func HandleSpecial():
 		specialBar -= 100
 		
 		var instance : SpecialBase = special1.instantiate()
-		instance.position = player.position
 		
 		var mouse_pos = get_viewport().get_mouse_position()
 		#Get relative position from player according to viewport
@@ -39,5 +38,7 @@ func HandleSpecial():
 	
 		var angle = atan2(playerGlobalPosition.x - mouse_pos.x, playerGlobalPosition.y - mouse_pos.y)
 		instance.speed = Vector2(sin(angle) * -20000, cos(angle) * -20000)
+		
+		instance.position = player.position + Vector2(sin(angle) * -50, cos(angle) * -50)
 		main.add_child(instance)
 	

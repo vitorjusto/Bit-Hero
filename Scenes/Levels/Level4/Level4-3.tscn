@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3g3a32xvmt1u"]
+
+[ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_53ddk"]
+[ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="2_bxtvm"]
+[ext_resource type="PackedScene" uid="uid://cx5sy1x1xfdk" path="res://Scenes/Misc/LevelAnchors.tscn" id="3_csnsb"]
+[ext_resource type="PackedScene" uid="uid://bu0k7h2bgb5xn" path="res://Scenes/Enemies/Sniper.tscn" id="4_ksbdp"]
+[ext_resource type="PackedScene" uid="uid://c5x1lyspt0vuu" path="res://Scenes/Misc/LockedDoorForEnemies.tscn" id="7_hfetq"]
+[ext_resource type="PackedScene" uid="uid://de1yjxdjc31by" path="res://Scenes/Enemies/MultiWalker.tscn" id="12_i1s2h"]
+
+[node name="Level11" type="Node2D"]
+script = ExtResource("1_53ddk")
+
+[node name="Tiles" parent="." instance=ExtResource("2_bxtvm")]
+
+[node name="LevelAnchor" parent="." instance=ExtResource("3_csnsb")]
+position = Vector2(664, 784)
+
+[node name="LevelAnchor2" parent="." instance=ExtResource("3_csnsb")]
+position = Vector2(672, 0)
+AnchorType = 1
+
+[node name="Sniper2" parent="." instance=ExtResource("4_ksbdp")]
+position = Vector2(96, 416)
+
+[node name="Sniper3" parent="." instance=ExtResource("4_ksbdp")]
+position = Vector2(1248, 408)
+
+[node name="MultiWalker" parent="." instance=ExtResource("12_i1s2h")]
+position = Vector2(96, 680)
+
+[node name="MultiWalker11" parent="." instance=ExtResource("12_i1s2h")]
+position = Vector2(1240, 680)
+
+[node name="MultiWalker5" parent="." instance=ExtResource("12_i1s2h")]
+position = Vector2(792, 176)
+
+[node name="MultiWalker8" parent="." instance=ExtResource("12_i1s2h")]
+position = Vector2(1248, 192)
+
+[node name="MultiWalker6" parent="." instance=ExtResource("12_i1s2h")]
+position = Vector2(1248, 272)
+
+[node name="MultiWalker3" parent="." instance=ExtResource("12_i1s2h")]
+position = Vector2(96, 584)
+
+[node name="MultiWalker12" parent="." instance=ExtResource("12_i1s2h")]
+position = Vector2(536, 176)
+
+[node name="MultiWalker4" parent="." instance=ExtResource("12_i1s2h")]
+position = Vector2(96, 200)
+
+[node name="MultiWalker2" parent="." instance=ExtResource("12_i1s2h")]
+position = Vector2(96, 288)
+
+[node name="MultiWalker10" parent="." instance=ExtResource("12_i1s2h")]
+position = Vector2(1240, 576)
+
+[node name="LockedDoorForEnemies" parent="." node_paths=PackedStringArray("enemies") instance=ExtResource("7_hfetq")]
+position = Vector2(560, 88)
+enemies = [NodePath("../Sniper2"), NodePath("../Sniper3"), NodePath("../MultiWalker"), NodePath("../MultiWalker11"), NodePath("../MultiWalker5"), NodePath("../MultiWalker8"), NodePath("../MultiWalker6"), NodePath("../MultiWalker3"), NodePath("../MultiWalker12"), NodePath("../MultiWalker4"), NodePath("../MultiWalker2"), NodePath("../MultiWalker10")]

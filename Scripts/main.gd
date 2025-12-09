@@ -12,7 +12,8 @@ var sections = []
 @onready var lblTimeUp : Label = get_node("CanvasLayer/lblTimeUp")
 @onready var powerUpManager : PowerUpManager = get_node("PowerUpManager")
 
-var level = 3
+var level = 1
+
 var blackScreenTimer = 100
 
 func _ready() -> void:
