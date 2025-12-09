@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dubfjm3pcuuqs"]
+[gd_scene load_steps=16 format=3 uid="uid://dubfjm3pcuuqs"]
 
 [ext_resource type="Script" uid="uid://ctr4w6epxmyt5" path="res://Scripts/main.gd" id="1_idj7w"]
 [ext_resource type="PackedScene" uid="uid://cqd5gq4nx3yh2" path="res://Scenes/Player/Player.tscn" id="3_kln2b"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://dooucd7uo8n7i" path="res://Scripts/Managers/EnemiesProjectileManager.gd" id="9_vy5pj"]
 [ext_resource type="FontFile" uid="uid://clufxxmftvg5k" path="res://Assets/Fonts/bitFont.ttf" id="10_bmxlf"]
 [ext_resource type="Script" uid="uid://c4tsgadscpcr1" path="res://Scripts/Managers/powerUpManager.gd" id="11_4kpch"]
+[ext_resource type="AudioStream" uid="uid://b302dr10gguwg" path="res://Assets/Songs/TakingOver.mp3" id="12_grg3l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1gob"]
 size = Vector2(1314.5, 37)
@@ -25,10 +26,11 @@ font_size = 64
 [node name="Main" type="Node2D"]
 script = ExtResource("1_idj7w")
 
-[node name="Hud" parent="." node_paths=PackedStringArray("upgradeManager", "player", "timeManager") instance=ExtResource("3_rgh2o")]
+[node name="Hud" parent="." node_paths=PackedStringArray("upgradeManager", "player", "timeManager", "main") instance=ExtResource("3_rgh2o")]
 upgradeManager = NodePath("../UpgradeManager")
 player = NodePath("../Player")
 timeManager = NodePath("../TimeManager")
+main = NodePath("..")
 
 [node name="Player" parent="." instance=ExtResource("3_kln2b")]
 position = Vector2(640, 520)
@@ -87,6 +89,30 @@ vertical_alignment = 1
 
 [node name="PowerUpManager" type="Node2D" parent="."]
 script = ExtResource("11_4kpch")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_grg3l")
+volume_db = -20.0
+
+[node name="clPause" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel2" type="Panel" parent="clPause"]
+offset_left = 512.0
+offset_top = 336.0
+offset_right = 768.0
+offset_bottom = 440.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vy5pj")
+
+[node name="lblTimeUp2" type="Label" parent="clPause"]
+offset_left = 526.0
+offset_top = 348.0
+offset_right = 754.0
+offset_bottom = 428.0
+text = "Pause"
+label_settings = SubResource("LabelSettings_4kpch")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="onDamage" from="Player" to="Hud" method="UpdateHud"]
 [connection signal="playerDied" from="Player" to="." method="onPlayerDied"]

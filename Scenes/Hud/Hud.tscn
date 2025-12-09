@@ -114,14 +114,13 @@ tracks/0/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_bbjj2"]
-resource_name = "lowTime"
+[sub_resource type="Animation" id="Animation_ysf55"]
+resource_name = "lowLife"
 length = 2.0
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("lblTime:visible")
+tracks/0/path = NodePath("lblLife:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -131,13 +130,14 @@ tracks/0/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_ysf55"]
-resource_name = "lowLife"
+[sub_resource type="Animation" id="Animation_bbjj2"]
+resource_name = "lowTime"
 length = 2.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("lblLife:visible")
+tracks/0/path = NodePath("lblTime:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -194,16 +194,16 @@ offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_iteex")
 
 [node name="pnHpBar" type="Panel" parent="."]
-offset_left = 8.0
+offset_left = 192.0
 offset_top = 37.0
-offset_right = 8.0
+offset_right = 192.0
 offset_bottom = 43.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_iteex")
 
 [node name="pnlife" type="Panel" parent="."]
-offset_left = 384.0
+offset_left = 8.0
 offset_top = 37.0
-offset_right = 384.0
+offset_right = 8.0
 offset_bottom = 43.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_iteex")
 
@@ -222,9 +222,9 @@ offset_bottom = 80.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xymhr")
 
 [node name="lblHp" type="Label" parent="."]
-offset_left = 8.0
+offset_left = 192.0
 offset_top = 8.0
-offset_right = 126.0
+offset_right = 310.0
 offset_bottom = 32.0
 text = "Hp: 10/10"
 label_settings = SubResource("LabelSettings_iteex")
@@ -238,34 +238,42 @@ text = "Power: 10"
 label_settings = SubResource("LabelSettings_bbjj2")
 
 [node name="lblSpeed" type="Label" parent="."]
-offset_left = 384.0
-offset_top = 53.0
-offset_right = 516.0
-offset_bottom = 77.0
+offset_left = 360.0
+offset_top = 56.0
+offset_right = 492.0
+offset_bottom = 80.0
 text = "Speed: 10"
 label_settings = SubResource("LabelSettings_ysf55")
 
 [node name="lblLife" type="Label" parent="."]
-offset_left = 384.0
+offset_left = 8.0
 offset_top = 8.0
-offset_right = 496.0
+offset_right = 120.0
 offset_bottom = 32.0
 text = "Lifes: 3"
 label_settings = SubResource("LabelSettings_ighhf")
 
 [node name="lblTime" type="Label" parent="."]
-offset_left = 528.0
+offset_left = 360.0
 offset_top = 8.0
-offset_right = 640.0
+offset_right = 480.0
 offset_bottom = 32.0
 text = "Time: 500"
 label_settings = SubResource("LabelSettings_ighhf")
 
-[node name="lblBullet" type="Label" parent="."]
-offset_left = 192.0
+[node name="lblSection" type="Label" parent="."]
+offset_left = 536.0
 offset_top = 8.0
-offset_right = 344.0
+offset_right = 656.0
 offset_bottom = 32.0
+text = "Lv: 00/30"
+label_settings = SubResource("LabelSettings_ighhf")
+
+[node name="lblBullet" type="Label" parent="."]
+offset_left = 536.0
+offset_top = 56.0
+offset_right = 688.0
+offset_bottom = 80.0
 text = "Bullets: 5"
 label_settings = SubResource("LabelSettings_r61c6")
 
@@ -279,9 +287,9 @@ label_settings = SubResource("LabelSettings_ogn3t")
 
 [node name="Label6" type="Label" parent="."]
 offset_left = 768.0
-offset_top = 48.0
+offset_top = 56.0
 offset_right = 890.0
-offset_bottom = 72.0
+offset_bottom = 80.0
 text = "Special:"
 label_settings = SubResource("LabelSettings_xymhr")
 

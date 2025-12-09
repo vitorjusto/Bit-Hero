@@ -11,7 +11,11 @@ var sections = []
 @onready var hud : Hud = get_node("Hud")
 @onready var lblTimeUp : Label = get_node("CanvasLayer/lblTimeUp")
 @onready var powerUpManager : PowerUpManager = get_node("PowerUpManager")
+@onready var audioStreamPlayer : AudioStreamPlayer = get_node("AudioStreamPlayer")
+@onready var clPause : CanvasLayer = get_node("clPause")
 
+var isPaused = false
+var pausedObjects = []
 var level = 1
 
 var blackScreenTimer = 100
@@ -21,14 +25,19 @@ func _ready() -> void:
 	player.allowMove = false
 	GenerateLevels()
 	SetPlayerCameraBehavior()
+	hud.UpdateHud()
 
 func _process(delta: float) -> void:
 	if blackScreenTimer <= 0:
+		HandlePause()
 		return
 	
 	blackScreenTimer -= delta *60
 	
+		
+	
 	if blackScreenTimer <= 0:
+		audioStreamPlayer.play(0)
 		player.process_mode = Node.PROCESS_MODE_INHERIT
 		player.hp = upgradeManager.MaxHP
 		blackScreen.visible = false
@@ -47,8 +56,47 @@ func SetPlayerCameraBehavior():
 	playerCamera.limit_bottom = section.position.y + entraceAnchor.position.y
 	playerCamera.limit_top = section.position.y
 
+func HandlePause():
+	if Input.is_action_just_pressed("Pause"):
+		isPaused = !isPaused
+		clPause.visible = isPaused
+		if isPaused:
+			PauseObjects(get_children())
+		else:
+			for i in pausedObjects:
+				i.set_physics_process(true)
+				i.set_process(true)
+				if i is AnimatedSprite2D:
+					var ani : AnimatedSprite2D = i
+					ani.play()
+				if i is AnimationPlayer:
+					var ani : AnimationPlayer = i
+					ani.play()
+			
+			pausedObjects.clear()
+
+func PauseObjects(nodes : Array[Node]):
+	for i in nodes:
+		if i.process_mode == PROCESS_MODE_DISABLED:
+			continue
+		
+		pausedObjects.append(i)
+		i.set_physics_process(false)
+		i.set_process(false)
+		
+		if i is AnimatedSprite2D:
+			var ani : AnimatedSprite2D = i
+			ani.pause()
+			
+		if i is AnimationPlayer:
+			var ani : AnimationPlayer = i
+			ani.pause()
+		
+		PauseObjects(i.get_children())
+	
+	
 func GenerateLevels():
-	currentSection = 0
+	currentSection = 1
 	
 	var scene : PackedScene = load("res://Scenes/Levels/Level1/Level1-start.tscn")
 	var instance: Node2D = scene.instantiate()
@@ -58,8 +106,8 @@ func GenerateLevels():
 	call_deferred("add_child", instance)
 	sections.append(instance)
 	
-	var amount = 30
-	for n in range(1, amount):
+	var amount = 21
+	for n in range(2, amount):
 		if n == amount - 1:
 			scene = load("res://Scenes/Levels/Level%d/Level%d-boss.tscn" % [level, level])
 		elif n % 5 == 0:
@@ -95,6 +143,7 @@ func nextSection():
 	wall.position = section.position
 	
 	currentSection += 1
+	hud.UpdateHud()
 	var prevSection : LevelBase = sections[0]
 	prevSection.call_deferred("queue_free")
 	sections.remove_at(0)
@@ -112,6 +161,8 @@ func onPlayerDied() -> void:
 		get_tree().change_scene_to_file("res://Scenes/GameOverScreen.tscn")
 	
 	blackScreen.visible = true
+	
+	audioStreamPlayer.stop()
 	blackScreenTimer = 120
 	player.position = Vector2(640.0, 520.0)
 	player.facingDirection = Player.EFACINGDIRECTION.DOWN
@@ -132,6 +183,7 @@ func OnTimeUp() -> void:
 	lblTimeUp.visible = true
 
 func nextLevel():
+	audioStreamPlayer.stop()
 	powerUpManager.ClearPowerUps()
 	blackScreen.visible = true
 	blackScreenTimer = 120

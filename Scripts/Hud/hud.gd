@@ -4,6 +4,7 @@ extends CanvasLayer
 @export var upgradeManager : UpgradeManager  
 @export var player : Player  
 @export var timeManager : TimeManager  
+@export var main : Main  
 
 @onready var lblHp : Label = get_node("lblHp")
 @onready var lblPower : Label = get_node("lblPower")
@@ -12,6 +13,7 @@ extends CanvasLayer
 @onready var lblRange : Label = get_node("lblRange")
 @onready var lblLife : Label = get_node("lblLife")
 @onready var lblTime : Label = get_node("lblTime")
+@onready var lblSection : Label = get_node("lblSection")
 
 @onready var pnSpecial : Panel = get_node("pnSpecial")
 @onready var pnDash : Panel = get_node("pnDash")
@@ -36,6 +38,7 @@ func UpdateHud():
 	lblSpeed.text = "Speed: %d" % upgradeManager.Speed
 	lblRange.text = "Range: %d" % upgradeManager.RangeProj
 	lblBullet.text = "Bullets: %d" % upgradeManager.bulletAmount
+	lblSection.text = "Lv: %d/30" % main.currentSection
 	
 	pnDash.visible = upgradeManager.AllowDash
 	pnSpecialBar3.visible = upgradeManager.Special > 2
