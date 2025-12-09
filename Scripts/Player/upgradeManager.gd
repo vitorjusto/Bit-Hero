@@ -3,7 +3,7 @@ extends Node2D
 
 @export var player : Player
 
-var MaxHP = 2 #Done
+var MaxHP = 10 #Done
 var Power = 5 #Done
 var Special = 3
 var passiveRechargingSpecial = true

@@ -5,10 +5,12 @@ var currentSection = 0
 var sections = []
 @onready var player : Player = get_node("Player")
 @onready var wall : StaticBody2D = get_node("StaticBody2D")
-@onready var blackScreen : Panel = get_node("CanvasLayer/Panel")
+@onready var blackScreen : CanvasLayer = get_node("CanvasLayer")
 @onready var upgradeManager : UpgradeManager = get_node("UpgradeManager")
 @onready var enemiesProj : EnemiesProjectileManager = get_node("EnemiesProjectileManager")
 @onready var hud : Hud = get_node("Hud")
+@onready var lblTimeUp : Label = get_node("CanvasLayer/lblTimeUp")
+
 var level = 1
 var blackScreenTimer = 100
 
@@ -26,11 +28,13 @@ func _process(delta: float) -> void:
 	
 	if blackScreenTimer <= 0:
 		player.process_mode = Node.PROCESS_MODE_INHERIT
+		player.hp = upgradeManager.MaxHP
 		blackScreen.visible = false
 		player.allowMove = true
 		player.visible = true
 		player.aniSprite.visible = true
 		player.col.set_deferred("disabled", false)
+		lblTimeUp.visible = false
 	
 func SetPlayerCameraBehavior():
 	
@@ -48,7 +52,7 @@ func GenerateLevels():
 	var instance: Node2D = scene.instantiate()
 	
 	var lastLevel = instance
-	add_child(instance)
+	call_deferred("add_child", instance)
 	sections.append(instance)
 	
 	var amount = 2
@@ -67,7 +71,7 @@ func GenerateLevels():
 		instance.position =Vector2(0, lastLevel.position.y + lastLevelAnchor.position.y - currentLevelAnchor.position.y)
 		
 		lastLevel = instance
-		add_child(instance)
+		call_deferred("add_child", instance)
 		sections.append(instance)
 	
 	if level == 4:
@@ -80,7 +84,7 @@ func GenerateLevels():
 		instance.position =Vector2(0, lastLevel.position.y + lastLevelAnchor.position.y - currentLevelAnchor.position.y)
 		
 		lastLevel = instance
-		add_child(instance)
+		call_deferred("add_child", instance)
 		sections.append(instance)
 
 func nextSection():
@@ -98,12 +102,14 @@ func setCamerafromStart():
 	SetPlayerCameraBehavior()
 
 func onPlayerDied() -> void:
+	player.life -= 1
+	
+	if player.life == 0:
+		get_tree().change_scene_to_file("res://Scenes/GameOverScreen.tscn")
 	blackScreen.visible = true
 	blackScreenTimer = 120
 	player.position = Vector2(640.0, 520.0)
 	
-	player.hp = upgradeManager.MaxHP
-	player.life -= 1
 	enemiesProj.disableAllProjectiles()
 	ClearLevels()
 	GenerateLevels()
@@ -114,3 +120,17 @@ func ClearLevels():
 		a.call_deferred("queue_free")
 	
 	sections.clear()
+
+func OnTimeUp() -> void:
+	lblTimeUp.visible = true
+
+func nextLevel():
+	blackScreen.visible = true
+	blackScreenTimer = 120
+	player.position = Vector2(640.0, 520.0)
+	enemiesProj.disableAllProjectiles()
+	player.allowMove = false
+	level += 1
+	ClearLevels()
+	GenerateLevels()
+	setCamerafromStart()

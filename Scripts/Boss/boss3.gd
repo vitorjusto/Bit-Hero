@@ -7,6 +7,7 @@ var SPEED = Vector2(10000, 10000)
 @onready var projManager: EnemiesProjectileManager = get_tree().root.get_node("/root/Main/EnemiesProjectileManager")
 @onready var parent: Node2D = get_parent()
 @onready var player: Player = get_tree().root.get_node("/root/Main/Player")
+@export var portal: Node2D
 
 var timer = 100
 const MAXTIMER = 60
@@ -41,3 +42,6 @@ func ShootProjectile(offset: float):
 	var speed = Vector2(sin(angle + offset) * -10, cos(angle + offset) * -10)
 	
 	projManager.ShootRegularProjectile(global_position, speed)
+
+func onDefeat() -> void:
+	portal.set_deferred("position", Vector2(640.0, 520.0))

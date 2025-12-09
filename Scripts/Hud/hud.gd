@@ -25,12 +25,13 @@ extends CanvasLayer
 
 @onready var ApLowHp : AnimationPlayer = get_node("ApLowHp")
 @onready var ApLowTime : AnimationPlayer = get_node("ApLowTime")
+@onready var ApLowLife : AnimationPlayer = get_node("ApLowLife")
 
 func _ready() -> void:
 	UpdateHud()
 
 func UpdateHud():
-	lblHp.text = "Hp: %d/%d" % [player.hp, upgradeManager.MaxHP]
+	lblHp.text = "Hp: %d/%d" % [clamp(player.hp,0, 100), upgradeManager.MaxHP]
 	lblPower.text = "Power: %d" % upgradeManager.Power
 	lblSpeed.text = "Speed: %d" % upgradeManager.Speed
 	lblRange.text = "Range: %d" % upgradeManager.RangeProj
@@ -63,7 +64,7 @@ func updateProjCooldown(currentcooldown: float, max: float):
 	pnProjCooldown.size = Vector2(xSize, 8)
 
 func UpdateHp(hpBar : float):
-	lblHp.text = "Hp: %d/%d" % [player.hp, upgradeManager.MaxHP]
+	lblHp.text = "Hp: %d/%d" % [clamp(player.hp,0, 100), upgradeManager.MaxHP]
 	var xSize = abs(((hpBar / 20) * 72))
 	pnHpBar.size = Vector2(xSize, 6)
 	
@@ -78,3 +79,10 @@ func UpdateLife(life : float, lifebar: float, maxLifeBar : float):
 	lblLife.text = "Life: %d" % life
 	var xSize = (lifebar / maxLifeBar) * 100
 	pnlife.size = Vector2(xSize, 6)
+	
+	if player.life == 1:
+		ApLowLife.play("lowLife")
+	else:
+		ApLowLife.stop()
+		lblLife.visible = true
+	

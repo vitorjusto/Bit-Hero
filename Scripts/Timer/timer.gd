@@ -8,7 +8,14 @@ func _process(delta: float) -> void:
 		time = 300
 		return
 	
+	if time < 0:
+		return
+	
 	time -= delta
+	
+	if time < 0:
+		emit_signal("onTimeUp")
 
+signal onTimeUp()
 func getTime() -> int:
 	return ceil(time)

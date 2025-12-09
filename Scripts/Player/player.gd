@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-var hp = 2
+var hp = 10
 var hpBar : float = 0
 const SPEED = 130.0
 const JUMP_VELOCITY = -400.0

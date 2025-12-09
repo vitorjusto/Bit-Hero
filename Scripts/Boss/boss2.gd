@@ -10,6 +10,7 @@ var fixedSpeed: float = 10000
 @export var anchors : Array[Node2D]
 @onready var projManager: EnemiesProjectileManager = get_tree().root.get_node("/root/Main/EnemiesProjectileManager")
 @onready var hurtbox: Hurtbox = get_node("Hurtbox")
+@export var portal: Node2D
 
 var shootTimer =150
 const MAXSHOOTTIMER : float = 80
@@ -66,3 +67,6 @@ func ShootProjectile(offSetPos: Vector2, offset: float):
 	var projSpeed = Vector2(sin(deg_to_rad(angle) + offset) * -10, cos(deg_to_rad(angle) + offset) * -10)
 	projManager.ShootFireProjectile(global_position + offSetPos, projSpeed)
 	
+
+func onDefeat() -> void:
+	portal.set_deferred("position", Vector2(640.0, 520.0))

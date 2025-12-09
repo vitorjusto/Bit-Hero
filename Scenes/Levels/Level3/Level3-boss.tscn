@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://ctjmdwjoqmoqm"]
+[gd_scene load_steps=12 format=4 uid="uid://ctjmdwjoqmoqm"]
 
 [ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_sojos"]
 [ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="2_qt2kp"]
 [ext_resource type="PackedScene" uid="uid://cx5sy1x1xfdk" path="res://Scenes/Misc/LevelAnchors.tscn" id="3_aixy0"]
 [ext_resource type="Script" uid="uid://phae2l1qrk6c" path="res://Scripts/Misc/bossDoorDetector.gd" id="4_ydseq"]
 [ext_resource type="PackedScene" uid="uid://bypdfx8jr01ur" path="res://Scenes/Bosses/Boss3.tscn" id="5_cnidw"]
+[ext_resource type="Script" uid="uid://bv2les5cqahs4" path="res://Scripts/Misc/portal.gd" id="6_onklc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omyj6"]
 size = Vector2(171, 45)
@@ -14,6 +15,11 @@ size = Vector2(255, 40)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71qtb"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0hehe"]
+radius = 38.013157
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1qcpk"]
 
 [node name="Level1Boss" type="Node2D"]
 script = ExtResource("1_sojos")
@@ -51,7 +57,23 @@ offset_right = 255.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_71qtb")
 
-[node name="Boss3" parent="." instance=ExtResource("5_cnidw")]
+[node name="Boss3" parent="." node_paths=PackedStringArray("portal") instance=ExtResource("5_cnidw")]
 position = Vector2(656, 240)
+portal = NodePath("../portal2")
+
+[node name="portal2" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("6_onklc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal2"]
+shape = SubResource("CircleShape2D_0hehe")
+
+[node name="Panel" type="Panel" parent="portal2"]
+offset_left = -20.0
+offset_top = -22.0
+offset_right = 20.0
+offset_bottom = 18.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1qcpk")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="OnPlayerDetected"]
+[connection signal="body_entered" from="portal2" to="portal2" method="onPlayerDeteced"]

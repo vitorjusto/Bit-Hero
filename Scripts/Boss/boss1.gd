@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var parent: Node2D = get_parent()
 @onready var projManager: EnemiesProjectileManager = get_tree().root.get_node("/root/Main/EnemiesProjectileManager")
 @onready var hurtbox: Hurtbox = get_node("Hurtbox")
+@export var portal: Node2D
+
 var angle
 func _ready() -> void:
 	changeAngle()
@@ -77,3 +79,6 @@ func shootAllProjectiles():
 func shoot(ang: float):
 	var speed = Vector2(sin(deg_to_rad(ang)) * -10, cos(deg_to_rad(ang)) * -10)
 	projManager.ShootRegularProjectile(global_position, speed)
+
+func onDefeat() -> void:
+	portal.set_deferred("position", Vector2(640.0, 520.0))

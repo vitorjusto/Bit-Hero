@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://6vi4mxo2f238"]
+
+[ext_resource type="Script" uid="uid://b8ckduus1xxed" path="res://Scripts/titleScreen.gd" id="1_uebgo"]
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_uebgo")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 288.0
+offset_top = 208.0
+offset_right = 760.0
+offset_bottom = 312.0
+text = "AOOOOOOOOOOOOOOOOOOOOOOO"

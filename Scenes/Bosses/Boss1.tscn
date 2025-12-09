@@ -33,3 +33,5 @@ offset_top = -101.0
 offset_right = 100.0
 offset_bottom = 100.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_i8kqm")
+
+[connection signal="onDefeat" from="Hurtbox" to="." method="onDefeat"]
