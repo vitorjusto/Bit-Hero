@@ -109,6 +109,7 @@ func onPlayerDied() -> void:
 	blackScreen.visible = true
 	blackScreenTimer = 120
 	player.position = Vector2(640.0, 520.0)
+	player.facingDirection = Player.EFACINGDIRECTION.DOWN
 	
 	enemiesProj.disableAllProjectiles()
 	ClearLevels()

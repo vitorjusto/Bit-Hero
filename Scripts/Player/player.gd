@@ -11,6 +11,10 @@ const JUMP_VELOCITY = -400.0
 @onready var col: CollisionShape2D = get_node("CollisionShape2D")
 @onready var aniSprite: AnimatedSprite2D = get_node("AnimatedSprite2D")
 
+enum EFACINGDIRECTION {UP, DOWN, LEFT, RIGHT}
+
+var facingDirection = EFACINGDIRECTION.DOWN
+
 var life = 3
 var lifeBar = 0
 var maxLifeBar = 20
@@ -41,6 +45,8 @@ func _physics_process(delta: float) -> void:
 		
 		velocity = currentInput * currentSpeed 
 	
+	HandleAnimations()
+	
 	if allowMove:
 		move_and_slide()
 	
@@ -54,6 +60,27 @@ func _physics_process(delta: float) -> void:
 	
 	hud.UpdateHp(hpBar)
 	hud.UpdateLife(life, lifeBar, maxLifeBar)
+
+func HandleAnimations():
+	if Input.is_action_just_pressed("Up"):
+		facingDirection = EFACINGDIRECTION.UP
+	elif Input.is_action_just_pressed("Down"):
+		facingDirection = EFACINGDIRECTION.DOWN
+	elif Input.is_action_just_pressed("Left"):
+		facingDirection = EFACINGDIRECTION.LEFT
+	elif Input.is_action_just_pressed("Right"):
+		facingDirection = EFACINGDIRECTION.RIGHT
+	
+	var isIdling = Input.get_vector("Left", "Right", "Up", "Down") == Vector2.ZERO
+	
+	if facingDirection == EFACINGDIRECTION.UP:
+		aniSprite.play("IdleUp" if isIdling else "WalkingUp")
+	elif facingDirection == EFACINGDIRECTION.DOWN:
+		aniSprite.play("IdleDown" if isIdling else "WalkingDown")
+	elif facingDirection == EFACINGDIRECTION.LEFT:
+		aniSprite.play("IdleLeft" if isIdling else "WalkingLeft")
+	elif facingDirection == EFACINGDIRECTION.RIGHT:
+		aniSprite.play("IdleRight" if isIdling else "WalkingRight")
 
 func addLifeBar():
 	if life == 9:
