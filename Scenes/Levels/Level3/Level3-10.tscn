@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://dp28kcepw0dkf"]
+
+[ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_mtang"]
+[ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="2_sj2hv"]
+[ext_resource type="PackedScene" uid="uid://cx5sy1x1xfdk" path="res://Scenes/Misc/LevelAnchors.tscn" id="3_5ndth"]
+[ext_resource type="PackedScene" uid="uid://bjonlf064q4pl" path="res://Scenes/Enemies/BallOnChain.tscn" id="7_qdjlf"]
+
+[node name="Level11" type="Node2D"]
+script = ExtResource("1_mtang")
+
+[node name="Tiles" parent="." instance=ExtResource("2_sj2hv")]
+
+[node name="LevelAnchor" parent="." instance=ExtResource("3_5ndth")]
+position = Vector2(664, 784)
+
+[node name="LevelAnchor2" parent="." instance=ExtResource("3_5ndth")]
+position = Vector2(672, 0)
+AnchorType = 1
+
+[node name="BallOnChain2" parent="." instance=ExtResource("7_qdjlf")]
+position = Vector2(672, 416)
+changeSpacing = true
+
+[node name="BallOnChain3" parent="." instance=ExtResource("7_qdjlf")]
+position = Vector2(672, 416)
+startAngule = 270
+changeSpacing = true
+
+[node name="BallOnChain4" parent="." instance=ExtResource("7_qdjlf")]
+position = Vector2(672, 416)
+startAngule = 180
+changeSpacing = true
+
+[node name="BallOnChain5" parent="." instance=ExtResource("7_qdjlf")]
+position = Vector2(672, 416)
+startAngule = 90
+changeSpacing = true
+
+[node name="BallOnChain6" parent="." instance=ExtResource("7_qdjlf")]
+position = Vector2(672, 416)
+startAngule = 45
+changeSpacing = true
+
+[node name="BallOnChain7" parent="." instance=ExtResource("7_qdjlf")]
+position = Vector2(672, 416)
+speed = 160
+changeSpacing = true
+
+[node name="BallOnChain8" parent="." instance=ExtResource("7_qdjlf")]
+position = Vector2(672, 416)
+startAngule = 315
+changeSpacing = true
+
+[node name="BallOnChain9" parent="." instance=ExtResource("7_qdjlf")]
+position = Vector2(672, 416)
+startAngule = 270
+speed = 160
+changeSpacing = true
+
+[node name="BallOnChain13" parent="." instance=ExtResource("7_qdjlf")]
+position = Vector2(672, 416)
+startAngule = 90
+speed = 160
+changeSpacing = true
+
+[node name="BallOnChain10" parent="." instance=ExtResource("7_qdjlf")]
+position = Vector2(672, 416)
+startAngule = 225
+changeSpacing = true
+
+[node name="BallOnChain11" parent="." instance=ExtResource("7_qdjlf")]
+position = Vector2(672, 416)
+startAngule = 180
+speed = 160
+changeSpacing = true
+
+[node name="BallOnChain12" parent="." instance=ExtResource("7_qdjlf")]
+position = Vector2(672, 416)
+startAngule = 135
+changeSpacing = true

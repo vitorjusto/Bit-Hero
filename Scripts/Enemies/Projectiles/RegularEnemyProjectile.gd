@@ -6,7 +6,7 @@ var active = false
 @onready var col : CollisionShape2D = get_node("CollisionShape2D")
 
 func _ready() -> void:
-	setActive(false)
+	setActive(active)
 
 func _physics_process(delta: float) -> void:
 	velocity = SPEED * 3000 * delta

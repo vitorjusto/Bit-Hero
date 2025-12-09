@@ -1,0 +1,68 @@
+[gd_scene load_steps=17 format=3 uid="uid://cwv8f4m7w0nwq"]
+
+[ext_resource type="PackedScene" uid="uid://cnneujqp6nkd5" path="res://Scenes/Enemies/FollowerAndShooter.tscn" id="1_hx54f"]
+[ext_resource type="PackedScene" uid="uid://bu0k7h2bgb5xn" path="res://Scenes/Enemies/Sniper.tscn" id="2_eq861"]
+[ext_resource type="PackedScene" uid="uid://bjonlf064q4pl" path="res://Scenes/Enemies/BallOnChain.tscn" id="3_64t36"]
+[ext_resource type="PackedScene" uid="uid://biru1y4hq2rw1" path="res://Scenes/Enemies/Dragon.tscn" id="4_n8ovx"]
+[ext_resource type="PackedScene" uid="uid://c57k378v3qcff" path="res://Scenes/Enemies/Saw.tscn" id="5_os676"]
+[ext_resource type="PackedScene" uid="uid://dxroh03ccvtsf" path="res://Scenes/Enemies/Spikes.tscn" id="6_kqnqa"]
+[ext_resource type="PackedScene" uid="uid://d1lbg3eniv27u" path="res://Scenes/Enemies/LandMine.tscn" id="7_mpw4p"]
+[ext_resource type="PackedScene" uid="uid://byrj37r6eyvqw" path="res://Scenes/Enemies/Flamethrower.tscn" id="8_nnlgx"]
+[ext_resource type="PackedScene" uid="uid://olpehiqfx4ao" path="res://Scenes/Enemies/Spreader.tscn" id="9_lfvny"]
+[ext_resource type="PackedScene" uid="uid://dj8iiohiu7erh" path="res://Scenes/Enemies/Walker.tscn" id="10_dri3a"]
+[ext_resource type="PackedScene" uid="uid://dcpkjgec6hkut" path="res://Scenes/Enemies/Bomber.tscn" id="11_vxahj"]
+[ext_resource type="PackedScene" uid="uid://bgdttt1xtunga" path="res://Scenes/Enemies/Follower.tscn" id="12_uh0ac"]
+[ext_resource type="PackedScene" uid="uid://3llpkmt8dbq4" path="res://Scenes/Enemies/Kamikase.tscn" id="13_os676"]
+[ext_resource type="PackedScene" uid="uid://de1yjxdjc31by" path="res://Scenes/Enemies/MultiWalker.tscn" id="14_kqnqa"]
+[ext_resource type="PackedScene" uid="uid://em28kbj68try" path="res://Scenes/Enemies/RegularShooter.tscn" id="15_mpw4p"]
+[ext_resource type="PackedScene" uid="uid://oxp2ov643wo8" path="res://Scenes/Enemies/Spread.tscn" id="16_nnlgx"]
+
+[node name="LevelTemplates" type="Node2D"]
+
+[node name="FollowerAndShooter" parent="." instance=ExtResource("1_hx54f")]
+position = Vector2(96, -184)
+
+[node name="Sniper2" parent="." instance=ExtResource("2_eq861")]
+position = Vector2(200, -80)
+
+[node name="BallOnChain2" parent="." instance=ExtResource("3_64t36")]
+position = Vector2(96, -320)
+
+[node name="Dragon" parent="." instance=ExtResource("4_n8ovx")]
+position = Vector2(296, -72)
+
+[node name="Saw" parent="." instance=ExtResource("5_os676")]
+position = Vector2(104, -72)
+
+[node name="Spikes" parent="." instance=ExtResource("6_kqnqa")]
+position = Vector2(408, -64)
+
+[node name="LandMine" parent="." instance=ExtResource("7_mpw4p")]
+position = Vector2(192, -320)
+
+[node name="Flamethrower" parent="." instance=ExtResource("8_nnlgx")]
+position = Vector2(312, -312)
+
+[node name="Spreader" parent="." instance=ExtResource("9_lfvny")]
+position = Vector2(8, -72)
+
+[node name="Walker5" parent="." instance=ExtResource("10_dri3a")]
+position = Vector2(192, -192)
+
+[node name="Bomber" parent="." instance=ExtResource("11_vxahj")]
+position = Vector2(672, -192)
+
+[node name="Follower" parent="." instance=ExtResource("12_uh0ac")]
+position = Vector2(-80, -64)
+
+[node name="Kamikase" parent="." instance=ExtResource("13_os676")]
+position = Vector2(672, -552)
+
+[node name="MultiWalker" parent="." instance=ExtResource("14_kqnqa")]
+position = Vector2(96, -552)
+
+[node name="RegularShooter" parent="." instance=ExtResource("15_mpw4p")]
+position = Vector2(-160, -72)
+
+[node name="Spread" parent="." instance=ExtResource("16_nnlgx")]
+position = Vector2(192, -560)

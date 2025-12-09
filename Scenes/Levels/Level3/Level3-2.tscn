@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=4 uid="uid://b7d015uue185u"]
+
+[ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_1jqau"]
+[ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="2_o1pcr"]
+[ext_resource type="PackedScene" uid="uid://cx5sy1x1xfdk" path="res://Scenes/Misc/LevelAnchors.tscn" id="3_76alv"]
+[ext_resource type="PackedScene" uid="uid://c5x1lyspt0vuu" path="res://Scenes/Misc/LockedDoorForEnemies.tscn" id="6_01wo2"]
+[ext_resource type="PackedScene" uid="uid://biru1y4hq2rw1" path="res://Scenes/Enemies/Dragon.tscn" id="8_tql4v"]
+[ext_resource type="PackedScene" uid="uid://c57k378v3qcff" path="res://Scenes/Enemies/Saw.tscn" id="9_7h5ej"]
+[ext_resource type="PackedScene" uid="uid://byrj37r6eyvqw" path="res://Scenes/Enemies/Flamethrower.tscn" id="12_gsv1b"]
+
+[node name="Level11" type="Node2D"]
+script = ExtResource("1_1jqau")
+
+[node name="Tiles" parent="." instance=ExtResource("2_o1pcr")]
+tile_map_data = PackedByteArray("AAAeAAgAAAAAAAAAAAAeAAkAAAAAAAAAAAAeAAoAAAAAAAAAAAAeAAsAAAAAAAAAAAAeAAwAAAAAAAAAAAAeAA0AAAAAAAAAAAAeAA4AAAAAAAAAAAAeAA8AAAAAAAAAAAAeABAAAAAAAAAAAAAfAAgAAAAAAAAAAAAfAAkAAAAAAAAAAAAfAAoAAAAAAAAAAAAfAAsAAAAAAAAAAAAfAAwAAAAAAAAAAAAfAA0AAAAAAAAAAAAfAA4AAAAAAAAAAAAfAA8AAAAAAAAAAAAfABAAAAAAAAAAAAAgAAgAAAAAAAAAAAAgAAkAAAAAAAAAAAAgAAoAAAAAAAAAAAAgAAsAAAAAAAAAAAAgAAwAAAAAAAAAAAAgAA0AAAAAAAAAAAAgAA4AAAAAAAAAAAAgAA8AAAAAAAAAAAAgABAAAAAAAAAAAAAhAAgAAAAAAAAAAAAhAAkAAAAAAAAAAAAhAAoAAAAAAAAAAAAhAAsAAAAAAAAAAAAhAAwAAAAAAAAAAAAhAA0AAAAAAAAAAAAhAA4AAAAAAAAAAAAhAA8AAAAAAAAAAAAhABAAAAAAAAAAAAAiAAgAAAAAAAAAAAAiAAkAAAAAAAAAAAAiAAoAAAAAAAAAAAAiAAsAAAAAAAAAAAAiAAwAAAAAAAAAAAAiAA0AAAAAAAAAAAAiAA4AAAAAAAAAAAAiAA8AAAAAAAAAAAAiABAAAAAAAAAAAAAvAAcAAAAAAAAAAAAvAAgAAAAAAAAAAAAvAAkAAAAAAAAAAAAvAAoAAAAAAAAAAAAvAAsAAAAAAAAAAAAvAAwAAAAAAAAAAAAvAA0AAAAAAAAAAAAvAA4AAAAAAAAAAAAvAA8AAAAAAAAAAAAvABAAAAAAAAAAAAAwAAcAAAAAAAAAAAAwAAgAAAAAAAAAAAAwAAkAAAAAAAAAAAAwAAoAAAAAAAAAAAAwAAsAAAAAAAAAAAAwAAwAAAAAAAAAAAAwAA0AAAAAAAAAAAAwAA4AAAAAAAAAAAAwAA8AAAAAAAAAAAAwABAAAAAAAAAAAAAxAAcAAAAAAAAAAAAxAAgAAAAAAAAAAAAxAAkAAAAAAAAAAAAxAAoAAAAAAAAAAAAxAAsAAAAAAAAAAAAxAAwAAAAAAAAAAAAxAA0AAAAAAAAAAAAxAA4AAAAAAAAAAAAxAA8AAAAAAAAAAAAxABAAAAAAAAAAAAAyAAcAAAAAAAAAAAAyAAgAAAAAAAAAAAAyAAkAAAAAAAAAAAAyAAoAAAAAAAAAAAAyAAsAAAAAAAAAAAAyAAwAAAAAAAAAAAAyAA0AAAAAAAAAAAAyAA4AAAAAAAAAAAAyAA8AAAAAAAAAAAAyABAAAAAAAAAAAAAzAAcAAAAAAAAAAAAzAAgAAAAAAAAAAAAzAAkAAAAAAAAAAAAzAAoAAAAAAAAAAAAzAAsAAAAAAAAAAAAzAAwAAAAAAAAAAAAzAA0AAAAAAAAAAAAzAA4AAAAAAAAAAAAzAA8AAAAAAAAAAAAzABAAAAAAAAAAAAA0AAcAAAAAAAAAAAA0AAgAAAAAAAAAAAA0AAkAAAAAAAAAAAA0AAoAAAAAAAAAAAA0AAsAAAAAAAAAAAA0AAwAAAAAAAAAAAA0AA0AAAAAAAAAAAA0AA4AAAAAAAAAAAA0AA8AAAAAAAAAAAA0ABAAAAAAAAAAAAA1AAcAAAAAAAAAAAA1AAgAAAAAAAAAAAA1AAkAAAAAAAAAAAA1AAoAAAAAAAAAAAA1AAsAAAAAAAAAAAA1AAwAAAAAAAAAAAA1AA0AAAAAAAAAAAA1AA4AAAAAAAAAAAA1AA8AAAAAAAAAAAA1ABAAAAAAAAAAAAAcAAcAAAAAAAAAAAAcAAgAAAAAAAAAAAAcAAkAAAAAAAAAAAAcAAoAAAAAAAAAAAAcAAsAAAAAAAAAAAAcAAwAAAAAAAAAAAAcAA0AAAAAAAAAAAAcAA4AAAAAAAAAAAAcAA8AAAAAAAAAAAAcABAAAAAAAAAAAAAdAAcAAAAAAAAAAAAdAAgAAAAAAAAAAAAdAAkAAAAAAAAAAAAdAAoAAAAAAAAAAAAdAAsAAAAAAAAAAAAdAAwAAAAAAAAAAAAdAA0AAAAAAAAAAAAdAA4AAAAAAAAAAAAdAA8AAAAAAAAAAAAdABAAAAAAAAAAAAA=")
+
+[node name="LevelAnchor" parent="." instance=ExtResource("3_76alv")]
+position = Vector2(664, 784)
+
+[node name="LevelAnchor2" parent="." instance=ExtResource("3_76alv")]
+position = Vector2(672, 0)
+AnchorType = 1
+
+[node name="LockedDoorForEnemies" parent="." node_paths=PackedStringArray("enemies") instance=ExtResource("6_01wo2")]
+position = Vector2(560, 232)
+enemies = [NodePath("../Dragon"), NodePath("../Dragon2"), NodePath("../Saw"), NodePath("../Saw2"), NodePath("../Flamethrower"), NodePath("../Flamethrower2"), NodePath("../Flamethrower3"), NodePath("../Flamethrower4")]
+
+[node name="Dragon" parent="." instance=ExtResource("8_tql4v")]
+position = Vector2(496, 344)
+
+[node name="Dragon2" parent="." instance=ExtResource("8_tql4v")]
+position = Vector2(800, 344)
+
+[node name="Saw" parent="." instance=ExtResource("9_7h5ej")]
+position = Vector2(96, 704)
+SPEED = Vector2(10000, 0)
+
+[node name="Saw2" parent="." instance=ExtResource("9_7h5ej")]
+position = Vector2(1216, 448)
+SPEED = Vector2(-10000, 0)
+
+[node name="Flamethrower" parent="." instance=ExtResource("12_gsv1b")]
+position = Vector2(96, 336)
+
+[node name="Flamethrower2" parent="." instance=ExtResource("12_gsv1b")]
+position = Vector2(96, 600)
+
+[node name="Flamethrower3" parent="." instance=ExtResource("12_gsv1b")]
+position = Vector2(1216, 328)
+
+[node name="Flamethrower4" parent="." instance=ExtResource("12_gsv1b")]
+position = Vector2(1216, 576)

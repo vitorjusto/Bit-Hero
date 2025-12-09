@@ -1,0 +1,150 @@
+[gd_scene load_steps=7 format=3 uid="uid://ch1be6rg22nfs"]
+
+[ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_0k4cu"]
+[ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="2_caw7q"]
+[ext_resource type="PackedScene" uid="uid://cx5sy1x1xfdk" path="res://Scenes/Misc/LevelAnchors.tscn" id="3_lcdg8"]
+[ext_resource type="PackedScene" uid="uid://c5x1lyspt0vuu" path="res://Scenes/Misc/LockedDoorForEnemies.tscn" id="6_t47ka"]
+[ext_resource type="PackedScene" uid="uid://d1lbg3eniv27u" path="res://Scenes/Enemies/LandMine.tscn" id="11_3drp6"]
+[ext_resource type="PackedScene" uid="uid://byrj37r6eyvqw" path="res://Scenes/Enemies/Flamethrower.tscn" id="12_nm2jo"]
+
+[node name="Level11" type="Node2D"]
+script = ExtResource("1_0k4cu")
+
+[node name="Tiles" parent="." instance=ExtResource("2_caw7q")]
+
+[node name="LevelAnchor" parent="." instance=ExtResource("3_lcdg8")]
+position = Vector2(664, 784)
+
+[node name="LevelAnchor2" parent="." instance=ExtResource("3_lcdg8")]
+position = Vector2(672, 0)
+AnchorType = 1
+
+[node name="LockedDoorForEnemies" parent="." node_paths=PackedStringArray("enemies") instance=ExtResource("6_t47ka")]
+position = Vector2(560, 88)
+enemies = [NodePath("../Flamethrower3"), NodePath("../Flamethrower")]
+
+[node name="LandMine" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(147, 472)
+
+[node name="LandMine2" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(147, 440)
+
+[node name="LandMine3" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(147, 416)
+
+[node name="LandMine5" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(72, 384)
+
+[node name="LandMine6" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(72, 360)
+
+[node name="LandMine7" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(147, 384)
+
+[node name="LandMine8" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(147, 360)
+
+[node name="LandMine9" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(72, 544)
+
+[node name="LandMine10" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(72, 520)
+
+[node name="LandMine11" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(147, 544)
+
+[node name="LandMine12" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(147, 520)
+
+[node name="LandMine4" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(147, 496)
+
+[node name="LandMine51" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1165, 464)
+
+[node name="LandMine52" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1165, 432)
+
+[node name="LandMine53" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1165, 408)
+
+[node name="LandMine54" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1165, 376)
+
+[node name="LandMine55" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1165, 352)
+
+[node name="LandMine60" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1165, 536)
+
+[node name="LandMine61" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1165, 512)
+
+[node name="LandMine62" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1165, 488)
+
+[node name="LandMine13" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(222, 472)
+
+[node name="LandMine14" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(222, 440)
+
+[node name="LandMine15" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(222, 416)
+
+[node name="LandMine16" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(222, 384)
+
+[node name="LandMine17" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(222, 360)
+
+[node name="LandMine18" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(222, 544)
+
+[node name="LandMine19" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(222, 520)
+
+[node name="LandMine20" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(222, 496)
+
+[node name="LandMine63" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1091, 352)
+
+[node name="LandMine67" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1091, 432)
+
+[node name="LandMine68" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1091, 408)
+
+[node name="LandMine69" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1091, 488)
+
+[node name="LandMine70" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1091, 464)
+
+[node name="LandMine71" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1091, 536)
+
+[node name="LandMine72" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1091, 512)
+
+[node name="LandMine74" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1091, 376)
+
+[node name="Flamethrower" parent="." instance=ExtResource("12_nm2jo")]
+position = Vector2(72, 464)
+
+[node name="LandMine41" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1240, 376)
+
+[node name="LandMine42" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1240, 352)
+
+[node name="LandMine43" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1240, 536)
+
+[node name="LandMine44" parent="." instance=ExtResource("11_3drp6")]
+position = Vector2(1240, 512)
+
+[node name="Flamethrower3" parent="." instance=ExtResource("12_nm2jo")]
+position = Vector2(1240, 456)

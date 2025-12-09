@@ -87,4 +87,5 @@ libraries = {
 }
 
 [node name="ChainOnBallBase" type="Sprite2D" parent="."]
+z_index = -1
 texture = ExtResource("3_276i1")

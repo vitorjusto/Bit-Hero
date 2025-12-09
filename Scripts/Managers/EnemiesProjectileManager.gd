@@ -23,21 +23,21 @@ func _ready() -> void:
 
 func addFireProjectile() -> FireProjectile:
 	var instance : FireProjectile = fireProjScene.instantiate()
-	add_child(instance)
+	call_deferred("add_child", instance)
 	fireProjs.append(instance)
 
 	return instance
 
 func addRegularProjectile() -> RegularEnemyProjectile:
 	var instance : RegularEnemyProjectile = projScene.instantiate()
-	add_child(instance)
+	call_deferred("add_child", instance)
 	projs.append(instance)
 
 	return instance
 
 func addTimedRegularProjectile() -> TimedRegularEnemyProjectile:
 	var instance : TimedRegularEnemyProjectile = timedProjScene.instantiate()
-	add_child(instance)
+	call_deferred("add_child", instance)
 	timedProjs.append(instance)
 
 	return instance
@@ -52,7 +52,8 @@ func ShootFireProjectile(pos: Vector2, speed: Vector2):
 	
 	instance.SPEED = speed
 	instance.position = pos
-	instance.setActive(true)
+	instance.active = true
+	instance.call_deferred("setActive", true)
 
 func ShootRegularProjectile(pos: Vector2, speed: Vector2):
 	
@@ -64,7 +65,8 @@ func ShootRegularProjectile(pos: Vector2, speed: Vector2):
 	
 	instance.SPEED = speed
 	instance.position = pos
-	instance.setActive(true)
+	instance.active = true
+	instance.call_deferred("setActive", true)
 
 func ShootTimedRegularProjectile(pos: Vector2, speed: Vector2, time: float):
 	
@@ -77,7 +79,8 @@ func ShootTimedRegularProjectile(pos: Vector2, speed: Vector2, time: float):
 	instance.SPEED = speed
 	instance.position = pos
 	instance.time = time
-	instance.setActive(true)
+	instance.active = true
+	instance.call_deferred("setActive", true)
 
 func disableAllProjectiles():
 	for i in fireProjs:

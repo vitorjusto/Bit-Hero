@@ -1,0 +1,106 @@
+[gd_scene load_steps=8 format=3 uid="uid://btve67ar78n1c"]
+
+[ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_iyuhu"]
+[ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="2_0lid3"]
+[ext_resource type="PackedScene" uid="uid://cx5sy1x1xfdk" path="res://Scenes/Misc/LevelAnchors.tscn" id="3_jym60"]
+[ext_resource type="PackedScene" uid="uid://cnneujqp6nkd5" path="res://Scenes/Enemies/FollowerAndShooter.tscn" id="4_rvj5v"]
+[ext_resource type="PackedScene" uid="uid://c5x1lyspt0vuu" path="res://Scenes/Misc/LockedDoorForEnemies.tscn" id="6_7mofh"]
+[ext_resource type="PackedScene" uid="uid://eepfq85kkpjt" path="res://Scenes/Misc/Key.tscn" id="7_6f2pp"]
+[ext_resource type="PackedScene" uid="uid://d1lbg3eniv27u" path="res://Scenes/Enemies/LandMine.tscn" id="11_5pyng"]
+
+[node name="Level11" type="Node2D"]
+script = ExtResource("1_iyuhu")
+
+[node name="Tiles" parent="." instance=ExtResource("2_0lid3")]
+
+[node name="LevelAnchor" parent="." instance=ExtResource("3_jym60")]
+position = Vector2(664, 784)
+
+[node name="LevelAnchor2" parent="." instance=ExtResource("3_jym60")]
+position = Vector2(672, 0)
+AnchorType = 1
+
+[node name="FollowerAndShooter" parent="." instance=ExtResource("4_rvj5v")]
+position = Vector2(1184, 248)
+
+[node name="FollowerAndShooter2" parent="." instance=ExtResource("4_rvj5v")]
+position = Vector2(1088, 248)
+
+[node name="FollowerAndShooter3" parent="." instance=ExtResource("4_rvj5v")]
+position = Vector2(240, 448)
+
+[node name="FollowerAndShooter4" parent="." instance=ExtResource("4_rvj5v")]
+position = Vector2(128, 448)
+
+[node name="FollowerAndShooter5" parent="." instance=ExtResource("4_rvj5v")]
+position = Vector2(1184, 648)
+
+[node name="FollowerAndShooter6" parent="." instance=ExtResource("4_rvj5v")]
+position = Vector2(1088, 648)
+
+[node name="LockedDoorForEnemies" parent="." node_paths=PackedStringArray("enemies") instance=ExtResource("6_7mofh")]
+position = Vector2(560, 88)
+enemies = [NodePath("../Key"), NodePath("../Key2"), NodePath("../Key3")]
+
+[node name="LandMine2" parent="." instance=ExtResource("11_5pyng")]
+position = Vector2(384, 672)
+
+[node name="LandMine3" parent="." instance=ExtResource("11_5pyng")]
+position = Vector2(256, 672)
+
+[node name="LandMine4" parent="." instance=ExtResource("11_5pyng")]
+position = Vector2(128, 672)
+
+[node name="LandMine6" parent="." instance=ExtResource("11_5pyng")]
+position = Vector2(384, 544)
+
+[node name="LandMine7" parent="." instance=ExtResource("11_5pyng")]
+position = Vector2(256, 544)
+
+[node name="LandMine8" parent="." instance=ExtResource("11_5pyng")]
+position = Vector2(128, 544)
+
+[node name="LandMine9" parent="." instance=ExtResource("11_5pyng")]
+position = Vector2(1184, 536)
+
+[node name="LandMine10" parent="." instance=ExtResource("11_5pyng")]
+position = Vector2(1056, 536)
+
+[node name="LandMine11" parent="." instance=ExtResource("11_5pyng")]
+position = Vector2(928, 536)
+
+[node name="LandMine13" parent="." instance=ExtResource("11_5pyng")]
+position = Vector2(1184, 408)
+
+[node name="LandMine14" parent="." instance=ExtResource("11_5pyng")]
+position = Vector2(1056, 408)
+
+[node name="LandMine15" parent="." instance=ExtResource("11_5pyng")]
+position = Vector2(928, 408)
+
+[node name="LandMine18" parent="." instance=ExtResource("11_5pyng")]
+position = Vector2(384, 344)
+
+[node name="LandMine19" parent="." instance=ExtResource("11_5pyng")]
+position = Vector2(256, 344)
+
+[node name="LandMine20" parent="." instance=ExtResource("11_5pyng")]
+position = Vector2(128, 344)
+
+[node name="LandMine22" parent="." instance=ExtResource("11_5pyng")]
+position = Vector2(384, 216)
+
+[node name="LandMine23" parent="." instance=ExtResource("11_5pyng")]
+position = Vector2(256, 216)
+
+[node name="LandMine24" parent="." instance=ExtResource("11_5pyng")]
+position = Vector2(128, 216)
+
+[node name="Key" parent="." instance=ExtResource("7_6f2pp")]
+position = Vector2(128, 616)
+
+[node name="Key2" parent="." instance=ExtResource("7_6f2pp")]
+position = Vector2(128, 288)
+
+[node name="Key3" parent="." instance=ExtResource("7_6f2pp")]
+position = Vector2(1184, 480)

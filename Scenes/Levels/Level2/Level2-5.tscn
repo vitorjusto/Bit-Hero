@@ -1,19 +1,12 @@
-[gd_scene load_steps=15 format=4 uid="uid://2d4fl7oshavi"]
+[gd_scene load_steps=8 format=4 uid="uid://2d4fl7oshavi"]
 
 [ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_paf46"]
 [ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="2_x2n32"]
 [ext_resource type="PackedScene" uid="uid://cx5sy1x1xfdk" path="res://Scenes/Misc/LevelAnchors.tscn" id="3_ru54x"]
-[ext_resource type="PackedScene" uid="uid://dxroh03ccvtsf" path="res://Scenes/Enemies/Spikes.tscn" id="4_tnpiv"]
 [ext_resource type="PackedScene" uid="uid://cnneujqp6nkd5" path="res://Scenes/Enemies/FollowerAndShooter.tscn" id="5_vusk6"]
 [ext_resource type="PackedScene" uid="uid://em28kbj68try" path="res://Scenes/Enemies/RegularShooter.tscn" id="6_72fi4"]
-[ext_resource type="PackedScene" uid="uid://biru1y4hq2rw1" path="res://Scenes/Enemies/Dragon.tscn" id="7_dblae"]
 [ext_resource type="PackedScene" uid="uid://dcpkjgec6hkut" path="res://Scenes/Enemies/Bomber.tscn" id="8_bagd7"]
-[ext_resource type="PackedScene" uid="uid://c57k378v3qcff" path="res://Scenes/Enemies/Saw.tscn" id="9_svnco"]
-[ext_resource type="PackedScene" uid="uid://bu0k7h2bgb5xn" path="res://Scenes/Enemies/Sniper.tscn" id="10_ntqr8"]
-[ext_resource type="PackedScene" uid="uid://olpehiqfx4ao" path="res://Scenes/Enemies/Spreader.tscn" id="11_qkiyg"]
-[ext_resource type="PackedScene" uid="uid://dj8iiohiu7erh" path="res://Scenes/Enemies/Walker.tscn" id="12_6xbgg"]
 [ext_resource type="PackedScene" uid="uid://c5x1lyspt0vuu" path="res://Scenes/Misc/LockedDoorForEnemies.tscn" id="13_43uvw"]
-[ext_resource type="PackedScene" uid="uid://bgdttt1xtunga" path="res://Scenes/Enemies/Follower.tscn" id="14_xaybk"]
 
 [node name="Level11" type="Node2D"]
 script = ExtResource("1_paf46")
@@ -29,10 +22,6 @@ position = Vector2(664, 784)
 position = Vector2(672, 0)
 AnchorType = 1
 
-[node name="Spikes4" parent="." instance=ExtResource("4_tnpiv")]
-position = Vector2(88, -40)
-direction = 1
-
 [node name="FollowerAndShooter" parent="." instance=ExtResource("5_vusk6")]
 position = Vector2(656, 432)
 
@@ -40,9 +29,6 @@ position = Vector2(656, 432)
 position = Vector2(1184, 448)
 facingDirection = 2
 ShootType = 2
-
-[node name="Dragon" parent="." instance=ExtResource("7_dblae")]
-position = Vector2(-40, 32)
 
 [node name="Bomber" parent="." instance=ExtResource("8_bagd7")]
 position = Vector2(1248, 352)
@@ -67,21 +53,6 @@ position = Vector2(64, 256)
 [node name="Bomber6" parent="." instance=ExtResource("8_bagd7")]
 position = Vector2(64, 640)
 
-[node name="Saw" parent="." instance=ExtResource("9_svnco")]
-position = Vector2(-96, 144)
-
-[node name="Sniper" parent="." instance=ExtResource("10_ntqr8")]
-position = Vector2(-120, 272)
-
-[node name="Spreader" parent="." instance=ExtResource("11_qkiyg")]
-position = Vector2(-184, 392)
-
-[node name="Walker" parent="." instance=ExtResource("12_6xbgg")]
-position = Vector2(344, -32)
-
 [node name="LockedDoorForEnemies" parent="." node_paths=PackedStringArray("enemies") instance=ExtResource("13_43uvw")]
 position = Vector2(560, 88)
 enemies = [NodePath("../Bomber"), NodePath("../Bomber2"), NodePath("../Bomber3"), NodePath("../Bomber4"), NodePath("../Bomber5"), NodePath("../Bomber6"), NodePath("../RegularShooter"), NodePath("../RegularShooter2"), NodePath("../FollowerAndShooter")]
-
-[node name="Follower" parent="." instance=ExtResource("14_xaybk")]
-position = Vector2(336, 40)
