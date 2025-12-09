@@ -78,3 +78,11 @@ func ShootTimedRegularProjectile(pos: Vector2, speed: Vector2, time: float):
 	instance.position = pos
 	instance.time = time
 	instance.setActive(true)
+
+func disableAllProjectiles():
+	for i in fireProjs:
+		i.setActive(true)
+	for i in projs:
+		i.setActive(true)
+	for i in timedProjs:
+		i.setActive(true)

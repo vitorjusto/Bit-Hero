@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dubfjm3pcuuqs"]
+[gd_scene load_steps=12 format=3 uid="uid://dubfjm3pcuuqs"]
 
 [ext_resource type="Script" uid="uid://ctr4w6epxmyt5" path="res://Scripts/main.gd" id="1_idj7w"]
 [ext_resource type="PackedScene" uid="uid://cqd5gq4nx3yh2" path="res://Scenes/Player/Player.tscn" id="3_kln2b"]
@@ -13,6 +13,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1gob"]
 size = Vector2(1314.5, 37)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vy5pj"]
+bg_color = Color(0, 0, 0, 1)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_idj7w")
 
@@ -22,7 +25,7 @@ player = NodePath("../Player")
 timeManager = NodePath("../TimeManager")
 
 [node name="Player" parent="." instance=ExtResource("3_kln2b")]
-position = Vector2(532, 325)
+position = Vector2(640, 520)
 
 [node name="PlayerProjectileManager" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("4_rgh2o")
@@ -56,4 +59,16 @@ script = ExtResource("8_50glp")
 [node name="EnemiesProjectileManager" type="Node2D" parent="."]
 script = ExtResource("9_vy5pj")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+visible = false
+offset_left = -56.0
+offset_top = -64.0
+offset_right = 1352.0
+offset_bottom = 848.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vy5pj")
+
 [connection signal="onDamage" from="Player" to="Hud" method="UpdateHud"]
+[connection signal="playerDied" from="Player" to="." method="onPlayerDied"]

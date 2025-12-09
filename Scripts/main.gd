@@ -5,12 +5,33 @@ var currentSection = 0
 var sections = []
 @onready var player : Player = get_node("Player")
 @onready var wall : StaticBody2D = get_node("StaticBody2D")
-var level = 4
+@onready var blackScreen : Panel = get_node("CanvasLayer/Panel")
+@onready var upgradeManager : UpgradeManager = get_node("UpgradeManager")
+@onready var enemiesProj : EnemiesProjectileManager = get_node("EnemiesProjectileManager")
+@onready var hud : Hud = get_node("Hud")
+var level = 1
+var blackScreenTimer = 100
 
 func _ready() -> void:
+	blackScreen.visible = true
+	player.allowMove = false
 	GenerateLevels()
 	SetPlayerCameraBehavior()
 
+func _process(delta: float) -> void:
+	if blackScreenTimer <= 0:
+		return
+	
+	blackScreenTimer -= delta *60
+	
+	if blackScreenTimer <= 0:
+		player.process_mode = Node.PROCESS_MODE_INHERIT
+		blackScreen.visible = false
+		player.allowMove = true
+		player.visible = true
+		player.aniSprite.visible = true
+		player.col.set_deferred("disabled", false)
+	
 func SetPlayerCameraBehavior():
 	
 	var section : Node2D = sections[currentSection]
@@ -21,6 +42,8 @@ func SetPlayerCameraBehavior():
 	playerCamera.limit_top = section.position.y
 
 func GenerateLevels():
+	currentSection = 0
+	
 	var scene : PackedScene = load("res://Scenes/Levels/Level1/Level1-start.tscn")
 	var instance: Node2D = scene.instantiate()
 	
@@ -59,13 +82,35 @@ func GenerateLevels():
 		lastLevel = instance
 		add_child(instance)
 		sections.append(instance)
-	
 
 func nextSection():
-	var section : Node2D = sections[currentSection]
+	var section : Node2D = sections[1]
 	wall.position = section.position
 	
 	currentSection += 1
 	SetPlayerCameraBehavior()
-	var prevSection : LevelBase = sections[currentSection - 1]
+	var prevSection : LevelBase = sections[0]
 	prevSection.call_deferred("queue_free")
+	sections.remove_at(0)
+
+func setCamerafromStart():
+	currentSection = 0
+	SetPlayerCameraBehavior()
+
+func onPlayerDied() -> void:
+	blackScreen.visible = true
+	blackScreenTimer = 120
+	player.position = Vector2(640.0, 520.0)
+	
+	player.hp = upgradeManager.MaxHP
+	player.life -= 1
+	enemiesProj.disableAllProjectiles()
+	ClearLevels()
+	GenerateLevels()
+	setCamerafromStart()
+
+func ClearLevels():
+	for a in sections:
+		a.call_deferred("queue_free")
+	
+	sections.clear()

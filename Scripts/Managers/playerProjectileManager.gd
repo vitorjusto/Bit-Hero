@@ -40,6 +40,9 @@ func _process(delta: float) -> void:
 		
 
 func HandleProjectiles():
+	if not player.allowMove:
+		return
+	
 	projCooldown = upgradeManager.ProjCoolDown
 	if upgradeManager.bulletAmount == 1:
 		ShootProjectile(0)

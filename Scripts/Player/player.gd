@@ -1,12 +1,15 @@
 class_name Player
 extends CharacterBody2D
 
-var hp = 10
+var hp = 2
 var hpBar : float = 0
 const SPEED = 130.0
 const JUMP_VELOCITY = -400.0
 @onready var upgradeManager : UpgradeManager = get_tree().root.get_node("/root/Main/UpgradeManager")
 @onready var hud : Hud = get_tree().root.get_node("/root/Main/Hud")
+@onready var particleManager : ParticleManager = get_tree().root.get_node("/root/Main/ParticleManager")
+@onready var col: CollisionShape2D = get_node("CollisionShape2D")
+@onready var aniSprite: AnimatedSprite2D = get_node("AnimatedSprite2D")
 
 var life = 3
 var lifeBar = 0
@@ -14,8 +17,18 @@ var maxLifeBar = 20
 
 var dashSpeed: float = 0
 var dashInitialSpeed: float = 1000
+var allowMove = true
+var playerDestroyedTimer = 0
 
+signal playerDied
 func _physics_process(delta: float) -> void:
+	
+	if playerDestroyedTimer > 0:
+		playerDestroyedTimer -= delta * 60
+		
+		if playerDestroyedTimer <= 0:
+			emit_signal("playerDied")
+		return
 	
 	var currentSpeed = (SPEED * upgradeManager.Speed) + getSpeed(delta)
 	if upgradeManager.Move8Directions:
@@ -28,7 +41,9 @@ func _physics_process(delta: float) -> void:
 		
 		velocity = currentInput * currentSpeed 
 	
-	move_and_slide()
+	if allowMove:
+		move_and_slide()
+	
 	HandleDamageAnimation(delta)
 	
 	if upgradeManager.MaxHP > hp and upgradeManager.HpRegenerate:
@@ -72,7 +87,6 @@ func getSpeed(delta: float) -> float:
 	hud.updateDashCooldown(dashSpeed, dashInitialSpeed)
 	return dashSpeed
 
-
 ##Damage vars
 var iframes = 0
 var aniIFrames = 0
@@ -103,12 +117,21 @@ func takeDamage():
 	hp -= 1
 	
 	if hp == 0:
-		print("ded")
+		handlePlayerDeath()
 	else:
 		emit_signal("onDamage")
 		velocity.y += -500
 		iframes = 100
-	
+		
+
+func handlePlayerDeath():
+	playerDestroyedTimer = 100
+	particleManager.AddParticles(position, 10)
+	allowMove = false
+	visible = false
+	col.set_deferred("disabled", true)
+	aniSprite.visible = false
+
 func OnEnemyDeteced(body: Node2D) -> void:
 	insideEnemys.append(body)
 	takeDamage()
