@@ -16,7 +16,7 @@ var sections = []
 
 var isPaused = false
 var pausedObjects = []
-var level = 4
+var level = 1
 
 var blackScreenTimer = 100
 
@@ -33,8 +33,6 @@ func _process(delta: float) -> void:
 		return
 	
 	blackScreenTimer -= delta *60
-	
-		
 	
 	if blackScreenTimer <= 0:
 		audioStreamPlayer.play(0)
@@ -106,7 +104,7 @@ func GenerateLevels():
 	call_deferred("add_child", instance)
 	sections.append(instance)
 	
-	var amount = 3
+	var amount = 21
 	for n in range(2, amount):
 		if n == amount - 1:
 			scene = load("res://Scenes/Levels/Level%d/Level%d-boss.tscn" % [level, level])
@@ -200,3 +198,4 @@ func nextLevel():
 	ClearLevels()
 	GenerateLevels()
 	setCamerafromStart()
+	hud.UpdateHud()

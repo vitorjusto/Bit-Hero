@@ -1,11 +1,17 @@
-[gd_scene load_steps=4 format=4 uid="uid://ciugkbqusf0dv"]
+[gd_scene load_steps=7 format=4 uid="uid://ciugkbqusf0dv"]
 
 [ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_v6hv7"]
 [ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="2_ma35v"]
 [ext_resource type="PackedScene" uid="uid://cx5sy1x1xfdk" path="res://Scenes/Misc/LevelAnchors.tscn" id="3_b0e7u"]
+[ext_resource type="Script" uid="uid://ds52v6yhcjmro" path="res://Scripts/Misc/girl.gd" id="4_02wbf"]
+[ext_resource type="Texture2D" uid="uid://dgdufo6khj3th" path="res://Assets/Sprites/Misc/Girl.png" id="5_or84x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5bccq"]
+radius = 25.298222
 
 [node name="Level11" type="Node2D"]
 script = ExtResource("1_v6hv7")
+cameraBehavior = null
 
 [node name="Tiles" parent="." instance=ExtResource("2_ma35v")]
 tile_map_data = PackedByteArray("AAAhAAQAAAAAAAAAAAAhAAUAAAAAAAAAAAAhAAYAAAAAAAAAAAAhAAcAAAAAAAAAAAAiAAQAAAAAAAAAAAAiAAUAAAAAAAAAAAAiAAYAAAAAAAAAAAAiAAcAAAAAAAAAAAAjAAQAAAAAAAAAAAAjAAUAAAAAAAAAAAAjAAYAAAAAAAAAAAAjAAcAAAAAAAAAAAAkAAQAAAAAAAAAAAAkAAUAAAAAAAAAAAAkAAYAAAAAAAAAAAAkAAcAAAAAAAAAAAAlAAQAAAAAAAAAAAAlAAUAAAAAAAAAAAAlAAYAAAAAAAAAAAAlAAcAAAAAAAAAAAAmAAQAAAAAAAAAAAAmAAUAAAAAAAAAAAAmAAYAAAAAAAAAAAAmAAcAAAAAAAAAAAAnAAQAAAAAAAAAAAAnAAUAAAAAAAAAAAAnAAYAAAAAAAAAAAAnAAcAAAAAAAAAAAAoAAQAAAAAAAAAAAAoAAUAAAAAAAAAAAAoAAYAAAAAAAAAAAAoAAcAAAAAAAAAAAApAAQAAAAAAAAAAAApAAUAAAAAAAAAAAApAAYAAAAAAAAAAAApAAcAAAAAAAAAAAAqAAQAAAAAAAAAAAAqAAUAAAAAAAAAAAAqAAYAAAAAAAAAAAAqAAcAAAAAAAAAAAArAAQAAAAAAAAAAAArAAUAAAAAAAAAAAArAAYAAAAAAAAAAAArAAcAAAAAAAAAAAAsAAQAAAAAAAAAAAAsAAUAAAAAAAAAAAAsAAYAAAAAAAAAAAAsAAcAAAAAAAAAAAAtAAQAAAAAAAAAAAAtAAUAAAAAAAAAAAAtAAYAAAAAAAAAAAAtAAcAAAAAAAAAAAAuAAQAAAAAAAAAAAAuAAUAAAAAAAAAAAAuAAYAAAAAAAAAAAAuAAcAAAAAAAAAAAAvAAQAAAAAAAAAAAAvAAUAAAAAAAAAAAAvAAYAAAAAAAAAAAAvAAcAAAAAAAAAAAAwAAQAAAAAAAAAAAAwAAUAAAAAAAAAAAAwAAYAAAAAAAAAAAAwAAcAAAAAAAAAAAAxAAQAAAAAAAAAAAAxAAUAAAAAAAAAAAAxAAYAAAAAAAAAAAAxAAcAAAAAAAAAAAAyAAQAAAAAAAAAAAAyAAUAAAAAAAAAAAAyAAYAAAAAAAAAAAAyAAcAAAAAAAAAAAA=")
@@ -16,3 +22,16 @@ position = Vector2(664, 784)
 [node name="LevelAnchor2" parent="." instance=ExtResource("3_b0e7u")]
 position = Vector2(672, 0)
 AnchorType = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("4_02wbf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(639.5, 383.5)
+shape = SubResource("CircleShape2D_5bccq")
+
+[node name="Girl" type="Sprite2D" parent="Area2D"]
+position = Vector2(640, 384)
+texture = ExtResource("5_or84x")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

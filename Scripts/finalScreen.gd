@@ -1,8 +1,8 @@
-class_name GameOverScreen
+class_name FinalScreen
 extends Node2D
 
 var score
-var timer = 30
+var timer = 100
 
 func _ready():
 	var lblScore : Label = get_node("lblScore")

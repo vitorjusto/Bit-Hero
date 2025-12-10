@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bjwslmu635kfk" path="res://Scripts/Boss/boss4-1.gd" id="1_vq05m"]
 [ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_jccuh"]
 [ext_resource type="Texture2D" uid="uid://dyxgi7pimmqom" path="res://Assets/Sprites/Bosses/boss4wizard.png" id="3_e0ohu"]
+[ext_resource type="Texture2D" uid="uid://ba3vsh6j43qna" path="res://Assets/Sprites/Bosses/boss4dragon.png" id="4_j3mjc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tiwvm"]
 size = Vector2(55, 120)
@@ -116,9 +117,6 @@ _data = {
 &"new_animation": SubResource("Animation_vq05m")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tiwvm"]
-bg_color = Color(1, 1, 1, 1)
-
 [node name="Boss41" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
@@ -128,7 +126,7 @@ script = ExtResource("1_vq05m")
 shape = SubResource("RectangleShape2D_tiwvm")
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_jccuh")]
-Hp = 2
+Hp = 1000
 isImortal = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
@@ -156,12 +154,9 @@ region_rect = Rect2(0, 0, 16, 32)
 [node name="Node2D" type="Node2D" parent="."]
 visible = false
 
-[node name="Panel" type="Panel" parent="Node2D"]
-offset_left = -202.0
-offset_top = -171.0
-offset_right = 206.0
-offset_bottom = 175.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_tiwvm")
+[node name="Boss4Dragon" type="Sprite2D" parent="Node2D"]
+scale = Vector2(4, 4)
+texture = ExtResource("4_j3mjc")
 
 [connection signal="onDefeat" from="Hurtbox" to="." method="onDefeated"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="onAnimationFinished"]

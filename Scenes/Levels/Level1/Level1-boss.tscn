@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://boj7cnp6v11re"]
+[gd_scene load_steps=15 format=4 uid="uid://boj7cnp6v11re"]
 
 [ext_resource type="Script" uid="uid://fshacu43s86s" path="res://Scripts/Levels/levelBase.gd" id="1_75d8a"]
 [ext_resource type="PackedScene" uid="uid://dusc13do6gal5" path="res://Scenes/Tiles/Tiles.tscn" id="2_u7aos"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cx5sy1x1xfdk" path="res://Scenes/Misc/LevelAnchors.tscn" id="4_wdhyj"]
 [ext_resource type="Script" uid="uid://phae2l1qrk6c" path="res://Scripts/Misc/bossDoorDetector.gd" id="5_wdhyj"]
 [ext_resource type="Script" uid="uid://bv2les5cqahs4" path="res://Scripts/Misc/portal.gd" id="6_omyj6"]
+[ext_resource type="Texture2D" uid="uid://b54bwh3ywo6a3" path="res://Assets/Sprites/Misc/portal.png" id="7_rej65"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omyj6"]
 size = Vector2(195.5, 45)
@@ -16,10 +17,46 @@ size = Vector2(255, 40)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71qtb"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wdhyj"]
-radius = 38.013157
+[sub_resource type="CircleShape2D" id="CircleShape2D_71qtb"]
+radius = 32.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_omyj6"]
+[sub_resource type="Animation" id="Animation_44rs2"]
+resource_name = "new_animation"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portal:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+
+[sub_resource type="Animation" id="Animation_28kwb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portal:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7karc"]
+_data = {
+&"RESET": SubResource("Animation_28kwb"),
+&"new_animation": SubResource("Animation_44rs2")
+}
 
 [node name="Level1Boss" type="Node2D"]
 script = ExtResource("1_75d8a")
@@ -29,7 +66,7 @@ tile_map_data = PackedByteArray("AAAhAAUAAAAAAAAAAAAhAAYAAAAAAAAAAAAhAAcAAAAAAAA
 
 [node name="Boss1" parent="." node_paths=PackedStringArray("portal") instance=ExtResource("3_8br1l")]
 position = Vector2(640, 298)
-portal = NodePath("../portal")
+portal = NodePath("../portal2")
 
 [node name="LevelAnchor" parent="." instance=ExtResource("4_wdhyj")]
 position = Vector2(662, 783)
@@ -61,19 +98,22 @@ offset_right = 255.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_71qtb")
 
-[node name="portal" type="Area2D" parent="."]
+[node name="portal2" type="Area2D" parent="."]
 collision_layer = 0
 script = ExtResource("6_omyj6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="portal"]
-shape = SubResource("CircleShape2D_wdhyj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal2"]
+shape = SubResource("CircleShape2D_71qtb")
 
-[node name="Panel" type="Panel" parent="portal"]
-offset_left = -20.0
-offset_top = -22.0
-offset_right = 20.0
-offset_bottom = 18.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_omyj6")
+[node name="Portal" type="Sprite2D" parent="portal2"]
+scale = Vector2(2, 2)
+texture = ExtResource("7_rej65")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="portal2"]
+libraries = {
+&"": SubResource("AnimationLibrary_7karc")
+}
+autoplay = "new_animation"
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="OnPlayerDetected"]
-[connection signal="body_entered" from="portal" to="portal" method="onPlayerDeteced"]
+[connection signal="body_entered" from="portal2" to="portal2" method="onPlayerDeteced"]

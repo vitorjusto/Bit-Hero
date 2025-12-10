@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0id7ho2hshma"]
+
+[ext_resource type="Script" uid="uid://dok5rsoj783tv" path="res://Scripts/finalScreen.gd" id="1_uwcy2"]
+[ext_resource type="FontFile" uid="uid://clufxxmftvg5k" path="res://Assets/Fonts/bitFont.ttf" id="2_x5gay"]
+[ext_resource type="AudioStream" uid="uid://5b6lom1vsj10" path="res://Assets/Songs/RainPalace.wav" id="3_uwcy2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2emqa"]
+font = ExtResource("2_x5gay")
+font_size = 64
+
+[node name="GameOverScreen" type="Node2D"]
+script = ExtResource("1_uwcy2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 1304.0
+offset_bottom = 808.0
+text = "CONGRATULATIONS"
+label_settings = SubResource("LabelSettings_2emqa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lblScore" type="Label" parent="."]
+offset_left = -8.0
+offset_top = 64.0
+offset_right = 1304.0
+offset_bottom = 888.0
+text = "0000000000"
+label_settings = SubResource("LabelSettings_2emqa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uwcy2")
+volume_db = -10.0
+autoplay = true

@@ -3,19 +3,17 @@
 [ext_resource type="Script" uid="uid://bb6j2sikhkl85" path="res://Scripts/Boss/boss4-2.gd" id="1_n2372"]
 [ext_resource type="Texture2D" uid="uid://dyxgi7pimmqom" path="res://Assets/Sprites/Bosses/boss4wizard.png" id="2_5u0v6"]
 [ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_5uh8y"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3mjc"]
-bg_color = Color(1, 1, 1, 1)
+[ext_resource type="Texture2D" uid="uid://ba3vsh6j43qna" path="res://Assets/Sprites/Bosses/boss4dragon.png" id="4_5u0v6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tiwvm"]
-size = Vector2(360, 256)
+size = Vector2(256, 232)
 
 [sub_resource type="Animation" id="Animation_5u0v6"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:visible")
+tracks/0/path = NodePath("Boss4Dragon:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -31,7 +29,7 @@ length = 6.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Panel:visible")
+tracks/0/path = NodePath("Boss4Dragon:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -60,36 +58,35 @@ texture = ExtResource("2_5u0v6")
 region_enabled = true
 region_rect = Rect2(16, 0, 16, 32)
 
-[node name="Panel" type="Panel" parent="."]
-offset_left = -176.0
-offset_top = -128.0
-offset_right = 176.0
-offset_bottom = 128.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_j3mjc")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_tiwvm")
 
 [node name="Hurtbox" parent="." instance=ExtResource("2_5uh8y")]
-Hp = 2
+Hp = 1000
 isImortal = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_tiwvm")
 
 [node name="Node2D" type="Node2D" parent="."]
-position = Vector2(-152, 128)
+position = Vector2(-82, 18)
 
 [node name="Node2D2" type="Node2D" parent="."]
-position = Vector2(0, 152)
+position = Vector2(0, -8)
 
 [node name="Node2D3" type="Node2D" parent="."]
-position = Vector2(168, 128)
+position = Vector2(78, 18)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_xfdm4")
 }
+
+[node name="Boss4Dragon" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("4_5u0v6")
 
 [connection signal="onDefeat" from="Hurtbox" to="." method="onDefeated"]
 [connection signal="onDefeat" from="Hurtbox" to="." method="onDefeat"]
