@@ -158,7 +158,13 @@ func onPlayerDied() -> void:
 	player.life -= 1
 	
 	if player.life == 0:
-		get_tree().change_scene_to_file("res://Scenes/GameOverScreen.tscn")
+		var newScene : GameOverScreen = preload("res://Scenes/GameOverScreen.tscn").instantiate()
+		newScene.score = player.Score
+		
+		get_tree().root.add_child(newScene)
+		get_tree().current_scene.queue_free()
+		get_tree().current_scene = newScene
+		return
 	
 	blackScreen.visible = true
 	

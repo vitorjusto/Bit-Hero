@@ -9,6 +9,7 @@ var powerUpDropped = false
 @onready var main : Main = get_tree().root.get_node("/root/Main")
 @onready var powerUpManager : PowerUpManager = get_tree().root.get_node("/root/Main/PowerUpManager")
 @onready var particleManager : ParticleManager = get_tree().root.get_node("/root/Main/ParticleManager")
+@onready var player : Player = get_tree().root.get_node("/root/Main/Player")
 
 signal onDefeat
 
@@ -26,6 +27,7 @@ func OnProjDetected(body: Node2D) -> void:
 	
 	GenerateParticles()
 	if Hp <= 0:
+		player.Score += 100
 		DefeatEnemy()
 
 func DefeatEnemy():
@@ -46,7 +48,7 @@ func GeneratePowerUp():
 		return
 	
 	powerUpDropped = true
-	var rng = randi_range(0, 100)
+	var rng = randf_range(0, 100)
 	
 	if rng < 20:
 		if not upgradeManager.EnemiesDropsHP:
@@ -69,7 +71,7 @@ func GeneratePowerUp():
 		var instance : Node2D = tmUp.instantiate()
 		instance.position =get_parent().position + get_parent().get_parent().position
 		powerUpManager.AddPowerUp(instance)
-	elif rng < 61:
+	elif rng < 60.05:
 		if not upgradeManager.EnemiesDropsLife:
 			return
 		var spUp : PackedScene = load("res://Scenes/PowerUps/LifeUp.tscn")

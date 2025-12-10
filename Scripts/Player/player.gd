@@ -10,7 +10,7 @@ const JUMP_VELOCITY = -400.0
 @onready var particleManager : ParticleManager = get_tree().root.get_node("/root/Main/ParticleManager")
 @onready var col: CollisionShape2D = get_node("CollisionShape2D")
 @onready var aniSprite: AnimatedSprite2D = get_node("AnimatedSprite2D")
-
+var Score = 0
 enum EFACINGDIRECTION {UP, DOWN, LEFT, RIGHT}
 
 var facingDirection = EFACINGDIRECTION.DOWN

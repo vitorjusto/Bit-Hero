@@ -14,6 +14,7 @@ extends CanvasLayer
 @onready var lblLife : Label = get_node("lblLife")
 @onready var lblTime : Label = get_node("lblTime")
 @onready var lblSection : Label = get_node("lblSection")
+@onready var lblScore : Label = get_node("lblScore")
 
 @onready var pnSpecial : Panel = get_node("pnSpecial")
 @onready var pnDash : Panel = get_node("pnDash")
@@ -38,7 +39,7 @@ func UpdateHud():
 	lblSpeed.text = "Speed: %d" % upgradeManager.Speed
 	lblRange.text = "Range: %d" % upgradeManager.RangeProj
 	lblBullet.text = "Bullets: %d" % upgradeManager.bulletAmount
-	lblSection.text = "Lv: %d/30" % main.currentSection
+	lblSection.text = "Lv: %d/20" % main.currentSection
 	
 	pnDash.visible = upgradeManager.AllowDash
 	pnSpecialBar3.visible = upgradeManager.Special > 2
@@ -48,6 +49,7 @@ func UpdateHud():
 func _process(delta : float) -> void:
 	var time = timeManager.getTime()
 	lblTime.text = "Time: %d" % time
+	lblScore.text = str(player.Score).pad_zeros(10)
 	
 	if time < 100:
 		ApLowTime.play("lowTime")

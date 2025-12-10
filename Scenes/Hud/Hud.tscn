@@ -261,6 +261,15 @@ offset_bottom = 32.0
 text = "Time: 500"
 label_settings = SubResource("LabelSettings_ighhf")
 
+[node name="lblScore" type="Label" parent="."]
+offset_left = 768.0
+offset_top = 16.0
+offset_right = 888.0
+offset_bottom = 40.0
+text = "0000000000"
+label_settings = SubResource("LabelSettings_ighhf")
+horizontal_alignment = 2
+
 [node name="lblSection" type="Label" parent="."]
 offset_left = 536.0
 offset_top = 8.0
