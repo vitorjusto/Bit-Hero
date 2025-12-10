@@ -16,7 +16,7 @@ var sections = []
 
 var isPaused = false
 var pausedObjects = []
-var level = 1
+var level = 4
 
 var blackScreenTimer = 100
 
@@ -106,7 +106,7 @@ func GenerateLevels():
 	call_deferred("add_child", instance)
 	sections.append(instance)
 	
-	var amount = 21
+	var amount = 3
 	for n in range(2, amount):
 		if n == amount - 1:
 			scene = load("res://Scenes/Levels/Level%d/Level%d-boss.tscn" % [level, level])

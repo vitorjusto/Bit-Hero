@@ -33,7 +33,6 @@ func AddVelocity():
 		
 
 func shootAllProjectiles():
-
 	shoot(0)
 	shoot(20)
 	shoot(40)

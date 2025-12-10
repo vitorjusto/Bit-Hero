@@ -2,12 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cu2grillqlotk" path="res://Scripts/Boss/boss1.gd" id="1_i8kqm"]
 [ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_pdtmo"]
+[ext_resource type="Texture2D" uid="uid://btytmog4rcprh" path="res://Assets/Sprites/Bosses/Boss1.png" id="3_pdtmo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x6x21"]
 size = Vector2(200, 200)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i8kqm"]
-bg_color = Color(1, 1, 1, 1)
 
 [node name="Boss1" type="CharacterBody2D"]
 collision_layer = 4
@@ -27,11 +25,8 @@ shape = SubResource("RectangleShape2D_x6x21")
 process_mode = 3
 enable_mode = 1
 
-[node name="Panel" type="Panel" parent="."]
-offset_left = -100.0
-offset_top = -101.0
-offset_right = 100.0
-offset_bottom = 100.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_i8kqm")
+[node name="Boss1" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("3_pdtmo")
 
 [connection signal="onDefeat" from="Hurtbox" to="." method="onDefeat"]

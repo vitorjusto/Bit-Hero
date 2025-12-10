@@ -14,6 +14,7 @@ var fireTimer = 90
 @onready var projManager: EnemiesProjectileManager = get_tree().root.get_node("/root/Main/EnemiesProjectileManager")
 @onready var parent: Node2D = get_parent()
 @onready var ani : AnimationPlayer = get_node("AnimationPlayer")
+@onready var spr : Sprite2D = get_node("Boss4Wizard")
 
 func _physics_process(delta: float) -> void:
 	IdleAround(delta)
@@ -57,6 +58,7 @@ func HandleFireProjectile(delta: float):
 func IdleAround(delta: float):
 	walkingCicle -= delta * 60
 	velocity = speed * delta
+	spr.flip_h = velocity.x < 0
 	
 	if move_and_slide():
 		walkingCicle = 0

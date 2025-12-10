@@ -1,7 +1,30 @@
-[gd_scene load_steps=10 format=3 uid="uid://cm7pkcvg0pc5s"]
+[gd_scene load_steps=14 format=3 uid="uid://cm7pkcvg0pc5s"]
 
 [ext_resource type="Script" uid="uid://dg1i1wfp1hpjv" path="res://Scripts/Boss/boss2.gd" id="1_0q141"]
+[ext_resource type="Texture2D" uid="uid://rl0b0ghrnr00" path="res://Assets/Sprites/Bosses/Boss2.png" id="2_6e5ow"]
 [ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_f2cvg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqa1p"]
+atlas = ExtResource("2_6e5ow")
+region = Rect2(0, 0, 100, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5t1k"]
+atlas = ExtResource("2_6e5ow")
+region = Rect2(0, 32, 100, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e2khj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqa1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5t1k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2cvg"]
 bg_color = Color(1, 1, 1, 1)
@@ -30,51 +53,98 @@ collision_mask = 2
 script = ExtResource("1_0q141")
 anchors = [NodePath("Node2D"), NodePath("Node2D2"), NodePath("Node2D3"), NodePath("Node2D4"), NodePath("Node2D5"), NodePath("Node2D6"), NodePath("Node2D7"), NodePath("Node2D8"), NodePath("Node2D12"), NodePath("Node2D9"), NodePath("Node2D10"), NodePath("Node2D11")]
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(105, 4)
+sprite_frames = SubResource("SpriteFrames_e2khj")
+autoplay = "default"
+frame_progress = 0.66664857
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(50, 57)
+sprite_frames = SubResource("SpriteFrames_e2khj")
+autoplay = "default"
+frame_progress = 0.92658687
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(50, -53)
+sprite_frames = SubResource("SpriteFrames_e2khj")
+autoplay = "default"
+frame_progress = 0.92658687
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="."]
+position = Vector2(-51, -53)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_e2khj")
+autoplay = "default"
+frame_progress = 0.92658687
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="."]
+position = Vector2(-51, 58)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_e2khj")
+autoplay = "default"
+frame_progress = 0.92658687
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="."]
+position = Vector2(-102, 3)
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_e2khj")
+autoplay = "default"
+frame_progress = 0.92658687
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="."]
+position = Vector2(-59, -50)
+rotation = 1.5707964
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_e2khj")
+autoplay = "default"
+frame_progress = 0.92658687
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -100)
+rotation = 1.5707964
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_e2khj")
+autoplay = "default"
+frame_progress = 0.92658687
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="."]
+position = Vector2(53, -50)
+rotation = 1.5707964
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_e2khj")
+autoplay = "default"
+frame_progress = 0.92658687
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="."]
+position = Vector2(56, 50)
+rotation = 4.712389
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_e2khj")
+autoplay = "default"
+frame_progress = 0.92658687
+
+[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 99)
+rotation = 4.712389
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_e2khj")
+autoplay = "default"
+frame_progress = 0.92658687
+
+[node name="AnimatedSprite2D12" type="AnimatedSprite2D" parent="."]
+position = Vector2(-52, 50)
+rotation = 4.712389
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_e2khj")
+autoplay = "default"
+frame_progress = 0.92658687
+
 [node name="Panel" type="Panel" parent="."]
 offset_left = -64.0
 offset_top = -64.0
 offset_right = 64.0
 offset_bottom = 64.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_f2cvg")
-metadata/_edit_use_anchors_ = true
-
-[node name="Panel2" type="Panel" parent="."]
-offset_left = -64.0
-offset_top = -100.0
-offset_right = -48.0
-offset_bottom = 100.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_f2cvg")
-metadata/_edit_use_anchors_ = true
-
-[node name="Panel7" type="Panel" parent="."]
-offset_left = -150.0
-offset_top = -8.0
-offset_right = 150.0
-offset_bottom = 8.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_f2cvg")
-metadata/_edit_use_anchors_ = true
-
-[node name="Panel9" type="Panel" parent="."]
-offset_left = -100.0
-offset_top = 48.0
-offset_right = 100.0
-offset_bottom = 64.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_f2cvg")
-metadata/_edit_use_anchors_ = true
-
-[node name="Panel3" type="Panel" parent="."]
-offset_left = 48.0
-offset_top = -100.0
-offset_right = 64.0
-offset_bottom = 100.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_f2cvg")
-metadata/_edit_use_anchors_ = true
-
-[node name="Panel13" type="Panel" parent="."]
-offset_left = -8.0
-offset_top = -150.0
-offset_right = 8.0
-offset_bottom = 150.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_f2cvg")
 metadata/_edit_use_anchors_ = true
 

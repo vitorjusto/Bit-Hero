@@ -1,27 +1,37 @@
-[gd_scene load_steps=12 format=3 uid="uid://bypdfx8jr01ur"]
+[gd_scene load_steps=15 format=3 uid="uid://bypdfx8jr01ur"]
 
 [ext_resource type="Script" uid="uid://ms14j6ieycni" path="res://Scripts/Boss/boss3.gd" id="1_s2wvv"]
 [ext_resource type="PackedScene" uid="uid://djil11fdajk4k" path="res://Scenes/Enemies/hurtbox.tscn" id="2_7utm2"]
+[ext_resource type="Texture2D" uid="uid://c7teingeg4obt" path="res://Assets/Sprites/Bosses/Boss3.png" id="2_jdcrg"]
+[ext_resource type="Texture2D" uid="uid://dttwfy1lr5opn" path="res://Assets/Sprites/Enemies/BallOnChain.png" id="3_vpk43"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7eca1"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 2048
-corner_radius_top_right = 2048
-corner_radius_bottom_right = 2048
-corner_radius_bottom_left = 2048
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qmxf"]
+atlas = ExtResource("2_jdcrg")
+region = Rect2(0, 0, 31, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5obo"]
+atlas = ExtResource("2_jdcrg")
+region = Rect2(31, 0, 31, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_on1ma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qmxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5obo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7utm2"]
-radius = 88.0
+radius = 96.00521
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7eca1"]
-radius = 20.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jdcrg"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 2048
-corner_radius_top_right = 2048
-corner_radius_bottom_right = 2048
-corner_radius_bottom_left = 2048
+radius = 26.019224
 
 [sub_resource type="Animation" id="Animation_0qmxf"]
 length = 0.001
@@ -260,19 +270,18 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jdcrg"]
-radius = 88.02273
+radius = 94.08507
 
 [node name="Boss3" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_s2wvv")
 
-[node name="Panel" type="Panel" parent="."]
-offset_left = -88.0
-offset_top = -88.0
-offset_right = 88.0
-offset_bottom = 88.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_7eca1")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 27.000002)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_on1ma")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7utm2")
@@ -290,12 +299,8 @@ collision_layer = 4
 position = Vector2(0, -250)
 shape = SubResource("CircleShape2D_7eca1")
 
-[node name="Panel" type="Panel" parent="Node2D/CharacterBody2D/CollisionShape2D"]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_jdcrg")
+[node name="BallOnChain" type="Sprite2D" parent="Node2D/CharacterBody2D/CollisionShape2D"]
+texture = ExtResource("3_vpk43")
 
 [node name="CharacterBody2D2" type="CharacterBody2D" parent="Node2D"]
 rotation = 0.7853982
@@ -305,12 +310,10 @@ collision_layer = 4
 position = Vector2(0, -250)
 shape = SubResource("CircleShape2D_7eca1")
 
-[node name="Panel" type="Panel" parent="Node2D/CharacterBody2D2/CollisionShape2D"]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_jdcrg")
+[node name="BallOnChain2" type="Sprite2D" parent="Node2D/CharacterBody2D2/CollisionShape2D"]
+position = Vector2(6.320397e-06, -0.31581116)
+rotation = -0.7853982
+texture = ExtResource("3_vpk43")
 
 [node name="CharacterBody2D3" type="CharacterBody2D" parent="Node2D"]
 rotation = 1.5707964
@@ -320,12 +323,11 @@ collision_layer = 4
 position = Vector2(0, -250)
 shape = SubResource("CircleShape2D_7eca1")
 
-[node name="Panel" type="Panel" parent="Node2D/CharacterBody2D3/CollisionShape2D"]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_jdcrg")
+[node name="BallOnChain3" type="Sprite2D" parent="Node2D/CharacterBody2D3/CollisionShape2D"]
+position = Vector2(-3.0517578e-05, 1.5258789e-05)
+rotation = -1.5707964
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("3_vpk43")
 
 [node name="CharacterBody2D4" type="CharacterBody2D" parent="Node2D"]
 rotation = 2.3561945
@@ -335,12 +337,11 @@ collision_layer = 4
 position = Vector2(0, -250)
 shape = SubResource("CircleShape2D_7eca1")
 
-[node name="Panel" type="Panel" parent="Node2D/CharacterBody2D4/CollisionShape2D"]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_jdcrg")
+[node name="BallOnChain4" type="Sprite2D" parent="Node2D/CharacterBody2D4/CollisionShape2D"]
+position = Vector2(-2.0861626e-06, -0.31581968)
+rotation = -2.3561945
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("3_vpk43")
 
 [node name="CharacterBody2D5" type="CharacterBody2D" parent="Node2D"]
 rotation = 3.1415927
@@ -350,12 +351,11 @@ collision_layer = 4
 position = Vector2(0, -250)
 shape = SubResource("CircleShape2D_7eca1")
 
-[node name="Panel" type="Panel" parent="Node2D/CharacterBody2D5/CollisionShape2D"]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_jdcrg")
+[node name="BallOnChain5" type="Sprite2D" parent="Node2D/CharacterBody2D5/CollisionShape2D"]
+position = Vector2(-2.193451e-05, 0)
+rotation = 3.1415925
+scale = Vector2(0.9999999, 0.9999999)
+texture = ExtResource("3_vpk43")
 
 [node name="CharacterBody2D6" type="CharacterBody2D" parent="Node2D"]
 rotation = 3.9269907
@@ -365,12 +365,11 @@ collision_layer = 4
 position = Vector2(0, -250)
 shape = SubResource("CircleShape2D_7eca1")
 
-[node name="Panel" type="Panel" parent="Node2D/CharacterBody2D6/CollisionShape2D"]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_jdcrg")
+[node name="BallOnChain6" type="Sprite2D" parent="Node2D/CharacterBody2D6/CollisionShape2D"]
+position = Vector2(1.835823e-05, -0.3158114)
+rotation = 2.3561945
+scale = Vector2(0.9999999, 0.9999999)
+texture = ExtResource("3_vpk43")
 
 [node name="CharacterBody2D7" type="CharacterBody2D" parent="Node2D"]
 rotation = 4.712389
@@ -380,13 +379,10 @@ collision_layer = 4
 position = Vector2(0, -250)
 shape = SubResource("CircleShape2D_7eca1")
 
-[node name="Panel" type="Panel" parent="Node2D/CharacterBody2D7/CollisionShape2D"]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_jdcrg")
-metadata/_edit_use_anchors_ = true
+[node name="BallOnChain7" type="Sprite2D" parent="Node2D/CharacterBody2D7/CollisionShape2D"]
+rotation = 1.5707963
+scale = Vector2(0.9999999, 0.9999999)
+texture = ExtResource("3_vpk43")
 
 [node name="CharacterBody2D8" type="CharacterBody2D" parent="Node2D"]
 rotation = 5.497787
@@ -396,12 +392,11 @@ collision_layer = 4
 position = Vector2(0, -250)
 shape = SubResource("CircleShape2D_7eca1")
 
-[node name="Panel" type="Panel" parent="Node2D/CharacterBody2D8/CollisionShape2D"]
-offset_left = -19.999992
-offset_top = -20.0
-offset_right = 20.000008
-offset_bottom = 20.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_jdcrg")
+[node name="BallOnChain8" type="Sprite2D" parent="Node2D/CharacterBody2D8/CollisionShape2D"]
+position = Vector2(3.5762787e-05, -0.31581306)
+rotation = 0.78539824
+scale = Vector2(0.9999999, 0.9999999)
+texture = ExtResource("3_vpk43")
 
 [node name="AniRotation" type="AnimationPlayer" parent="."]
 libraries = {
