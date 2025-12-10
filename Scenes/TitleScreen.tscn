@@ -1,13 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://6vi4mxo2f238"]
+[gd_scene load_steps=4 format=3 uid="uid://6vi4mxo2f238"]
 
 [ext_resource type="Script" uid="uid://b8ckduus1xxed" path="res://Scripts/titleScreen.gd" id="1_uebgo"]
+[ext_resource type="FontFile" uid="uid://clufxxmftvg5k" path="res://Assets/Fonts/bitFont.ttf" id="2_vmg2h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8l4an"]
+font = ExtResource("2_vmg2h")
+font_size = 128
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_uebgo")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 288.0
-offset_top = 208.0
-offset_right = 760.0
-offset_bottom = 312.0
-text = "AOOOOOOOOOOOOOOOOOOOOOOO"
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 1304.0
+offset_bottom = 808.0
+text = "BIT HERO"
+label_settings = SubResource("LabelSettings_8l4an")
+horizontal_alignment = 1
+vertical_alignment = 1

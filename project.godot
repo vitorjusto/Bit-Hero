@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="1bit jam"
-run/main_scene="uid://dubfjm3pcuuqs"
+run/main_scene="uid://6vi4mxo2f238"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
