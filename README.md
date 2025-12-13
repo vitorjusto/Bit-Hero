@@ -1,5 +1,6 @@
 # Bit Hero
 Bit Hero is a game created during [b1t-jam-3](https://itch.io/jam/b1t-jam-3), where the game can only have 2 colors on screen and the theme is "offering"
+
 You can play [here](https://vitorjusto.itch.io/bit-hero)
 
 ## Story
