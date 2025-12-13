@@ -7,6 +7,7 @@ const SPEED = 130.0
 const JUMP_VELOCITY = -400.0
 @onready var upgradeManager : UpgradeManager = get_tree().root.get_node("/root/Main/UpgradeManager")
 @onready var hud : Hud = get_tree().root.get_node("/root/Main/Hud")
+@onready var main : Main = get_tree().root.get_node("/root/Main")
 @onready var particleManager : ParticleManager = get_tree().root.get_node("/root/Main/ParticleManager")
 @onready var col: CollisionShape2D = get_node("CollisionShape2D")
 @onready var aniSprite: AnimatedSprite2D = get_node("AnimatedSprite2D")
@@ -36,7 +37,7 @@ func _physics_process(delta: float) -> void:
 	
 	var currentSpeed = (SPEED * upgradeManager.Speed) + getSpeed(delta)
 	if upgradeManager.Move8Directions:
-		velocity = Input.get_vector("Left", "Right", "Up", "Down") * currentSpeed 
+		velocity = Input.get_vector("Left", "Right", "Up", "Down") *delta * currentSpeed 
 	else:
 		var currentInput = Input.get_vector("Left", "Right", "Up", "Down")
 		if currentInput.x != 0:
@@ -47,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	
 	HandleAnimations()
 	
-	if allowMove:
+	if not main.blackScreen.visible:
 		move_and_slide()
 	
 	HandleDamageAnimation(delta)

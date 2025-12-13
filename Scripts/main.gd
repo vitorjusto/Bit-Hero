@@ -168,7 +168,7 @@ func onPlayerDied() -> void:
 	
 	audioStreamPlayer.stop()
 	blackScreenTimer = 120
-	player.position = Vector2(640.0, 520.0)
+	player.position = Vector2(640.0, 384.0)
 	player.facingDirection = Player.EFACINGDIRECTION.DOWN
 	
 	enemiesProj.disableAllProjectiles()
@@ -191,7 +191,7 @@ func nextLevel():
 	powerUpManager.ClearPowerUps()
 	blackScreen.visible = true
 	blackScreenTimer = 120
-	player.position = Vector2(640.0, 520.0)
+	player.position = Vector2(640.0, 384.0)
 	enemiesProj.disableAllProjectiles()
 	player.allowMove = false
 	level += 1

@@ -10,7 +10,8 @@ extends Node2D
 var specialBar = 0
 
 func _process(delta: float) -> void:
-	
+	if main.blackScreenTimer > 0:
+		return
 	if upgradeManager.passiveRechargingSpecial:
 		specialBar += 6 * delta
 	

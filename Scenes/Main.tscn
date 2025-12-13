@@ -33,7 +33,7 @@ timeManager = NodePath("../TimeManager")
 main = NodePath("..")
 
 [node name="Player" parent="." instance=ExtResource("3_kln2b")]
-position = Vector2(640, 520)
+position = Vector2(640, 384)
 
 [node name="PlayerProjectileManager" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("4_rgh2o")
@@ -69,13 +69,12 @@ script = ExtResource("9_vy5pj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 100
-visible = false
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 offset_left = -56.0
 offset_top = -64.0
-offset_right = 1352.0
-offset_bottom = 848.0
+offset_right = 3496.0
+offset_bottom = 2352.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_vy5pj")
 
 [node name="lblTimeUp" type="Label" parent="CanvasLayer"]
