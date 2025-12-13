@@ -5,7 +5,8 @@ You can play [here](https://vitorjusto.itch.io/bit-hero)
 
 ## Story
 After an long jorney to save your beloved one, you and your partner is living happilly. Until an crazy wizard kidnaps your grilfriend and imprisons her on the sacrificial dungeon. Now is up to you to save your beloved one!
-Because this game happen after an jorney, your character start strong, but, the sacrificial tower requires you to gives anything to progress, so beware what you gives away!
+
+Since this game happen after an jorney, your character start strong, but, the sacrificial tower requires you to eventually gives away anything to progress, so beware what you gives away!
 
 ## Controls
 - **WASD** or **Arrows Key** : Move
