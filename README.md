@@ -14,9 +14,9 @@ Godot 4.5 · GDScript · Solo dev
  - The level generation is simple, the game have 4 levels and each level have an collection of predefined chuncks, so the game select an level chunck randomly. For each 5 chunck, the game add the "Sacrificial Chamber", this chamber offers the player 4 downgrades, and the player must choose one po progress. And the end the game add the level boss chunk
 
 ## Running the project
-Godot 4.5
-Clone the repo, open project.godot in Godot
-No external dependencies
+- Godot 4.5
+- Clone the repo, open project.godot in Godot
+- No external dependencies
 
 ## Credits
 Everything is made by: Vitorjusto
