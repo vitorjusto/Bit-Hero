@@ -11,7 +11,7 @@ Godot 4.5 · GDScript · Solo dev
 
  ## Techinal Decisions
  **Level Generation**
- - The level generation is simple, the game have 4 levels and each level have an collection of predefined chuncks, so the game select an level chunk randomly. For each 5 chunck, the game add the "Sacrificial Chamber", this chamber offers the player 4 downgrades, and the player must choose one to progress. And the end the game add the level boss chunk.
+ - The level generation is simple, the game have 4 levels and each level have an collection of predefined chunks, so the game select an level chunk randomly. For each 5 chunck, the game add the "Sacrificial Chamber", this chamber offers the player 4 downgrades, and the player must choose one to progress. And the end the game add the level boss chunk.
 
 ## Running the project
 - Godot 4.5
