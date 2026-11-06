@@ -5,7 +5,7 @@ Bit Hero is a game created during [b1t-jam-3](https://itch.io/jam/b1t-jam-3), wh
 
 Godot 4.5 · GDScript · Solo dev
 
-## Game Comcept
+## Game Concept
 - As I mentioned, this game was made to an game jam where the limitation is can only have 2 colors, so the entire game is black and white. Especifically, the game background is black and the objects, walls and power ups is white (with black details)
 - The theme "offering" inspired me to create an "Reverse RougeLike" game, the idea is instead of gaining power, the player starts with full abilities and must sacrifice attributes to progress. Each Sacrificial Chamber forces a choice between 4 downgrades, creating tension through loss rather than gain.
 
